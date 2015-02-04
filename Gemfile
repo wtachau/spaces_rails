@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 5.0'
 gem "slim-rails"
 # Use Bootstrap for mobile styling
 gem 'bootstrap-sass', '~> 3.3.3'
+# Sprocket
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

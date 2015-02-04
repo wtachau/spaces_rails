@@ -1,9 +1,48 @@
-#header
-	#logo_full
-		span id='logo_1' Originate
-		span id='logo_2' Spaces
 
+
+/ div class='container-fluid header'
+/ 	#logo_full
+/ 		span class='logo_1' Originate
+/ 		span class='logo_2' Spaces
+
+/ 	div class='upper_right' id='add_profile'
+/ 		img src=image_path('profile.png')
+/ 	div class='upper_right' id='add_post'
+/ 		img src=image_path('plus.png')
+
+
+div class='container-fluid header'
+	#logo_full
+		span class='logo_1' Originate
+		span class='logo_2' Spaces
 	div class='upper_right' id='add_profile'
 		img src=image_path('profile.png')
 	div class='upper_right' id='add_post'
 		img src=image_path('plus.png')
+
+
+div class='container-fluid body_table'
+	div class='row'
+		// Posts
+		div class='col-md-4 left_panel'
+			// Relevant Posts
+			div class='section_header skills'
+				div relevant to you
+			div class='left_section skills'
+				div class='overflow_section relevant_posts'
+					// Relevant posts are inserted here
+					#no_skills_popup
+						// need slim logic to see if there are any posts
+			div class='section_header all'
+				div most recent
+			div class='left_section all'
+				div class='overflow_section all_posts'
+					// All posts are inserted here 
+
+		div class='col-md-8 right_panel'
+			div class='right_panel_fixed_height' 
+				div class='right_panel_content'
+					// stuff here
+
+.footer
+	a href="mailto:william.tachau@originate.com" questions? comments?

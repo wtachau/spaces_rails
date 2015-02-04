@@ -2,8 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* IMPORT BOOTSTRAP */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 /* VARIABLES */
+
+/* Colors */
 $spaces_blue : rgb(115,210,226);
+$spaces_green: rgb(25,232,141);
+
+/* Sizes */
+$header_height : 90px;
+$footer_height : 30px;
+
+
+html, body {
+	height: 100%;
+}
 
 body {
 	margin:0px;
@@ -12,12 +28,24 @@ body {
 
 /* HEADER */
 
-#header {
-	height:80px;
+.header {
+	height:90px;
 	background: black;
 	font-family: "lato";
 	color:white;
 	text-align: center;
+	.logo_1 {
+		font-size: 47px;
+		top: -2px;
+		font-weight: 100;
+		position: relative;
+	}
+	.logo_2 {
+		color: $spaces_blue;
+		font-size: 60PX;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
 }
 
 #logo_full {
@@ -28,28 +56,101 @@ body {
 	float:left;
 }
 
-#logo_1 {
-	font-size: 47px;
-	top: -2px;
-	font-weight: 100;
-	position: relative;
-}
-#logo_2 {
-	color: $spaces_blue;
-	font-size: 60PX;
-	font-weight: 900;
-	text-transform: uppercase;
-}
-
 .upper_right {
 	float:right;
 	padding:5px;
     cursor: pointer;
     height: inherit;
+    img {
+		height:85%;
+		margin-top: 5px;
+	}
+	#profile {
+		margin-right:20px;
+	}
 }
-.upper_right img{
-	height:85%;
+
+/* LEFT SECTION */ 
+
+.body_table {
+	height:calc(100% - (#{$header_height} + #{$footer_height}));
+	border-spacing: 0px;
+	.row {
+		height: 100%;
+	}
 }
-.upper_right#profile {
-	margin-right:20px;
+
+.left_panel {
+	min-width: 350px;
+	padding: 0px
+}
+
+.left_section {
+	height:calc(50% - 30px);
+	position:relative;
+	overflow:auto;
+}
+
+.section_header {
+	height:30px;
+	min-height: 25px;
+	position:relative;
+	text-align: center;
+	div {
+		position: relative;
+		top: 6%;
+		font-weight: 300;
+		font-size: 21px;
+	}
+	&.skills, .skills .ticket_box  {
+		background-color: $spaces_green;
+	}
+	&.all, .all .ticket_box {
+		background-color: $spaces_blue;
+	}
+}
+
+
+/* RIGHT SECTION */
+.right_panel {
+	background: image-url("background.jpg");
+	height: 100%;
+}
+
+.right_panel_fixed_height {
+	overflow:auto;
+}
+
+#right_panel_content {
+	text-align: center;
+	position: relative;
+	width:80%;
+	margin: 30px auto 40px auto;
+	border-radius:25px;
+	background:rgba(255,255,255,.75);
+	padding:15px 10px 7px 10px;
+	transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
+}
+#right_panel_content:hover {
+	background:rgba(255,255,255,1);
+}
+
+/* FOOTER */
+.footer {
+	background-color:black;
+	height:30px;
+	text-align: center;
+	padding:8px;
+	font-family: "Lato";
+
+	a {
+		color: white;
+		text-decoration: none;
+		font-weight:300;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
 }
