@@ -28,6 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Selectize for form input
+gem 'selectize-rails', '~> 0.11.2'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

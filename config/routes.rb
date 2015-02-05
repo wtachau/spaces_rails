@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # get 'posts/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   root 'spaces#home'
 
   get 'login', to: 'spaces#login'
+
+  resources :posts 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
