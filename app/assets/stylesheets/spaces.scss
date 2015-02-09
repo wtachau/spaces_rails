@@ -30,19 +30,14 @@ body {
 .popup textarea{
 	resize:none;
 }
-/*input[type="submit"] {
-	border: 2px solid rgb(233, 233, 233);
-	background-color: #EDFDFF;
-	width: 20%;
-	height: 25px;
-	border-radius: 15px;
-	color: gray;
-	margin-top: 5px;
-	cursor:pointer;
+/*.fade {
+   transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
 }
 
-input[type="submit"]:focus {
-	outline:0;
+.fade:hover {
+  background: #fff;
 }*/
 
 /* HEADER */
@@ -101,7 +96,8 @@ input[type="submit"]:focus {
 
 .left_panel {
 	min-width: 350px;
-	padding: 0px
+	padding: 0px;
+	height: 100%;
 }
 
 .left_section {
@@ -129,6 +125,20 @@ input[type="submit"]:focus {
 	}
 }
 
+.ticket_box {
+	height:95px;
+	cursor:pointer;
+	background: #EDFDFF;
+}
+.profilepic_small {
+	height: 60px;
+	border-radius:30px;
+	margin: 2px;
+}
+.ticket_icon {
+	height: 33px;
+	margin-top:15px;
+}
 
 /* RIGHT SECTION */
 .right_panel {

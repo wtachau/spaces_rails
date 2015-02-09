@@ -1,14 +1,10 @@
 #= require './view_controller'
 class Spaces.AjaxFormController extends Spaces.ViewController
 
-  initialize: ([ @noSubmitButton, @hideModal ]) ->
-
-    console.log @$container
+  initialize: ([ @noSubmitButton, @callback ]) ->
 
     @$form = @$container.find 'form'
-    console.log @$form
     @$submitButton = @$form.find 'input[type="submit"]'
-    console.log @$submitButton
     @$form
       .on('submit', @disableSubmitButton)
       .on('ajax:success', @formSucceeded)
@@ -21,6 +17,6 @@ class Spaces.AjaxFormController extends Spaces.ViewController
     @$submitButton.prop 'disabled', false
 
   formSucceeded: (e, data, status, xhr) =>
-    if @hideModal
-      ($ '.modal').modal 'hide'
+    if @callback
+        @callback(data)
     @enableSubmitButton()

@@ -55,8 +55,9 @@ div class='container-fluid header'
 						input type="submit" class='btn btn-primary' value="Add"
 			end
 			coffee:
-			  new Spaces.AjaxFormController '#addPostPopup', true, true
-
+			  new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
+			  	($ '.modal').modal 'hide'
+			  	($ '.all_posts .posts').prepend data
 
 div class='container-fluid body_table'
 	div class='row'
@@ -74,7 +75,8 @@ div class='container-fluid body_table'
 				div most recent
 			div class='left_section all'
 				div class='overflow_section all_posts'
-					// All posts are inserted here 
+					div class='posts'
+						= render @posts
 
 		div class='col-md-8 right_panel'
 			div class='right_panel_fixed_height' 
