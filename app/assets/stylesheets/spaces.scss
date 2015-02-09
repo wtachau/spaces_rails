@@ -126,18 +126,33 @@ body {
 }
 
 .ticket_box {
-	height:95px;
+	height:100%;
 	cursor:pointer;
 	background: #EDFDFF;
-}
-.profilepic_small {
-	height: 60px;
-	border-radius:30px;
-	margin: 2px;
-}
-.ticket_icon {
-	height: 33px;
-	margin-top:15px;
+	border-bottom: 1px solid lightgray;
+	.profilepic_small {
+		height: 60px;
+		border-radius:30px;
+		margin-top: 20px;
+	}
+	.ticket_icon {
+		height: 33px;
+		margin-top:30px;
+	}
+	.ticket_name {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 5px;
+	}
+	.ticket_description {
+		margin-top: 20px;
+	}
+	.num_comments {
+		color: rgb(91,91,91);
+		text-align: center;
+		position: relative;
+		top: -27px;
+	}
 }
 
 /* RIGHT SECTION */
