@@ -1,0 +1,42 @@
+coffee:
+	root = exports ? this
+	root.signinCallback = (authResult) ->
+		if authResult['hd'] != "originate.com"
+			console.log "not originate"
+			disconnectUser authResult['access_token']
+		else 
+			if authResult['status']['signed_in']
+				# get user info
+				gapi.client.load 'plus', 'v1', () ->
+					request = gapi.client.plus.people.get {'userId':'me'}
+					request.execute (resp) ->
+						$.ajax
+							url: 		'users'
+							type:		'POST'
+							data:		resp
+							success:	(data, textStatus, jqHXR) ->
+											document.location = '/';
+							error:		(jqXHR, textStatus, errorThrown) ->
+											alert("Error: "+ errorThrown)
+			else
+				console.log "Error: Failed login"
+
+.login
+	.center_pane
+		| login to Originate Spaces below
+		div class='signinButton'
+			span[class="g-signin" 
+				data-callback="signinCallback" 
+				data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
+				data-cookiepolicy="single_host_origin"
+				data-requestvisibleactions=""
+				data-approvalprompt="force"
+				data-scope="openid email"]
+
+coffee:
+	po = document.createElement 'script'
+	po.type = 'text/javascript'
+	po.async = true
+	po.src = 'https://apis.google.com/js/client:plusone.js';
+	s = (document.getElementsByTagName 'script')[0]
+	s.parentNode.insertBefore po, s
