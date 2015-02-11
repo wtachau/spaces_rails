@@ -7,6 +7,7 @@ class SpacesController < ApplicationController
   	@post = Post.new # To create a form
   	@posts = Post.order('updated_at DESC').all
   	@current_user = current_user
+  	# @tags = ActsAsTaggableOn::Tag.all
   end
 
 end

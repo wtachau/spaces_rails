@@ -29,14 +29,22 @@ div class='container-fluid header'
 
 					// Tagging section. See http://brianreavis.github.io/selectize.js/ 
 					h4 choose several tags
-					div id="tag-selector-wrapper"
-					select id="select-tag" name="tags" form="postForm" multiple placeholder="choose tags..."
-
+					div.tag_container
+						div id="tag-selector-wrapper"
+							= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {}, {:placeholder => 'choose tags...', :multiple=>true}
+					coffee:
+						selectize_control = $('#post_tag_list').selectize 
+						 	maxItems: 5
+						 	delimiter: ','
+						 	persist: false
+						 	create: (input)  ->
+					 			value: input
+					 			text: input
+					 	
 					h4 more details:
 					=f.text_area :long, placeholder: "more information"
 					br 
 					br
-
 					div class="modal-footer"
 						button type="button" class="btn btn-default" data-dismiss="modal"Close
 						input type="submit" class='btn btn-primary' value="Add"
@@ -45,6 +53,11 @@ div class='container-fluid header'
 			  new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
 			  	($ '.modal').modal 'hide'
 			  	($ '.all_posts .posts').prepend data
+			  	# and clear forms
+				($ "#post_short")[0].value = ""
+				($ "#post_long")[0].value = ""
+				($ "#post_tag_list")[0].selectize.clear()
+
 
 // Profile modal
 #profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
