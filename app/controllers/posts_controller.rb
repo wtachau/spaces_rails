@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
   def create
   	params.permit!
-  	@post = Post.create params[:post]
+  	@post = current_user.posts.create params[:post]
   	render @post
   end
   

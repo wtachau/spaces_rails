@@ -1,10 +1,11 @@
 div class='ticket-#{post.id}  ticket_box' 
 	div.container-fluid
 		div.row
-			div.col-md-2
-				img class='profilepic_small' src='http://img4.wikia.nocookie.net/__cb20130920142351/simpsons/images/e/e9/Pic_1187696292_8.jpg'
-				.ticket_name Homer
-			div.col-md-7 class='ticket_description'
+			div.col-md-3
+				div.profile_container
+					img class='profilepic_small' src=post.user.image
+					.ticket_name #{post.user.first_name}
+			div.col-md-6 class='ticket_description'
 				div class='description' #{post.short}
 			div.col-md-3
 				div.row	

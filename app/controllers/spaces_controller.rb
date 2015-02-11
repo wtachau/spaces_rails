@@ -4,8 +4,7 @@ class SpacesController < ApplicationController
   	if !logged_in?
   		redirect_to '/login'
   	end
-  	# To create a form
-  	@post = Post.new
+  	@post = Post.new # To create a form
   	@posts = Post.order('updated_at DESC').all
   	@current_user = current_user
   end
