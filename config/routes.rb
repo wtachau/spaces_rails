@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
+  get 'posts/relevant', to: 'posts#relevant'
 
   resources :posts 
   resources :users

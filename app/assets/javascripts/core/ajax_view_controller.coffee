@@ -13,7 +13,7 @@ class Spaces.AjaxFormController extends Spaces.ViewController
   disableSubmitButton: =>
     @$submitButton.prop 'disabled', true
 
-  enableSubmitButton:=>
+  enableSubmitButton: (e, jqXHR, settings, error) =>
     @$submitButton.prop 'disabled', false
 
   formSucceeded: (e, data, status, xhr) =>

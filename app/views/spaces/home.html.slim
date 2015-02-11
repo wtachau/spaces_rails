@@ -16,7 +16,7 @@ div class='container-fluid header'
 #addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	div class="modal-dialog"
 		div class="modal-content"
-			= form_for @post, {remote:true}  do |f|
+			= form_for Post.new, {remote:true}  do |f|
 
 				div class="modal-header"
 					button type="button" class="close" data-dismiss="modal" aria-label="Close" 
@@ -66,9 +66,29 @@ div class='container-fluid header'
  			div class="modal-header"
  				button type="button" class="close" data-dismiss="modal" aria-label="Close"
 					span aria-hidden="true" &times;
-				h4 class="modal-title" id="myModalLabel" = @current_user
+				h4 class="modal-title" id="myModalLabel" = current_user
 			div class="modal-body"
-				img class="profileImage" src=@current_user.image+"?sz=200"
+				img class="profileImage" src=current_user.image+"?sz=200"
+
+				= form_for current_user, {remote:true}  do |f|
+					h4 update your relevant skills
+					div.tag_container
+						div id="tag-selector-wrapper"
+							= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {:selected => current_user.tag_list}, {:placeholder => 'choose tags...', :multiple=>true}
+					input type="submit" class='btn' value="update"
+				coffee:
+					selectize_control = $('#user_tag_list').selectize 
+					 	maxItems: 5
+					 	delimiter: ','
+					 	persist: false
+					 	create: (input)  ->
+				 			value: input
+				 			text: input
+
+					new Spaces.AjaxFormController '#profilePopup', true, (data) -> 
+						($ '.modal').modal 'hide'
+						Spaces.updateRelevantPosts()
+
 			div class="modal-footer"
 				// Cruft for Google Plus logout
 				span id="signinButton" style="display:none;"
@@ -93,6 +113,8 @@ div class='container-fluid body_table'
 				div relevant to you
 			div class='left_section skills'
 				div class='overflow_section relevant_posts'
+					.posts
+						= render @relevant_posts
 					// Relevant posts are inserted here
 					#no_skills_popup
 						// need slim logic to see if there are any posts
@@ -100,7 +122,7 @@ div class='container-fluid body_table'
 				div most recent
 			div class='left_section all'
 				div class='overflow_section all_posts'
-					div class='posts'
+					.posts
 						= render @posts
 
 		div class='col-md-8 right_panel'

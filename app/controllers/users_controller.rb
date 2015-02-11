@@ -14,4 +14,12 @@ class UsersController < ApplicationController
 	log_in user
   	render text: "success"
   end
+
+def update 
+	# puts params
+	params.permit!
+	current_user.update_attributes params[:user]
+	render json: current_user
+end
+
 end
