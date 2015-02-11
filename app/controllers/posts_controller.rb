@@ -9,4 +9,8 @@ class PostsController < ApplicationController
   def relevant
   	render get_relevant_posts
   end
+
+  def update_form
+  	render partial:'form'
+  end
 end

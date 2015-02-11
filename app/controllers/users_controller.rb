@@ -15,11 +15,13 @@ class UsersController < ApplicationController
   	render text: "success"
   end
 
-def update 
-	# puts params
-	params.permit!
-	current_user.update_attributes params[:user]
-	render json: current_user
-end
+  def update
+  	params.permit!
+  	current_user.update_attributes params[:user]
+  	render json: current_user
+  end
 
+  def update_form
+    render partial:'form'
+  end
 end

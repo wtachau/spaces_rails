@@ -16,47 +16,9 @@ div class='container-fluid header'
 #addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	div class="modal-dialog"
 		div class="modal-content"
-			= form_for Post.new, {remote:true}  do |f|
-
-				div class="modal-header"
-					button type="button" class="close" data-dismiss="modal" aria-label="Close" 
-						span aria-hidden="true" &times;
-					h3 class="modal-title" id="myModalLabel" 
-						b Add a Post
-				div class="modal-body" 
-					h4 what is it?
-					=f.text_area :short, placeholder: "your idea in 140 characters or less"
-
-					// Tagging section. See http://brianreavis.github.io/selectize.js/ 
-					h4 choose several tags
-					div.tag_container
-						div id="tag-selector-wrapper"
-							= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {}, {:placeholder => 'choose tags...', :multiple=>true}
-					coffee:
-						selectize_control = $('#post_tag_list').selectize 
-						 	maxItems: 5
-						 	delimiter: ','
-						 	persist: false
-						 	create: (input)  ->
-					 			value: input
-					 			text: input
-					 	
-					h4 more details:
-					=f.text_area :long, placeholder: "more information"
-					br 
-					br
-					div class="modal-footer"
-						button type="button" class="btn btn-default" data-dismiss="modal"Close
-						input type="submit" class='btn btn-primary' value="Add"
-			end
-			coffee:
-			  new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
-			  	($ '.modal').modal 'hide'
-			  	($ '.all_posts .posts').prepend data
-			  	# and clear forms
-				($ "#post_short")[0].value = ""
-				($ "#post_long")[0].value = ""
-				($ "#post_tag_list")[0].selectize.clear()
+			.post_form
+				= render partial: 'posts/form'
+			
 
 
 // Profile modal
@@ -70,24 +32,8 @@ div class='container-fluid header'
 			div class="modal-body"
 				img class="profileImage" src=current_user.image+"?sz=200"
 
-				= form_for current_user, {remote:true}  do |f|
-					h4 update your relevant skills
-					div.tag_container
-						div id="tag-selector-wrapper"
-							= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {:selected => current_user.tag_list}, {:placeholder => 'choose tags...', :multiple=>true}
-					input type="submit" class='btn' value="update"
-				coffee:
-					selectize_control = $('#user_tag_list').selectize 
-					 	maxItems: 5
-					 	delimiter: ','
-					 	persist: false
-					 	create: (input)  ->
-				 			value: input
-				 			text: input
-
-					new Spaces.AjaxFormController '#profilePopup', true, (data) -> 
-						($ '.modal').modal 'hide'
-						Spaces.updateRelevantPosts()
+				.post_form
+					= render partial: 'users/form'
 
 			div class="modal-footer"
 				// Cruft for Google Plus logout

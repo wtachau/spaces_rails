@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
   get 'posts/relevant', to: 'posts#relevant'
+  get 'posts/update_form', to: 'posts#update_form'
+  get 'users/update_form', to: 'users#update_form'
 
   resources :posts 
   resources :users
