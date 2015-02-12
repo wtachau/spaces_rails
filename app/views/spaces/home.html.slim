@@ -18,8 +18,6 @@ div class='container-fluid header'
 		div class="modal-content"
 			.post_form
 				= render partial: 'posts/form'
-			
-
 
 // Profile modal
 #profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -74,7 +72,7 @@ div class='container-fluid body_table'
 		div class='col-md-8 right_panel'
 			div class='right_panel_fixed_height' 
 				div class='right_panel_content'
-					// stuff here
+					= render partial: 'posts/full_post', locals: { post:@posts.first }
 
 .footer
 	a href="mailto:william.tachau@originate.com" questions? comments?

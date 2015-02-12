@@ -1,0 +1,25 @@
+div.container
+	div.row
+		div.col-md-3
+			.profile_container
+					img class='profilepic_small' src="#{post.user.image}?sz=200"
+					.ticket_name #{post.user}
+		div.col-md-6
+			div.short #{post.short}
+			div.tags 
+				= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+
+		div.col-md-3
+			.email_container
+				a href="mailto:#{ post.user.email }"
+					img src=image_path("packet.png")
+					div email me
+
+			.follow_container
+				// slim logic here
+				img src=image_path("follow.png")
+				div follow
+	div.row
+		div.long #{post.long}
+	div.row
+		div.comments

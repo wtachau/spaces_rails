@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'selectize-rails', '~> 0.11.2'
 # Acts-as-Taggable for tagging system
 gem 'acts-as-taggable-on', '~> 3.4'
+# Acts-as-Commentable for comments
+gem 'acts_as_commentable'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

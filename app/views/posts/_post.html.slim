@@ -1,18 +1,27 @@
-div class='ticket-#{post.id}  ticket_box' 
-	div.container-fluid
-		div.row
-			div.col-md-3
-				div.profile_container
-					img class='profilepic_small' src=post.user.image
-					.ticket_name #{post.user.first_name}
-			div.col-md-6 class='ticket_description'
-				div class='description' #{post.short}
-				div class='tags' 
-					= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
-			div.col-md-3
-				div.row	
-					div.col-md-6
-						img.ticket_icon src=image_path('followcheck.png')
-					div.col-md-6
-						img.ticket_icon src=image_path('speechbubble.png')
-						.num_comments 0
+// CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
+
+- @ticket_id = "ticket-#{post.id}"
+.ticket_box id=@ticket_id
+	= link_to post, {remote: true} do
+		.container-fluid
+			.row
+				.col-md-3
+					.profile_container
+						img class='profilepic_small' src="#{post.user.image}?sz=100"
+						.ticket_name #{post.user.first_name}
+				.col-md-6 class='ticket_description'
+					 .description #{post.short}
+					 .tags 
+						= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+				.col-md-3
+					.row	
+						.col-md-6
+							img.ticket_icon src=image_path('followcheck.png')
+						.col-md-6
+							img.ticket_icon src=image_path('speechbubble.png')
+							.num_comments 0
+javascript:
+  var ticket_container =  "##{@ticket_id}";
+coffee:
+	new Spaces.AjaxLinkController ticket_container, (data) -> 
+		($ '.right_panel_content').html data

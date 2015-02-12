@@ -145,6 +145,10 @@ body {
 	&:hover {
 		background: #fff;
 	}
+	a {
+		color: inherit;
+		text-decoration: inherit;
+	}
 	.profilepic_small {
 		height: 60px;
 		border-radius:30px;
@@ -188,20 +192,68 @@ body {
 }
 
 .right_panel_fixed_height {
+	height: 100%;
 	overflow:auto;
 }
 
-#right_panel_content {
+.right_panel_content {
 	text-align: center;
-	position: relative;
-	width:80%;
-	margin: 30px auto 40px auto;
+	margin: 30px auto 30px auto;
+	width: 95%;
 	border-radius:25px;
 	background:rgba(255,255,255,.75);
 	padding:15px 10px 7px 10px;
 	transition: background .25s ease-in-out;
    -moz-transition: background .25s ease-in-out;
    -webkit-transition: background .25s ease-in-out;
+   .container {
+   		width: 100%;
+   		padding: 25px;
+   		.profile_container {
+   			img {
+   				width: 80px;
+				border-radius: 40px;
+   			}
+   			.ticket_name {
+   				font-size: 16px;
+				margin-top: 8px;
+   			}
+   		}
+   		.short {
+   			margin-top: 24px;
+   			font-size: 22px;
+   		}
+   		.tags {
+   			margin-top: 5px;
+   			span {
+   				color: gray;
+   				&:hover {
+   					cursor: pointer;
+   					text-decoration: underline;
+   				}
+   			}
+   		}
+   		.email_container {
+   			a {
+   				text-decoration: none;
+   				color: black;
+   				img {	
+	   				width: 30px;
+	   			}
+   			}
+   		}
+   		.follow_container {
+   			cursor:pointer;
+   			margin-top: 10px;
+   			img {
+   				width: 30px;
+   			}
+   		}
+   		.long {
+   			padding: 30px;
+			text-align: left;
+   		}
+   }
 }
 #right_panel_content:hover {
 	background:rgba(255,255,255,1);
@@ -275,8 +327,4 @@ body {
 		}
 	}
 }
-
-
-
-
 
