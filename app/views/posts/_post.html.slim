@@ -9,17 +9,17 @@
 					.profile_container
 						img class='profilepic_small' src="#{post.user.image}?sz=100"
 						.ticket_name #{post.user.first_name}
-				.col-md-6 class='ticket_description'
-					 .description #{post.short}
-					 .tags 
+				.col-md-9 class='ticket_description'
+					div.ticket_icon
+						img src=image_path('speechbubble.png')
+						.num_comments 0
+					div.ticket_icon.follow
+						- post_followed = post.follows.exists?(user_id:current_user)
+
+						img src=image_path('followcheck.png') style="display:#{:none unless post_followed};"
+					.description #{post.short}
+					.tags 
 						= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
-				.col-md-3
-					.row	
-						.col-md-6
-							img.ticket_icon src=image_path('followcheck.png')
-						.col-md-6
-							img.ticket_icon src=image_path('speechbubble.png')
-							.num_comments 0
 javascript:
   var ticket_container =  "##{@ticket_id}";
 coffee:

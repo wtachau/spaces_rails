@@ -16,9 +16,15 @@ div.container
 					div email me
 
 			.follow_container
-				// slim logic here
-				img src=image_path("follow.png")
-				div follow
+				= link_to follow_post_path(post), remote: true
+					- is_followed = Follow.exists?(post_id: post.id, user_id:current_user.id)
+					- text = is_followed ? 'following' : 'follow'
+					img#following_icon [src=image_path("follow.png")
+										style="display:#{:none if is_followed};"]
+					img#follow_icon  [src=image_path("ok.png")
+									  style="display:#{:none unless is_followed};"]
+					div #{text}
+
 	div.row
 		div.long #{post.long}
 	div.row
@@ -31,6 +37,19 @@ div.container
 				=f.submit "Submit", class: 'btn'
 
 coffee:
+	# Update comments on submit
 	new Spaces.AjaxFormController '.comments', true, (data) ->
 		($ '.previous_comments').append data
 		($ '.comments form textarea').val ""
+	# Update 'follow' icon after ajax result
+	new Spaces.AjaxLinkController '.follow_container', (data) -> 
+		follow_icons = ".ticket_box#ticket-#{data['post']} .ticket_icon.follow img"
+		$(".follow_container div").html(data['result'])
+		if data['result'] == 'following'
+			($ "#following_icon").hide()
+			($ "#follow_icon").show()
+			($ follow_icons).show()
+		else 
+			($ "#following_icon").show()
+			($ "#follow_icon").hide()
+			($ follow_icons).hide()

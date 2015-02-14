@@ -15,7 +15,19 @@ class PostsController < ApplicationController
   end
 
   def show
-  	puts params
   	render partial:'full_post', locals:{ post: Post.find_by(id: params[:id])}
+  end
+
+  def follow 
+    params.permit!
+    post_id = params[:id]
+    result = 'following'
+    if follow = Follow.where(post_id: post_id, user_id:current_user.id).first
+      Follow.delete follow
+      result = 'follow'
+    else 
+      current_user.follows.create post_id: post_id
+    end
+    render json: { result: result, post: post_id }
   end
 end

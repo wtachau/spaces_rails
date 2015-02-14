@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get 'posts/update_form', to: 'posts#update_form'
   get 'users/update_form', to: 'users#update_form'
 
-  resources :posts 
+  resources :posts do 
+    member do
+      get 'follow'
+    end
+  end
   resources :users
   resources :comments
 

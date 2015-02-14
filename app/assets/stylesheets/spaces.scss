@@ -155,8 +155,16 @@ body {
 		margin-top: 20px;
 	}
 	.ticket_icon {
-		height: 33px;
-		margin-top:30px;
+		float: right;
+		margin-right: 5px;
+		img {
+			height: 27px;
+			margin-top: 30px;
+		}
+		&.follow img{
+			height: 20px;
+			margin-top: 34px;
+		}
 	}
 	.profile_container {
 		text-align: center;
@@ -168,6 +176,10 @@ body {
 	
 	.ticket_description {
 		margin-top: 20px;
+		padding-right: 5px;
+		.description {
+			overflow: hidden;
+		}
 		.tags {
 			color:gray;
 			.tag {
@@ -179,9 +191,10 @@ body {
 	}
 	.num_comments {
 		color: rgb(91,91,91);
-		text-align: center;
-		position: relative;
-		top: -27px;
+		top: 0px;
+		position: absolute;
+		margin-top: 33px;
+		margin-left: 9px;
 	}
 }
 
@@ -247,6 +260,10 @@ body {
    			margin-top: 10px;
    			img {
    				width: 30px;
+   			}
+   			a {
+   				text-decoration: none;
+   				color: black;
    			}
    		}
    		.long {
