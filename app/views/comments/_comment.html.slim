@@ -1,1 +1,7 @@
-div.comment.form-control #{comment.text}
+div.comment.form-control
+	div.row
+		div.col-md-2.comment_user_container
+			img src=comment.user.image
+			div #{comment.user.first_name}
+		div.col-md-10
+			div #{comment.text}

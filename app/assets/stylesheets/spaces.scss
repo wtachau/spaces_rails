@@ -260,14 +260,25 @@ body {
 				border-radius: 9px;
 				resize: none;
 				border: 1px solid lightgray;
-				padding: 5px;
+				padding: 15px;
    			}
    			.comment {
    				width: 90%;
+   				height: inherit;
 				margin: auto;
 				border-radius: 8px;
 				margin-bottom: 8px;
 				text-align: left;
+				.row {
+					padding-top: 5px;
+					.comment_user_container {
+						text-align: center;
+						img{
+							width: 50px;
+							border-radius: 25px;
+						}
+					}
+				}
    			}
    			input[type=submit] {
    				margin-top: 10px;
