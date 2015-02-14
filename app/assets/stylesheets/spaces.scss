@@ -253,6 +253,26 @@ body {
    			padding: 30px;
 			text-align: left;
    		}
+   		.comments {
+   			textarea {
+   				margin: auto;
+   				width: 90%;
+				border-radius: 9px;
+				resize: none;
+				border: 1px solid lightgray;
+				padding: 5px;
+   			}
+   			.comment {
+   				width: 90%;
+				margin: auto;
+				border-radius: 8px;
+				margin-bottom: 8px;
+				text-align: left;
+   			}
+   			input[type=submit] {
+   				margin-top: 10px;
+   			}
+   		}
    }
 }
 #right_panel_content:hover {

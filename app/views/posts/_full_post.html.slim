@@ -23,3 +23,14 @@ div.container
 		div.long #{post.long}
 	div.row
 		div.comments
+			div.previous_comments
+				= render post.comments
+			= form_for Comment.new, {remote:true} do |f|
+				=f.hidden_field :post_id, value:post.id
+				=f.text_area :text, placeholder: 'Something to add?', class: 'form-control'
+				=f.submit "Submit", class: 'btn'
+
+coffee:
+	new Spaces.AjaxFormController '.comments', true, (data) ->
+		($ '.previous_comments').append data
+		($ '.comments form textarea').val ""
