@@ -28,6 +28,12 @@ div.container
 	div.row
 		div.long #{post.long}
 	div.row
+		div.num_comments
+			- if post.comments.any?
+				- if post.comments.count > 1
+					i showing #{post.comments.count} comments
+				- else
+					i showing 1 comment
 		div.comments
 			div.previous_comments
 				= render post.comments

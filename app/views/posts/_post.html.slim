@@ -11,7 +11,7 @@
 				.col-md-9 class='ticket_description'
 					div.ticket_icon
 						img src=image_path('speechbubble.png')
-						.num_comments 0
+						.num_comments #{post.comments.count}
 					div.ticket_icon.follow
 						- post_followed = post.follows.exists?(user_id:current_user)
 
