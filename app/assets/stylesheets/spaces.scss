@@ -235,9 +235,11 @@ body {
    		.short {
    			margin-top: 24px;
    			font-size: 22px;
+   			border-bottom: 1px solid lightgray;
+			padding-bottom: 10px;
    		}
    		.tags {
-   			margin-top: 5px;
+   			margin-top: 10px;
    			span {
    				color: gray;
    				&:hover {
