@@ -8,6 +8,14 @@ div.container
 			div.short #{post.short}
 			div.tags 
 				= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+			div.timestamp 
+				- difference = time_diff post.updated_at
+				| updated #{difference}
+				- if post.follows.any?
+					- if post.follows.count > 1
+						span &nbsp;&nbsp; | &nbsp;&nbsp; #{post.follows.count} 2 follows
+					- else
+						span &nbsp;&nbsp; | &nbsp;&nbsp; 1 follow
 
 		div.col-md-3
 			.email_container

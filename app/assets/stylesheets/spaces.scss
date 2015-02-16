@@ -246,6 +246,9 @@ body {
    				}
    			}
    		}
+   		.timestamp {
+   			margin-top: 5px;
+   		}
    		.email_container {
    			a {
    				text-decoration: none;
@@ -267,8 +270,11 @@ body {
    			}
    		}
    		.long {
-   			padding: 30px;
+   			padding: 20px;
+			margin: 30px 45px 30px 45px;
 			text-align: left;
+			border: 1px solid lightgray;
+			border-radius: 10px;
    		}
    		.num_comments {
    			color: gray;

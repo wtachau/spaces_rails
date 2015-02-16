@@ -1,2 +1,2 @@
 #tag-selector-wrapper
-	= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {:selected => selected_tags}, {:placeholder => 'choose tags...', :multiple=>true}
+	= f.select :tag_list, ActsAsTaggableOn::Tag.all.map { |tag| tag.name }, {:selected => selected_tags}, {:placeholder => 'choose up to 5 tags...', :multiple=>true}
