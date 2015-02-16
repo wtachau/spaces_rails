@@ -1,7 +1,6 @@
-// CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
-
 - @ticket_id = "ticket-#{post.id}"
-.ticket_box id=@ticket_id
+- @id = random_dom_id
+.ticket_box class=@ticket_id id=@id
 	= link_to post, {remote: true} do
 		.container-fluid
 			.row
@@ -20,8 +19,9 @@
 					.description #{post.short}
 					.tags 
 						= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+// CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
 javascript:
-  var ticket_container =  "##{@ticket_id}";
+  var ticket_container =  "##{@id}.#{@ticket_id}";
 coffee:
 	new Spaces.AjaxLinkController ticket_container, (data) -> 
 		($ '.right_panel_content').html data

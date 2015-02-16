@@ -43,7 +43,7 @@ coffee:
 		($ '.comments form textarea').val ""
 	# Update 'follow' icon after ajax result
 	new Spaces.AjaxLinkController '.follow_container', (data) -> 
-		follow_icons = ".ticket_box#ticket-#{data['post']} .ticket_icon.follow img"
+		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		$(".follow_container div").html(data['result'])
 		if data['result'] == 'following'
 			($ "#following_icon").hide()
