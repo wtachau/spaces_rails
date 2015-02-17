@@ -13,7 +13,7 @@ div.container
 				| updated #{difference}
 				- if post.follows.any?
 					- if post.follows.count > 1
-						span &nbsp;&nbsp; | &nbsp;&nbsp; #{post.follows.count} 2 follows
+						span &nbsp;&nbsp; | &nbsp;&nbsp; #{post.follows.count} follows
 					- else
 						span &nbsp;&nbsp; | &nbsp;&nbsp; 1 follow
 
