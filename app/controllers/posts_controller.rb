@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     else 
       current_user.follows.create post_id: post_id
     end
-    render json: { result: result, post: post_id }
+    num_follows = get_follow_text(Post.find_by(id: post_id).follows)
+    render json: { result: result, post: post_id, num_follows: num_follows }
   end
 end

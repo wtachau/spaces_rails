@@ -11,11 +11,7 @@ div.container
 			div.timestamp 
 				- difference = time_diff post.updated_at
 				| updated #{difference}
-				- if post.follows.any?
-					- if post.follows.count > 1
-						span &nbsp;&nbsp; | &nbsp;&nbsp; #{post.follows.count} follows
-					- else
-						span &nbsp;&nbsp; | &nbsp;&nbsp; 1 follow
+				= get_follow_text(post.follows)
 
 		div.col-md-3
 			.email_container
@@ -37,6 +33,7 @@ div.container
 		div.long #{post.long}
 	div.row
 		div.num_comments
+			// See follow text above -- do this in rails helper
 			- if post.comments.any?
 				- if post.comments.count > 1
 					i showing #{post.comments.count} comments
@@ -57,6 +54,7 @@ coffee:
 		($ '.comments form textarea').val ""
 	# Update 'follow' icon after ajax result
 	new Spaces.AjaxLinkController '.follow_container', (data) -> 
+		# todo: update post element with data[num_follows]
 		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		$(".follow_container div").html(data['result'])
 		if data['result'] == 'following'
