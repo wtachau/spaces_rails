@@ -1,4 +1,6 @@
 #= require './view_controller'
+
+# Used to control ajax callbacks for remote form submissions
 class Spaces.AjaxFormController extends Spaces.ViewController
 
   initialize: ([ @noSubmitButton, @callback ]) ->
@@ -21,7 +23,7 @@ class Spaces.AjaxFormController extends Spaces.ViewController
     if @callback
         @callback(data)
     
-
+# Used to control ajax callbacks on remote links
 class Spaces.AjaxLinkController extends Spaces.ViewController
 
   initialize: ([ @callback ]) ->

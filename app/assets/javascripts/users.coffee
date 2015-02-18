@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+# Update the 'Edit Profile' section (generally by updating tags)
 Spaces.updateUserForm = () ->
 	$.ajax
 		url: 'users/update_form'

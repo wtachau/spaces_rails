@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   						email:params[:emails]["0"][:value], 
   						image:image_url)
   	end
-	log_in user
+    log_in user
   	render text: "success"
   end
 

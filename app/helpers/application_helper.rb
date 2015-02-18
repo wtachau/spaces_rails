@@ -1,9 +1,11 @@
 module ApplicationHelper
 
+	# Used to generate random number used for id
 	def random_dom_id
 		rand(10**5)
 	end
 
+	# Generate friendly text from timestamp, i.e. '6 hours ago'
 	def time_diff(updated_at)
 		time_diff = Time.diff(Time.now, updated_at)
 		if time_diff[:minute] < 1

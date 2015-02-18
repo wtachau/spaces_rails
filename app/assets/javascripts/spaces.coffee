@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+# "Selectize" an element by applying the Selectize js library
+# http://brianreavis.github.io/selectize.js/
 Spaces.selectizeElement = (element) ->
 	selectize_control = $(element).selectize 
 						 	maxItems: 5
