@@ -48,20 +48,10 @@ div.container
 				=f.submit "Submit", class: 'btn'
 
 coffee:
+	new Spaces.CommentsController '.comments'
 	# Update comments on submit
 	new Spaces.AjaxFormController '.comments', true, (data) ->
-		($ '.previous_comments').append data
-		($ '.comments form textarea').val ""
+		$('body').trigger 'commentAdded', data
 	# Update 'follow' icon after ajax result
 	new Spaces.AjaxLinkController '.follow_container', (data) -> 
-		# todo: update post element with data[num_follows]
-		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
-		$(".follow_container div").html(data['result'])
-		if data['result'] == 'following'
-			($ "#following_icon").hide()
-			($ "#follow_icon").show()
-			($ follow_icons).show()
-		else 
-			($ "#following_icon").show()
-			($ "#follow_icon").hide()
-			($ follow_icons).hide()
+		$('body').trigger 'postFollowed', data

@@ -24,12 +24,12 @@
 
 coffee:
 	# "Selectize" the tag input
-	tag_section = new Spaces.SpacesController '#post_tag_list'
-	tag_section.selectizeElement()
+	new Spaces.SpacesController '#post_tag_list', true
 
 	# Attach callback to the post form
 	new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
-		Spaces.addPostCallback(data)
-	# Update counter
-	($ '#post_short').keyup (e) ->
-		($ '.counter').html ($ @).val().length 
+		$('body').trigger 'postAdded', data
+
+	
+
+

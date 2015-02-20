@@ -22,9 +22,9 @@ div class='container-fluid header'
 // Profile modal
 #profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	div class="modal-dialog"
- 		div class="modal-content"
- 			div class="modal-header"
- 				button type="button" class="close" data-dismiss="modal" aria-label="Close"
+		div class="modal-content"
+			div class="modal-header"
+				button type="button" class="close" data-dismiss="modal" aria-label="Close"
 					span aria-hidden="true" &times;
 				h4 class="modal-title" id="myModalLabel" = current_user
 			div class="modal-body"
@@ -36,17 +36,13 @@ div class='container-fluid header'
 			div class="modal-footer"
 				// Cruft for Google Plus logout
 				span id="signinButton" style="display:none;"
-			        span [class="g-signin"
-			            data-callback="signinCallback"
-			            data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
-			            data-cookiepolicy="single_host_origin"
-			            data-requestvisibleactions=""
-			            data-scope="openid email"]
-            	div id="logout" style="display:none;" sign out
-            	coffee:
-            		($ '#logout').click () ->
-            			gapi.auth.signOut()
-            			document.location = '/logout'
+					span [class="g-signin"
+						data-callback="signinCallback"
+						data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
+						data-cookiepolicy="single_host_origin"
+						data-requestvisibleactions=""
+						data-scope="openid email"]
+				div id="logout" style="display:none;" sign out
 
 div class='container-fluid body_table'
 	div class='row'
@@ -77,12 +73,21 @@ div class='container-fluid body_table'
 .footer
 	a href="mailto:william.tachau@originate.com" questions? comments?
 
-// For Google Plus login
 coffee:
+	# Create Posts view controller
+	new Spaces.PostsController '.left_panel'
+	new Spaces.UserFormController '#profilePopup'
+
+	# For Google Plus login
 	po = document.createElement 'script'
 	po.type = 'text/javascript'
 	po.async = true
-    po.src = 'https://apis.google.com/js/client:plusone.js'
-    s = (document.getElementsByTagName 'script' )[0]
-    s.parentNode.insertBefore po, s
+	po.src = 'https://apis.google.com/js/client:plusone.js'
+	s = (document.getElementsByTagName 'script' )[0]
+	s.parentNode.insertBefore po, s
+
+	# For Google Plus logout
+	($ '#logout').click () ->
+		gapi.auth.signOut()
+		document.location = '/logout'
 

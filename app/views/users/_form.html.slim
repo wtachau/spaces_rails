@@ -6,10 +6,8 @@
 
 coffee:
 	# "Selectize" the tag input
-	tag_section = new Spaces.SpacesController '#user_tag_list'
-	tag_section.selectizeElement()
+	new Spaces.SpacesController '#user_tag_list', true
 
-	Spaces.selectizeElement 
 	new Spaces.AjaxFormController '#profilePopup', true, (data) -> 
-					($ '.modal').modal 'hide'
-					Spaces.updateRelevantPosts()
+					$('body').trigger('tagsUpdated');
+					$('body').trigger('userUpdated');
