@@ -5,7 +5,11 @@
 	input type="submit" class='btn' value="update"
 
 coffee:
-	Spaces.selectizeElement '#user_tag_list'
+	# "Selectize" the tag input
+	tag_section = new Spaces.SpacesController '#user_tag_list'
+	tag_section.selectizeElement()
+
+	Spaces.selectizeElement 
 	new Spaces.AjaxFormController '#profilePopup', true, (data) -> 
 					($ '.modal').modal 'hide'
 					Spaces.updateRelevantPosts()

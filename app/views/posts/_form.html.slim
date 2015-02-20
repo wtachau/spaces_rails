@@ -24,7 +24,9 @@
 
 coffee:
 	# "Selectize" the tag input
-	Spaces.selectizeElement '#post_tag_list'
+	tag_section = new Spaces.SpacesController '#post_tag_list'
+	tag_section.selectizeElement()
+
 	# Attach callback to the post form
 	new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
 		Spaces.addPostCallback(data)

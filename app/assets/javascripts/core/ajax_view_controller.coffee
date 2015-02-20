@@ -4,7 +4,6 @@
 class Spaces.AjaxFormController extends Spaces.ViewController
 
 	initialize: ([ @noSubmitButton, @callback ]) ->
-
 		@$form = @$container.find 'form'
 		@$submitButton = @$form.find 'input[type="submit"]'
 		@$form
@@ -20,4 +19,5 @@ class Spaces.AjaxFormController extends Spaces.ViewController
 
 	formSucceeded: (e, data) =>
 		@enableSubmitButton() 
-		@callback(data) if @callback
+		if @callback 
+ 			@callback data
