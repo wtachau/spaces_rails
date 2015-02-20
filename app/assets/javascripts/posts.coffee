@@ -7,7 +7,7 @@ Spaces.updateRelevantPosts = () ->
 	$.ajax
 		url: 'posts/relevant'
 		type: 'GET'
-		success: (data, textStatus, jqXHR) ->
+		success: (data) ->
 			$(".relevant_posts .posts").html data
 		error: (jqXHR, textStatus, errorThrown) ->
 			console.log "Error updating posts: "+errorThrown
