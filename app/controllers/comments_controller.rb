@@ -1,9 +1,12 @@
 class CommentsController < ApplicationController
 
 	def create
-		params.permit!
-		@comment = current_user.comments.create params[:comment]
+		@comment = current_user.comments.create comments_params
 		render @comment
 	end
 
+	private
+		def comments_params
+			params.require(:comment).permit(:post_id, :text)
+		end
 end

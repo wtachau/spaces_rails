@@ -24,4 +24,9 @@ class UsersController < ApplicationController
   def update_form
     render partial:'form'
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:tag_list)
+    end
 end
