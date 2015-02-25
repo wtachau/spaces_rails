@@ -36,6 +36,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable'
 # time_diff for time differences
 gem 'time_diff', '~> 0.3.0'
+# use draper for view decorators
+gem 'draper', '~> 1.4.0'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

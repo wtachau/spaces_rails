@@ -11,7 +11,7 @@ div.container
 			div.timestamp 
 				- difference = time_diff post.updated_at
 				| updated #{difference}
-				= get_follow_text(post.follows)
+				| #{ post.descriptive_follow_text }
 
 		div.col-md-3
 			.email_container
@@ -21,7 +21,7 @@ div.container
 
 			.follow_container
 				= link_to follow_post_path(post), remote: true
-					- is_followed = Follow.exists?(post_id: post.id, user_id:current_user.id)
+					- is_followed = Follow.exists?(post_id: post.id, user_id: @current_user.id)
 					- text = is_followed ? 'following' : 'follow'
 					img#following_icon [src=image_path("follow.png")
 										style="display:#{:none if is_followed};"]

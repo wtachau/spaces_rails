@@ -26,9 +26,9 @@ div class='container-fluid header'
 			div class="modal-header"
 				button type="button" class="close" data-dismiss="modal" aria-label="Close"
 					span aria-hidden="true" &times;
-				h4 class="modal-title" id="myModalLabel" = current_user
+				h4 class="modal-title" id="myModalLabel" = @current_user
 			div class="modal-body"
-				img class="profileImage" src=current_user.image+"?sz=200"
+				img class="profileImage" src=@current_user.image+"?sz=200"
 
 				.post_form
 					= render partial: 'users/form'

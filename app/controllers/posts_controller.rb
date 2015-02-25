@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 	end
 
 	def relevant
-		render get_relevant_posts
+		render PostsService.new(current_user).get_relevant_posts
 	end
 
 	def update_form
@@ -14,7 +14,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		render partial:'full_post', locals:{ post: (Post.find params[:id]) }
+		@current_user = current_user
+		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate }
 	end
 
 	def follow 
@@ -28,7 +29,11 @@ class PostsController < ApplicationController
 			current_user.follows.create post_id: post_id
 			result = 'following'
 		end
-		num_follows = get_follow_text((Post.find post_id).follows)
+		post = (Post.find post_id).decorate
+		num_follows = post.descriptive_follow_text
+		# todo: get_follow_text right now isn't found (it's in a helper.)
+		# how should this response get rendered? how does the controller know how what display to return?
+		# num_follows = get_follow_text((Post.find post_id).follows)
 		render json: { result: result, post: post_id, num_follows: num_follows }
 	end
 

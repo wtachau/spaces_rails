@@ -1,7 +1,7 @@
-= form_for current_user, {remote:true}  do |f|
+= form_for @current_user, {remote:true}  do |f|
 	h4 update your relevant skills
 	div.tag_container
-		= render partial: 'spaces/selectize_form', locals: {f: f, selected_tags: current_user.tag_list}
+		= render partial: 'spaces/selectize_form', locals: {f: f, selected_tags: @current_user.tag_list}
 	input type="submit" class='btn' value="update"
 
 coffee:

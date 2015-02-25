@@ -13,7 +13,7 @@
 						img src=image_path('speechbubble.png')
 						.num_comments #{post.comments.count}
 					div.ticket_icon.follow
-						- post_followed = post.follows.exists?(user_id:current_user)
+						- post_followed = post.follows.exists?(user_id: @current_user)
 
 						img src=image_path('followcheck.png') style="display:#{:none unless post_followed};"
 					.description #{post.short}
