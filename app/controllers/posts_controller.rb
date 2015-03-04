@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 	end
 
 	def update_form
+		@current_user = current_user
 		render partial:'form'
 	end
 

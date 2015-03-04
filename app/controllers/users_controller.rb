@@ -1,32 +1,40 @@
 class UsersController < ApplicationController
-  def create
-  	user = User.find_by(email: params[:emails]["0"][:value])
-  	unless user
-  		# Strip trailing "?sz=50" from Google Plus image URL
-  		image_url = params[:image][:url]
-  		image_url = image_url[0..image_url.index('?') - 1]
 
-  		user = User.create(first_name: params[:name][:givenName], 
-  						last_name: params[:name][:familyName], 
-  						email: params[:emails]["0"][:value], 
-  						image: image_url)
-  	end
-    log_in user
-  	render text: "success"
-  end
+	skip_before_filter :verify_logged_in, only: [:create]
 
-  def update
-  	params.permit!
-  	current_user.update_attributes params[:user]
-  	render json: current_user
-  end
+	def create
+		user = User.find_by(email: params[:emails]["0"][:value])
+		unless user
+			user = User.create params_from_google
+		end
+		log_in user
+		render text: "success"
+	end
 
-  def update_form
-    render partial:'form'
-  end
+	def update
+		current_user.update_attributes user_params
+		render json: current_user
+	end
 
-  private
-    def user_params
-      params.require(:user).permit(:tag_list)
-    end
+	def update_form
+		@current_user = current_user
+		render partial:'form'
+	end
+
+	private
+		def user_params
+			params.require(:user).permit(tag_list:[])
+		end
+
+		def params_from_google
+			{ first_name: params[:name][:givenName], 
+				last_name: params[:name][:familyName], 
+				email: params[:emails]["0"][:value], 
+				image: image_url(params[:image][:url]) }
+		end
+
+		# Strip trailing "?sz=50" from Google Plus image URL
+		def image_url(url)
+			return url[0..url.index('?') - 1]
+		end
 end
