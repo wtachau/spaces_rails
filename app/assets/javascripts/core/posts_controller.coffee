@@ -39,7 +39,8 @@ class Spaces.PostsController extends Spaces.ViewController
 	updateFollowDisplay = (data) ->
 		# todo: update post element with data[num_follows]
 		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
-		$(".follow_container div").html(data['result'])
+		($ ".follow_container div").html data['result']
+		($ ".follow_text").html data['num_follows']
 		if data['result'] == 'following'
 			($ "#following_icon").hide()
 			($ "#follow_icon").show()

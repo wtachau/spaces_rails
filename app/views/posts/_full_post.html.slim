@@ -11,7 +11,7 @@ div.container
 			div.timestamp 
 				- difference = time_diff post.updated_at
 				| updated #{difference}
-				| #{ post.descriptive_follow_text }
+				span.follow_text #{ post.descriptive_follow_text }
 
 		div.col-md-3
 			.email_container
