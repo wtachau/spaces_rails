@@ -31,9 +31,6 @@ class PostsController < ApplicationController
 		end
 		post = (Post.find post_id).decorate
 		num_follows = post.descriptive_follow_text
-		# todo: get_follow_text right now isn't found (it's in a helper.)
-		# how should this response get rendered? how does the controller know how what display to return?
-		# num_follows = get_follow_text((Post.find post_id).follows)
 		render json: { result: result, post: post_id, num_follows: num_follows }
 	end
 
