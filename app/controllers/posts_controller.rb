@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
 	private
 		def post_params
-			params.require(:post).permit(:short, :long, :tag_list)
+			params.require(:post).permit(:short, :long, tag_list:[])
 		end
 
 end

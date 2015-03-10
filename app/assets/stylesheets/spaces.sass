@@ -234,6 +234,15 @@ body
 			margin-top: 10px
 			img 
 				width: 30px
+				&.following
+					display: inherit
+				&.follow
+					display : none
+			&.following
+				img.following
+					display: none
+				img.follow
+					display: inherit
 			a 
 				text-decoration: none
 				color: black

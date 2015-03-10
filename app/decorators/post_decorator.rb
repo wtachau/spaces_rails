@@ -11,4 +11,8 @@ class PostDecorator < Draper::Decorator
 		end
 	end
 
+	def tag_list_decorated
+		object.tag_list.map{ |tag| "<span class='tag'>#{tag}</span>" }.join(", ").html_safe
+	end
+
 end

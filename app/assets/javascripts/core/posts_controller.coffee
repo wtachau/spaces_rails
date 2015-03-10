@@ -42,10 +42,8 @@ class Spaces.PostsController extends Spaces.ViewController
 		($ ".follow_container div").html data['result']
 		($ ".follow_text").html data['num_follows']
 		if data['result'] == 'following'
-			($ "#following_icon").hide()
-			($ "#follow_icon").show()
+			$(".follow_container").addClass("following")
 			($ follow_icons).show()
 		else 
-			($ "#following_icon").show()
-			($ "#follow_icon").hide()
+			$(".follow_container").removeClass("following")
 			($ follow_icons).hide()

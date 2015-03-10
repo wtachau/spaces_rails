@@ -7,10 +7,10 @@ div.container
 		div.col-md-6
 			div.short #{post.short}
 			div.tags 
-				= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+				= post.tag_list_decorated
 			div.timestamp 
-				- difference = time_diff post.updated_at
-				| updated #{difference}
+				- difference = time_ago_in_words post.updated_at
+				| updated #{difference} ago
 				span.follow_text #{ post.descriptive_follow_text }
 
 		div.col-md-3
@@ -18,16 +18,12 @@ div.container
 				a href="mailto:#{ post.user.email }"
 					img src=image_path("packet.png")
 					div email me
-
-			.follow_container
+			.follow_container class="#{ follow_text post, @current_user }"
 				= link_to follow_post_path(post), remote: true
-					- is_followed = Follow.exists?(post_id: post.id, user_id: @current_user.id)
-					- text = is_followed ? 'following' : 'follow'
-					img#following_icon [src=image_path("follow.png")
-										style="display:#{:none if is_followed};"]
-					img#follow_icon  [src=image_path("ok.png")
-									  style="display:#{:none unless is_followed};"]
-					div #{text}
+					img.following src=image_path("follow.png")
+					img.follow src=image_path("ok.png")
+					div #{follow_text post, @current_user}
+					
 
 	div.row
 		div.long #{post.long}
