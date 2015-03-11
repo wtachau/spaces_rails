@@ -1,4 +1,5 @@
 class PostDecorator < Draper::Decorator
+	include ActionView::Helpers::TextHelper
 	delegate_all
 
 	def descriptive_follow_text
@@ -15,4 +16,9 @@ class PostDecorator < Draper::Decorator
 		object.tag_list.map{ |tag| "<span class='tag'>#{tag}</span>" }.join(", ").html_safe
 	end
 
+	def comment_text
+		if object.comments.any?
+			"showing #{ pluralize(post.comments.count, 'comment') }"
+		end
+	end
 end

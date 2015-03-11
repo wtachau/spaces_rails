@@ -19,29 +19,16 @@ div.container
 					img src=image_path("packet.png")
 					div email me
 			.follow_container class="#{ follow_text post, @current_user }"
-				= link_to follow_post_path(post), remote: true
-					img.following src=image_path("follow.png")
-					img.follow src=image_path("ok.png")
-					div #{follow_text post, @current_user}
-					
-
+				= render partial: 'follows/icon', locals: { post:post, user:@current_user }
 	div.row
 		div.long #{post.long}
 	div.row
 		div.num_comments
-			// See follow text above -- do this in rails helper
-			- if post.comments.any?
-				- if post.comments.count > 1
-					i showing #{post.comments.count} comments
-				- else
-					i showing 1 comment
+			i #{post.comment_text}
 		div.comments
 			div.previous_comments
 				= render post.comments
-			= form_for Comment.new, {remote:true} do |f|
-				=f.hidden_field :post_id, value:post.id
-				=f.text_area :text, placeholder: 'Something to add?', class: 'form-control'
-				=f.submit "Submit", class: 'btn'
+			= render partial: 'comments/form', locals: { post:post }
 
 coffee:
 	new Spaces.CommentsController '.comments'

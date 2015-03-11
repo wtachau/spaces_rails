@@ -37,13 +37,13 @@ class Spaces.PostsController extends Spaces.ViewController
 
 	# Update the follow UI depending on whether the post was (un)followed
 	updateFollowDisplay = (data) ->
-		# todo: update post element with data[num_follows]
-		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		($ ".follow_container div").html data['result']
 		($ ".follow_text").html data['num_follows']
+
+		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		if data['result'] == 'following'
 			$(".follow_container").addClass("following")
-			($ follow_icons).show()
+			($ follow_icons).addClass("active")
 		else 
 			$(".follow_container").removeClass("following")
-			($ follow_icons).hide()
+			($ follow_icons).removeClass("active")
