@@ -28,7 +28,7 @@ class Spaces.PostsController extends Spaces.ViewController
 	# Update the 'add post' form (generally by adding any new tags)
 	updatePostForm = () ->
 		$.ajax
-			url: 'posts/update_form'
+			url: 'posts/edit'
 			type: 'GET'
 			success: (data, textStatus, jqXHR) ->
 				($ '#addPostPopup .post_form').html data

@@ -2,14 +2,14 @@ class PostsController < ApplicationController
   
 	def create
 		@post = current_user.posts.create post_params
-		render @post
+		render @post.decorate
 	end
 
 	def relevant
 		render PostsService.new(current_user).get_relevant_posts
 	end
 
-	def update_form
+	def edit
 		@current_user = current_user
 		render partial:'form'
 	end

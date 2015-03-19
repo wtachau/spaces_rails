@@ -1,7 +1,7 @@
 coffee:
+	loginController = new Spaces.LoginController()
 	root = exports ? this
-	root.signinCallback = (authResult) ->
-		($ "#logout").fadeIn(1)
+	root.signinCallback = loginController.signedinCallback
 
 div class='container-fluid header'
 	#logo_full

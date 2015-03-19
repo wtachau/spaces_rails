@@ -18,7 +18,7 @@
 #= require turbolinks
 #= require selectize
 #= require_self
-#= require_tree .
+#= require_tree ./
 #= require_tree ./core/
 
 

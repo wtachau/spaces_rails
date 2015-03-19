@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 		render json: current_user
 	end
 
-	def update_form
+	def edit
 		@current_user = current_user
 		render partial:'form'
 	end

@@ -19,7 +19,7 @@ class Spaces.UserFormController extends Spaces.ViewController
 
 	updateUserForm = () ->
 		$.ajax
-			url: 'users/update_form'
+			url: 'users/edit'
 			type: 'GET'
 			success: (data, textStatus, jqXHR) ->
 				($ '#profilePopup .post_form').html data
