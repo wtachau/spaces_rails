@@ -1,0 +1,113 @@
+/* RIGHT SECTION */
+.right_panel 
+	background: image-url("background.jpg")
+	height: 100%
+
+.right_panel_fixed_height 
+	height: 100%
+	overflow: auto
+
+.right_panel_content 
+	text-align: center
+	margin: 30px auto 30px auto
+	width: 95%
+	border-radius: 25px
+	background: rgba(255,255,255,.75)
+	padding: 15px 10px 7px 10px
+	transition: background .25s ease-in-out
+	-moz-transition: background .25s ease-in-out
+	-webkit-transition: background .25s ease-in-out
+	.container 
+		width: 100%
+		padding: 25px
+		.profile_container 
+			img 
+				width: 80px
+				border-radius: 40px
+			
+			.ticket_name 
+				font-size: 16px
+				margin-top: 8px
+		
+		.short 
+			margin-top: 24px
+			font-size: 22px
+			border-bottom: 1px solid lightgray
+			padding-bottom: 10px
+		
+		.tags 
+			margin-top: 10px
+			span 
+				color: gray
+				&:hover 
+					cursor: pointer
+					text-decoration: underline
+				
+		.timestamp 
+			margin-top: 5px
+		
+		.email_container 
+			a 
+				text-decoration: none
+				color: black
+				img 	
+					width: 30px
+				
+		.follow_container 
+			cursor:pointer
+			margin-top: 10px
+			img 
+				width: 30px
+				&.following
+					display: inherit
+				&.follow
+					display : none
+			&.following
+				img.following
+					display: none
+				img.follow
+					display: inherit
+			a 
+				text-decoration: none
+				color: black
+		
+		.long 
+			padding: 20px
+			margin: 30px 45px 30px 45px
+			text-align: left
+			border: 1px solid lightgray
+			border-radius: 10px
+		
+		.num_comments 
+			color: gray
+			margin-bottom: 5px
+		
+		.comments 
+			textarea 
+				margin: auto
+				width: 90%
+				border-radius: 9px
+				resize: none
+				border: 1px solid lightgray
+				padding: 15px
+			
+			.comment 
+				width: 90%
+				height: inherit
+				margin: auto
+				border-radius: 8px
+				margin-bottom: 8px
+				text-align: left
+				.row 
+					padding-top: 5px
+					.comment_user_container 
+						text-align: center
+						img
+							width: 50px
+							border-radius: 25px
+						
+			input[type=submit] 
+				margin-top: 10px
+
+#right_panel_content:hover 
+	background: rgba(255,255,255,1)
