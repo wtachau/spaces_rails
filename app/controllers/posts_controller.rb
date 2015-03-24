@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 	end
 
 	def relevant
-		render PostsService.new(current_user).get_relevant_posts
+		render PostsService.new(current_user).get_relevant_posts.decorate
 	end
 
 	def edit

@@ -21,3 +21,4 @@ class Spaces.AjaxFormController extends Spaces.ViewController
 		@enableSubmitButton() 
 		if @callback 
  			@callback data
+ 			
