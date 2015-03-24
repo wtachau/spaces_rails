@@ -1,5 +1,6 @@
-- @ticket_id = "ticket-#{post.id}"
-- @id = random_dom_id
+ruby:	
+	@ticket_id = "ticket-#{post.id}"
+	@id = random_dom_id
 .ticket_box class=@ticket_id id=@id
 	= link_to post, {remote: true} do
 		.container-fluid
@@ -13,15 +14,13 @@
 						img src=image_path('speechbubble.png')
 						.num_comments #{post.comments.count}
 					div.ticket_icon.follow
-						- post_followed = post.follows.exists?(user_id:current_user)
-
-						img src=image_path('followcheck.png') style="display:#{:none unless post_followed};"
+						img.follow src=image_path('followcheck.png') class="#{:active if post.follows.exists?(user_id: @current_user)}"
 					.description #{post.short}
 					.tags 
-						= post.tag_list.map{ |tag| "<span class='tag'>#{ tag }</span>" }.join(", ").html_safe
+						= post.tag_list_decorated
 // CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
 javascript:
-  var ticket_container =  "##{@id}.#{@ticket_id}";
+  var ticket_container =  "##{@id}";
 coffee:
 	new Spaces.AjaxLinkController ticket_container, (data) -> 
 		($ '.right_panel_content').html data

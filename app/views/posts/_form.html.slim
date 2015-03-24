@@ -16,18 +16,18 @@
 		 	
 		h4 more details:
 		=f.text_area :long, placeholder: "more information"
-		br 
-		br
 		div class="modal-footer"
 			button type="button" class="btn btn-default" data-dismiss="modal"Close
 			input type="submit" class='btn btn-primary' value="Add"
 
 coffee:
 	# "Selectize" the tag input
-	Spaces.selectizeElement '#post_tag_list'
+	new Spaces.SpacesController '#post_tag_list', true
+
 	# Attach callback to the post form
 	new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
-		Spaces.addPostCallback(data)
-	# Update counter
-	($ '#post_short').keyup (e) ->
-		($ '.counter').html ($ @).val().length 
+		$('body').trigger 'postAdded', data
+
+	
+
+

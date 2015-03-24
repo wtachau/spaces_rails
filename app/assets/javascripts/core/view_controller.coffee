@@ -5,5 +5,5 @@ class Spaces.ViewController
 		@initialize(args)
 
 	initialize: ->
-	    # intentionally do nothing here.
-	    # override me in extending objects!
+		# intentionally do nothing here.
+		# override me in extending objects!

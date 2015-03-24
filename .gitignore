@@ -15,7 +15,3 @@
 /log/*
 !/log/.keep
 /tmp
-
-# ignore precompiled assets
-public/assets/
-*.DS_Store
