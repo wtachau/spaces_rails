@@ -4,4 +4,4 @@ div.comment.form-control
 			img src=comment.user.image
 			div #{comment.user.first_name}
 		div.col-md-10
-			div #{comment.text}
+			div #{ auto_link(comment.text, :html => { :target => '_blank' }) }
