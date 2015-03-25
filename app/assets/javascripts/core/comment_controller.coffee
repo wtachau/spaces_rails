@@ -3,7 +3,7 @@
 class Spaces.CommentsController extends Spaces.ViewController
 
 	initialize: ->
-		($ 'body').on 'commentAdded', (event, data) -> 
+		($ 'body').on 'commentAdded', (event, data) => 
 			@addCommentToPost data
 
 	addCommentToPost: (data) =>
