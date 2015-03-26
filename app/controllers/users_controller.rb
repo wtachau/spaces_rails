@@ -21,6 +21,10 @@ class UsersController < ApplicationController
 		render partial:'form'
 	end
 
+	def allnames
+		render json: User.all.map {|model| model.tagName }
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(tag_list:[])

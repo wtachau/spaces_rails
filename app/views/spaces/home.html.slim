@@ -69,7 +69,7 @@ div class='container-fluid body_table'
 			div class='right_panel_fixed_height' 
 				div class='right_panel_content'
 					- unless @posts.empty?
-						= render partial: 'posts/full_post', locals: { post:@posts.first }
+						= render partial: 'posts/full_post', locals: { post:@posts.first}
 
 .footer
 	a href="mailto:william.tachau@originate.com" questions? comments?
