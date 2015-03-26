@@ -38,6 +38,8 @@ gem 'acts_as_commentable'
 gem 'time_diff', '~> 0.3.0'
 # use draper for view decorators
 gem 'draper', '~> 1.4.0'
+# for auto linking
+gem 'rails_autolink'
 
 # For autocomplete in tagging people
 gem 'jquery-textcomplete-rails'
