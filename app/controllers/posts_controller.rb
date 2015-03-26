@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 	end
 
 	def relevant
+		@current_user = current_user
 		render PostsService.new(current_user).get_relevant_posts.decorate
 	end
 

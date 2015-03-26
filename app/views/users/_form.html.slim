@@ -9,5 +9,5 @@ coffee:
 	new Spaces.SpacesController '#user_tag_list', true
 
 	new Spaces.AjaxFormController '#profilePopup', true, (data) -> 
-					$('body').trigger('tagsUpdated');
+					$('body').trigger('updatePosts');
 					$('body').trigger('userUpdated');
