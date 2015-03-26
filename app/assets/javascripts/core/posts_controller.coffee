@@ -49,3 +49,4 @@ class Spaces.PostsController extends Spaces.ViewController
 			($ follow_icons).removeClass("active")
 
 		$('body').trigger('updatePosts');
+		
