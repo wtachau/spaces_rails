@@ -2,7 +2,7 @@ ruby:
 	@ticket_id = "ticket-#{post.id}"
 	@id = random_dom_id
 .ticket_box class=@ticket_id id=@id
-	= link_to post, {remote: true} do
+	a href='/posts/#{ post.id }/preview' data-remote='true'
 		.container-fluid
 			.row
 				.col-md-3
@@ -23,4 +23,4 @@ javascript:
   var ticket_container =  "##{@id}";
 coffee:
 	new Spaces.AjaxLinkController ticket_container, (data) -> 
-		($ '.right_panel_content').html data
+		($ '.main_panel_content').html data

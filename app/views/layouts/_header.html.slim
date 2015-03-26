@@ -1,0 +1,40 @@
+header class='container-fluid header'
+	#logo_full
+		span class='logo_1' Originate
+		span class='logo_2' Spaces
+	div class='upper_right' id='add_profile'
+		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
+	div class='upper_right' id='add_post'
+		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
+
+// Add Post modal
+#addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	div class="modal-dialog"
+		div class="modal-content"
+			.post_form
+				= render partial: 'posts/form'
+
+// Profile modal
+#profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	div class="modal-dialog"
+		div class="modal-content"
+			div class="modal-header"
+				button type="button" class="close" data-dismiss="modal" aria-label="Close"
+					span aria-hidden="true" &times;
+				h4 class="modal-title" id="myModalLabel" = @current_user.full_name
+			div class="modal-body"
+				img class="profileImage" src=@current_user.image+"?sz=200"
+
+				.post_form
+					= render partial: 'users/form'
+
+			div class="modal-footer"
+				// Cruft for Google Plus logout
+				span id="signinButton" style="display:none;"
+					span [class="g-signin"
+						data-callback="signinCallback"
+						data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
+						data-cookiepolicy="single_host_origin"
+						data-requestvisibleactions=""
+						data-scope="openid email"]
+				div id="logout" style="display:none;" sign out

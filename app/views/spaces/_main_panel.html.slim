@@ -1,0 +1,7 @@
+div class='main_panel_fixed_height' 
+	div class='main_panel_content'
+		= render partial: 'posts/full_post', locals: { post: post }
+
+coffee:
+	new Spaces.MainPanelController '.main_panel'
+	new Spaces.UserFormController '#profilePopup'

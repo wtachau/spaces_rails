@@ -3,80 +3,32 @@ coffee:
 	root = exports ? this
 	root.signinCallback = loginController.signedinCallback
 
-div class='container-fluid header'
-	#logo_full
-		span class='logo_1' Originate
-		span class='logo_2' Spaces
-	div class='upper_right' id='add_profile'
-		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
-	div class='upper_right' id='add_post'
-		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
+// Posts
+div class='col-md-4 left_panel'
+	// Relevant Posts
+	div class='section_header skills'
+		div relevant to you
+	div class='left_section skills'
+		div class='overflow_section relevant_posts'
+			.posts
+				= render @relevant_posts
+			// Relevant posts are inserted here
+			#no_skills_popup
+				// need slim logic to see if there are any posts
+	div class='section_header all'
+		div most recent
+	div class='left_section all'
+		div class='overflow_section all_posts'
+			.posts
+				= render @posts
 
-// Add Post modal
-#addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	div class="modal-dialog"
-		div class="modal-content"
-			.post_form
-				= render partial: 'posts/form'
-
-// Profile modal
-#profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	div class="modal-dialog"
-		div class="modal-content"
-			div class="modal-header"
-				button type="button" class="close" data-dismiss="modal" aria-label="Close"
-					span aria-hidden="true" &times;
-				h4 class="modal-title" id="myModalLabel" = @current_user.full_name
-			div class="modal-body"
-				img class="profileImage" src=@current_user.image+"?sz=200"
-
-				.post_form
-					= render partial: 'users/form'
-
-			div class="modal-footer"
-				// Cruft for Google Plus logout
-				span id="signinButton" style="display:none;"
-					span [class="g-signin"
-						data-callback="signinCallback"
-						data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
-						data-cookiepolicy="single_host_origin"
-						data-requestvisibleactions=""
-						data-scope="openid email"]
-				div id="logout" style="display:none;" sign out
-
-div class='container-fluid body_table'
-	div class='row'
-		// Posts
-		div class='col-md-4 left_panel'
-			// Relevant Posts
-			div class='section_header skills'
-				div relevant to you
-			div class='left_section skills'
-				div class='overflow_section relevant_posts'
-					.posts
-						= render @relevant_posts
-					// Relevant posts are inserted here
-					#no_skills_popup
-						// need slim logic to see if there are any posts
-			div class='section_header all'
-				div most recent
-			div class='left_section all'
-				div class='overflow_section all_posts'
-					.posts
-						= render @posts
-
-		div class='col-md-8 right_panel'
-			div class='right_panel_fixed_height' 
-				div class='right_panel_content'
-					- unless @posts.empty?
-						= render partial: 'posts/full_post', locals: { post:@posts.first }
-
-.footer
-	a href="mailto:william.tachau@originate.com" questions? comments?
+div class='col-md-8 main_panel'
+	= render partial: 'main_panel', locals: { post:@posts.first }
 
 coffee:
 	# Create Posts view controller
 	new Spaces.PostsController '.left_panel'
+	new Spaces.MainPanelController '.main_panel'
 	new Spaces.UserFormController '#profilePopup'
 
 	# For Google Plus login
