@@ -37,7 +37,6 @@ class Spaces.PostsController extends Spaces.ViewController
 
 	# Update the follow UI depending on whether the post was (un)followed
 	updateFollowIcons: (data) =>
-		console.log "wheee"
 		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		if data['result'] == 'following'
 			($ follow_icons).addClass("active")

@@ -8,7 +8,6 @@ class Spaces.MainPanelController extends Spaces.ViewController
 
 	# Update the follow UI depending on whether the post was (un)followed
 	updateFollowDisplay: (data) =>
-		console.log "wheee2"
 		($ ".follow_container div").html data['result']
 		($ ".follow_text").html data['num_follows']
 
