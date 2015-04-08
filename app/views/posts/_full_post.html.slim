@@ -1,5 +1,9 @@
 div.container
 	div.row
+		div.external_link
+			- unless full
+				= link_to post
+					img src=image_path('external.png')
 		div.col-md-3
 			.profile_container
 					img class='profilepic_small' src="#{post.user.image}?sz=200"

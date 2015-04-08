@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 	end
 
 	def preview
-		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate }
+		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }
 	end
 
 	def follow 

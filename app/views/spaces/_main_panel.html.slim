@@ -1,6 +1,9 @@
 div class='main_panel_fixed_height' 
+	- if full
+		div.back_link
+			a href="/" << back to everything
 	div class='main_panel_content'
-		= render partial: 'posts/full_post', locals: { post: post }
+		= render partial: 'posts/full_post', locals: { post: post, full: full }
 
 coffee:
 	new Spaces.MainPanelController '.main_panel'

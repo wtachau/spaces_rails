@@ -23,7 +23,7 @@ div class='col-md-4 left_panel'
 				= render @posts
 
 div class='col-md-8 main_panel'
-	= render partial: 'main_panel', locals: { post:@posts.first }
+	= render partial: 'main_panel', locals: { post:@posts.first, full: false }
 
 coffee:
 	# Create Posts view controller
