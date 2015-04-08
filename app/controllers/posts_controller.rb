@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 	end
 
 	def relevant
-		render PostsService.new(current_user).get_relevant_posts.decorate
+		@current_user = current_user
+		render PostsService.new(current_user).relevant_posts_decorated
 	end
 
 	def edit
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
 
 	private
 		def post_params
-			params.require(:post).permit(:short, :long, tag_list:[])
+			params.require(:post).permit(:short, :long, :link, tag_list:[])
 		end
 
 end

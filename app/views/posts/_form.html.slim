@@ -13,7 +13,8 @@
 		h4 choose several tags
 		div.tag_container
 			= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
-		 	
+		h4 add a link
+		=f.text_field :link, placeholder: "a website, invision link, etc."
 		h4 more details:
 		=f.text_area :long, placeholder: "more information"
 		div class="modal-footer"

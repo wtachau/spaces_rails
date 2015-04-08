@@ -3,7 +3,7 @@
 class Spaces.PostsController extends Spaces.ViewController
 
 	initialize: ->
-		($ 'body').on 'tagsUpdated', =>
+		($ 'body').on 'updatePosts', =>
 			@updateRelevantPosts()
 		($ 'body').on 'postAdded', (event, data) =>
 			@postAdded data
@@ -41,5 +41,8 @@ class Spaces.PostsController extends Spaces.ViewController
 		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		if data['result'] == 'following'
 			($ follow_icons).addClass("active")
-		else
+		else 
+			$(".follow_container").removeClass("following")
 			($ follow_icons).removeClass("active")
+
+		$('body').trigger('updatePosts');

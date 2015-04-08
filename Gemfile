@@ -38,6 +38,11 @@ gem 'acts_as_commentable'
 gem 'time_diff', '~> 0.3.0'
 # use draper for view decorators
 gem 'draper', '~> 1.4.0'
+# for auto linking
+gem 'rails_autolink'
+
+# For autocomplete in tagging people
+gem 'jquery-textcomplete-rails'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

@@ -12,6 +12,8 @@ div.container
 			div.short #{post.short}
 			div.tags 
 				= post.tag_list_decorated
+			div.link
+				a href="#{ post.link }" target="_blank" #{post.link}
 			div.timestamp 
 				- difference = time_ago_in_words post.updated_at
 				| updated #{difference} ago

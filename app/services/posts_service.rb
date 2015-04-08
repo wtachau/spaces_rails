@@ -4,9 +4,15 @@ class PostsService
 		@user = user
 	end
 
-	# Determin which posts are relevant to the user
-	def get_relevant_posts
-		Post.tagged_with(@user.tag_list, any: true).order('updated_at DESC')
+	# Determine which posts are relevant to the user
+	def relevant_posts
+		followed_posts = Post.followed(@user)
+		tagged_posts = Post.tagged(@user)
+		followed_posts + tagged_posts
+	end
+
+	def relevant_posts_decorated
+		PostDecorator.decorate_collection(relevant_posts)
 	end
 
 end

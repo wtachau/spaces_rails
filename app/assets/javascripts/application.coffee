@@ -13,6 +13,8 @@
 # test
 
 #= require jquery
+#= require jquery.overlay.min
+#= require jquery-textcomplete
 #= require bootstrap-sprockets
 #= require jquery_ujs
 #= require turbolinks
@@ -20,6 +22,7 @@
 #= require_self
 #= require_tree ./
 #= require_tree ./core/
+
 
 
 @Spaces = {}
