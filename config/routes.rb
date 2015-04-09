@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'posts/relevant', to: 'posts#relevant'
   get 'posts/edit', to: 'posts#edit'
+
   get 'users/edit', to: 'users#edit'
   get 'users/allnames', to: 'users#allnames'
+  get 'users/:id/popup', to: 'users#popup'
 
   resources :posts do 
     member do

@@ -17,7 +17,6 @@ class Spaces.CommentsController extends Spaces.ViewController
 			url: 'users/allnames'
 			type: 'GET'
 			success: (data) ->
-				console.log data
 				$('#new_comment textarea').textcomplete([ {
 					mentions: data
 					match: /\B@(\w*)$/

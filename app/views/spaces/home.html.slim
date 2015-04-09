@@ -12,6 +12,13 @@ div class='container-fluid header'
 	div class='upper_right' id='add_post'
 		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
 
+#userPopup.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
+	.modal-dialog
+		.modal-content
+			
+				
+
+
 // Add Post modal
 #addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	div class="modal-dialog"
@@ -78,6 +85,7 @@ coffee:
 	# Create Posts view controller
 	new Spaces.PostsController '.left_panel'
 	new Spaces.UserFormController '#profilePopup'
+	new Spaces.UsernameLinkController 
 
 	# For Google Plus login
 	po = document.createElement 'script'
