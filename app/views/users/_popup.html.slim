@@ -6,4 +6,5 @@
 		div #{user.full_name}
 		span #{user.tag_list_decorated}
 .modal-body
-	= render partial: "posts/popup", collection: user.posts
+	.list-group.popup_posts
+		= render partial: "posts/popup", collection: PostDecorator.decorate_collection(user.posts)

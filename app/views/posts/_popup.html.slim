@@ -1,3 +1,14 @@
-= link_to popup, {remote: true} do
+= link_to popup, {remote: true, class: "list-group-item"} do
 	.container-fluid
-		h2 #{popup.short}
+		.row
+			.ticket_description
+				.ticket_icon
+					img src=image_path('speechbubble.png')
+					.num_comments #{popup.comments.count}
+				.ticket_icon.follow
+					// will need to wait for @current_user to be available
+					img.follow src=image_path('followcheck.png') class="active"
+					// img.follow src=image_path('followcheck.png') class="#{:active if popup.follows.exists?(user_id: @current_user)}"
+				.description #{popup.short}
+				.tags
+					= popup.tag_list_decorated
