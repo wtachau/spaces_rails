@@ -4,8 +4,6 @@ class Spaces.UsernameLinkController extends Spaces.ViewController
 
 	initialize: ->
 		($ document).on 'click', '.username_link', ->
-			console.log @
-			console.log $(@).attr "user_id"
 			showUserPopup $(@).attr "user_id"
 			
 	showUserPopup = (user) =>
@@ -15,3 +13,4 @@ class Spaces.UsernameLinkController extends Spaces.ViewController
 			type: 'GET'
 			success: (data) ->
 				($ '#userPopup .modal-content').html data
+				
