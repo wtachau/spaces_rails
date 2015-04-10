@@ -13,8 +13,6 @@ class CommentDecorator < Draper::Decorator
 	private 
 		def userID(tag)
 			user = tag.gsub(/[@"]/,'')
-			puts "***"
-			puts user
 			user = User.all.detect { |u| u.first_name + u.last_name == user }
 			if user
 				"<span class='username_link user_tag' user_id=#{user.id}> @#{user.first_name}#{user.last_name}</span> "
