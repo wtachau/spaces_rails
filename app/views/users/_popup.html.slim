@@ -4,7 +4,7 @@
 	div class="modal-title" 
 		img class='profilepic_small' src="#{user.image}?sz=200"
 		div #{user.full_name}
-		span #{user.tag_list_decorated}
+		span #{user.tag_list}
 .modal-body
 	.list-group.popup_posts
 		= render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.posts)

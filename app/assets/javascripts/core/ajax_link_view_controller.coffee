@@ -4,7 +4,8 @@
 class Spaces.AjaxLinkController extends Spaces.ViewController
 
  	initialize: ([ @callback ]) ->
- 		(@$container.find 'a')
+ 		# If container doesn't have an anchor, it is the anchor
+ 		(if (@$container.find 'a').length == 0 then (@$container) else (@$container.find 'a'))
  			.on('ajax:success', @onSuccess)
 			.on('ajax:error', @onFailure)
 

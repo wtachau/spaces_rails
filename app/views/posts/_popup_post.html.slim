@@ -1,4 +1,5 @@
-= link_to popup_post, {remote: true, class: "list-group-item"} do
+- @id = random_dom_id
+= link_to popup_post, {remote: true, class: "list-group-item", id: @id} do
 	.container-fluid
 		.row
 			.ticket_description
@@ -12,3 +13,10 @@
 				.description #{popup_post.short}
 				.tags
 					= popup_post.tag_list
+// CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
+javascript:
+  var ticket_container =  "##{@id}";
+coffee:
+	new Spaces.AjaxLinkController ticket_container, (data) -> 
+		($ '.modal').modal 'hide'
+		($ '.right_panel_content').html data
