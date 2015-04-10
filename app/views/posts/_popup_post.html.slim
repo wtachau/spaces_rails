@@ -1,0 +1,14 @@
+= link_to popup_post, {remote: true, class: "list-group-item"} do
+	.container-fluid
+		.row
+			.ticket_description
+				.ticket_icon
+					img src=image_path('speechbubble.png')
+					.num_comments #{popup_post.comments.count}
+				.ticket_icon.follow
+					// will need to wait for @current_user to be available
+					img.follow src=image_path('followcheck.png') class="active"
+					// img.follow src=image_path('followcheck.png') class="#{:active if popup_post.follows.exists?(user_id: @current_user)}"
+				.description #{popup_post.short}
+				.tags
+					= popup_post.tag_list
