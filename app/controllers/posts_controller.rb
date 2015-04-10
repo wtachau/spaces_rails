@@ -15,10 +15,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		params.permit :id
-		@post = (Post.find params[:id]).decorate
-		# @current_user = current_user.decorate
-		# render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate }
+		@post = (Post.find params.permit(:id)[:id]).decorate
 		render 'full_page'
 	end
 
