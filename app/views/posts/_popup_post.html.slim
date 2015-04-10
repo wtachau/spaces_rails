@@ -1,5 +1,5 @@
 - @id = random_dom_id
-= link_to popup_post, {remote: true, class: "list-group-item", id: @id} do
+a id=@id class="list-group-item" href='/posts/#{ popup_post.id }/preview' data-remote='true'
 	.container-fluid
 		.row
 			.ticket_description
@@ -19,4 +19,4 @@ javascript:
 coffee:
 	new Spaces.AjaxLinkController ticket_container, (data) -> 
 		($ '.modal').modal 'hide'
-		($ '.right_panel_content').html data
+		($ '.main_panel_content').html data
