@@ -8,7 +8,7 @@ class Spaces.PostsController extends Spaces.ViewController
 		($ 'body').on 'postAdded', (event, data) =>
 			@postAdded data
 		($ 'body').on 'postFollowed', (event, data) =>
-			@updateFollowDisplay data
+			@updateFollowIcons data
 
 	updateRelevantPosts: =>
 		$.ajax
@@ -36,17 +36,12 @@ class Spaces.PostsController extends Spaces.ViewController
 				console.log "Error updating form: #{errorThrown}"
 
 	# Update the follow UI depending on whether the post was (un)followed
-	updateFollowDisplay: (data) =>
-		($ ".follow_container div").html data['result']
-		($ ".follow_text").html data['num_follows']
-
+	updateFollowIcons: (data) =>
 		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		if data['result'] == 'following'
-			$(".follow_container").addClass("following")
 			($ follow_icons).addClass("active")
 		else 
 			$(".follow_container").removeClass("following")
 			($ follow_icons).removeClass("active")
 
 		$('body').trigger('updatePosts');
-		

@@ -1,13 +1,18 @@
 /* RIGHT SECTION */
-.right_panel 
+.main_panel 
 	background: image-url("background.jpg")
 	height: 100%
 
-.right_panel_fixed_height 
+.main_panel_fixed_height 
 	height: 100%
 	overflow: auto
+	.back_link
+		margin: 30px
+		font-size: 18px
+		a
+			color: black
 
-.right_panel_content 
+.main_panel_content 
 	text-align: center
 	margin: 30px auto 30px auto
 	width: 95%
@@ -20,6 +25,13 @@
 	.container 
 		width: 100%
 		padding: 25px
+
+		.external_link
+			text-align: right
+			img
+				width: 25px
+				margin-top: -35px
+			
 		.profile_container 
 			img 
 				width: 80px
@@ -108,5 +120,5 @@
 			input[type=submit] 
 				margin-top: 10px
 
-#right_panel_content:hover 
+#main_panel_content:hover 
 	background: rgba(255,255,255,1)

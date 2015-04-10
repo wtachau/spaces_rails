@@ -3,87 +3,29 @@ coffee:
 	root = exports ? this
 	root.signinCallback = loginController.signedinCallback
 
-.container-fluid.header
-	#logo_full
-		span class="logo_1" Originate
-		span class="logo_2" Spaces
-	#add_profile.upper_right 
-		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
-	#add_post.upper_right
-		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
+// Posts
+.col-md-4.left_panel
+	// Relevant Posts
+	.section_header.skills
+		div relevant to you
+	.left_section.skills
+		.overflow_section.relevant_posts
+			.posts
+				= render @relevant_posts
+	.section_header.all
+		div most recent
+	.left_section.all
+		.overflow_section.all_posts
+			.posts
+				= render @posts
 
-// User profile modal
-#userPopup.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
-	.modal-dialog
-		.modal-content
-
-// Posts by tag modal
-#postsByTag.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
-	.modal-dialog
-		.modal-content
-			
-// Add Post modal
-#addPostPopup.modal.fade.popup tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	.modal-dialog
-		.modal-content
-			.post_form
-				= render partial: 'posts/form'
-
-// Profile modal
-#profilePopup.modal.fade.popup tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	.modal-dialog
-		.modal-content
-			.modal-header
-				button type="button" class="close" data-dismiss="modal" aria-label="Close"
-					span aria-hidden="true" &times;
-				h4 class="modal-title" id="myModalLabel" = @current_user.full_name
-			.modal-body
-				img class="profileImage" src=@current_user.image+"?sz=200"
-
-				.post_form
-					= render partial: 'users/form'
-
-			.modal-footer
-				// Cruft for Google Plus logout
-				span id="signinButton" style="display:none;"
-					span [class="g-signin"
-						data-callback="signinCallback"
-						data-clientid="1058509999201-n23gtmm967b4itcgdnjplr22l7ve7qb7.apps.googleusercontent.com"
-						data-cookiepolicy="single_host_origin"
-						data-requestvisibleactions=""
-						data-scope="openid email"]
-				#logout style="display:none;" sign out
-
-.container-fluid.body_table
-	.row
-		// Posts
-		.col-md-4.left_panel
-			// Relevant Posts
-			.section_header.skills
-				div relevant to you
-			.left_section.skills
-				.overflow_section.relevant_posts
-					.posts
-						= render @relevant_posts
-			.section_header.all
-				div most recent
-			.left_section.all
-				.overflow_section.all_posts
-					.posts
-						= render @posts
-
-		.col-md-8.right_panel
-			.right_panel_fixed_height
-				.right_panel_content
-					- unless @posts.empty?
-						= render partial: 'posts/full_post', locals: { post:@posts.first}
-
-.footer
-	a href="mailto:william.tachau@originate.com" questions? comments?
+.col-md-8.main_panel
+	= render partial: 'main_panel', locals: { post:@posts.first, full: false }
 
 coffee:
 	# Create Posts view controller
 	new Spaces.PostsController '.left_panel'
+	new Spaces.MainPanelController '.main_panel'
 	new Spaces.UserFormController '#profilePopup'
 	new Spaces.UsernameLinkController 
 	new Spaces.TagController 
