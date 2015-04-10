@@ -33,7 +33,6 @@ div.container
 			= render partial: 'comments/form', locals: { post:post }
 
 coffee:
-	new Spaces.CommentsController '.comments'
 	# Update comments on submit
 	new Spaces.AjaxFormController '.comments', true, (data) ->
 		$('body').trigger 'commentAdded', data
