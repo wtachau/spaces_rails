@@ -13,4 +13,3 @@ class Spaces.UsernameLinkController extends Spaces.ViewController
 			type: 'GET'
 			success: (data) ->
 				($ '#userPopup .modal-content').html data
-				

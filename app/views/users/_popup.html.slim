@@ -7,4 +7,4 @@
 		span #{user.tag_list_decorated}
 .modal-body
 	.list-group.popup_posts
-		= render partial: "posts/popup", collection: PostDecorator.decorate_collection(user.posts)
+		= render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.posts)

@@ -17,7 +17,7 @@ class CommentDecorator < Draper::Decorator
 			puts user
 			user = User.all.detect { |u| u.first_name + u.last_name == user }
 			if user
-				"<span class='username_link tag' user_id=#{user.id}> @#{user.first_name}#{user.last_name}</span> "
+				"<span class='username_link user_tag' user_id=#{user.id}> @#{user.first_name}#{user.last_name}</span> "
 			end
 		end
 end

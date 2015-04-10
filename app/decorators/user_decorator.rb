@@ -6,7 +6,7 @@ class UserDecorator < Draper::Decorator
 	end
 
 	def tag_list_decorated
-		("<span class='tags'>" + object.tag_list.map{ |tag| "<span class='tag'>#{tag}</span>" }.join(", ") + "</span>").html_safe
+		("<span class='tags'>" + object.tag_list.map{ |tag| "<span class='tag_link'>#{tag}</span>" }.join(", ") + "</span>").html_safe
 	end
 
 	# Define presentation-specific methods here. Helpers are accessed through
