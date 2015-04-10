@@ -8,10 +8,14 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
+
   get 'posts/relevant', to: 'posts#relevant'
   get 'posts/edit', to: 'posts#edit'
+  get 'posts/tagged/:tag', to: 'posts#tagged'
+
   get 'users/edit', to: 'users#edit'
   get 'users/allnames', to: 'users#allnames'
+  get 'users/:id/popup', to: 'users#popup'
 
   resources :posts do 
     member do

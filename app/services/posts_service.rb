@@ -7,7 +7,7 @@ class PostsService
 	# Determine which posts are relevant to the user
 	def relevant_posts
 		followed_posts = Post.followed(@user)
-		tagged_posts = Post.tagged(@user)
+		tagged_posts = Post.tagged_by_user(@user)
 		followed_posts | tagged_posts
 	end
 

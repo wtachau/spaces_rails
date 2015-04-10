@@ -25,6 +25,10 @@ class UsersController < ApplicationController
 		render json: User.all.map {|model| model.tagName }
 	end
 
+	def popup
+		render partial:'popup', locals:{ user: (User.find params[:id]).decorate }
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(tag_list:[])
