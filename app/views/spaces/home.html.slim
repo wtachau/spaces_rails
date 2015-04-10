@@ -4,25 +4,22 @@ coffee:
 	root.signinCallback = loginController.signedinCallback
 
 // Posts
-div class='col-md-4 left_panel'
+.col-md-4.left_panel
 	// Relevant Posts
-	div class='section_header skills'
+	.section_header.skills
 		div relevant to you
-	div class='left_section skills'
-		div class='overflow_section relevant_posts'
+	.left_section.skills
+		.overflow_section.relevant_posts
 			.posts
 				= render @relevant_posts
-			// Relevant posts are inserted here
-			#no_skills_popup
-				// need slim logic to see if there are any posts
-	div class='section_header all'
+	.section_header.all
 		div most recent
-	div class='left_section all'
-		div class='overflow_section all_posts'
+	.left_section.all
+		.overflow_section.all_posts
 			.posts
 				= render @posts
 
-div class='col-md-8 main_panel'
+.col-md-8.main_panel
 	= render partial: 'main_panel', locals: { post:@posts.first, full: false }
 
 coffee:
@@ -30,6 +27,9 @@ coffee:
 	new Spaces.PostsController '.left_panel'
 	new Spaces.MainPanelController '.main_panel'
 	new Spaces.UserFormController '#profilePopup'
+	new Spaces.UsernameLinkController 
+	new Spaces.TagController 
+	new Spaces.CommentsController '.comments'
 
 	# For Google Plus login
 	po = document.createElement 'script'

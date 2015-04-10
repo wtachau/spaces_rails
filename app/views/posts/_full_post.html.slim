@@ -7,7 +7,7 @@ div.container
 		div.col-md-3
 			.profile_container
 					img class='profilepic_small' src="#{post.user.image}?sz=200"
-					.ticket_name #{post.user.decorate.full_name}
+					.ticket_name.username_link user_id="#{post.user.id}" #{post.user.decorate.full_name}
 		div.col-md-6
 			div.short #{post.short}
 			div.tags 
@@ -37,7 +37,6 @@ div.container
 			= render partial: 'comments/form', locals: { post:post }
 
 coffee:
-	new Spaces.CommentsController '.comments'
 	# Update comments on submit
 	new Spaces.AjaxFormController '.comments', true, (data) ->
 		$('body').trigger 'commentAdded', data

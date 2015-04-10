@@ -1,34 +1,44 @@
-header class='container-fluid header'
+.container-fluid.header
 	#logo_full
-		span class='logo_1' Originate
-		span class='logo_2' Spaces
-	div class='upper_right' id='add_profile'
+		span class="logo_1" Originate
+		span class="logo_2" Spaces
+	#add_profile.upper_right 
 		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
-	div class='upper_right' id='add_post'
+	#add_post.upper_right
 		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
 
+// User profile modal
+#userPopup.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
+	.modal-dialog
+		.modal-content
+
+// Posts by tag modal
+#postsByTag.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
+	.modal-dialog
+		.modal-content
+
 // Add Post modal
-#addPostPopup class='modal fade popup' tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	div class="modal-dialog"
-		div class="modal-content"
+#addPostPopup.modal.fade.popup tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	.modal-dialog
+		.modal-content
 			.post_form
 				= render partial: 'posts/form'
 
 // Profile modal
-#profilePopup class="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	div class="modal-dialog"
-		div class="modal-content"
-			div class="modal-header"
+#profilePopup.modal.fade.popup tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	.modal-dialog
+		.modal-content
+			.modal-header
 				button type="button" class="close" data-dismiss="modal" aria-label="Close"
 					span aria-hidden="true" &times;
 				h4 class="modal-title" id="myModalLabel" = @current_user.full_name
-			div class="modal-body"
+			.modal-body
 				img class="profileImage" src=@current_user.image+"?sz=200"
 
 				.post_form
 					= render partial: 'users/form'
 
-			div class="modal-footer"
+			.modal-footer
 				// Cruft for Google Plus logout
 				span id="signinButton" style="display:none;"
 					span [class="g-signin"
@@ -37,4 +47,4 @@ header class='container-fluid header'
 						data-cookiepolicy="single_host_origin"
 						data-requestvisibleactions=""
 						data-scope="openid email"]
-				div id="logout" style="display:none;" sign out
+				#logout style="display:none;" sign out

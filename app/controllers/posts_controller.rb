@@ -35,6 +35,10 @@ class PostsController < ApplicationController
 		render json: { result: result, post: post_id, num_follows: num_follows }
 	end
 
+	def tagged
+		render partial: "popup", locals: { posts: PostDecorator.decorate_collection(Post.has_tag(params[:tag])), tag: params[:tag] }
+	end
+
 	private
 		def post_params
 			params.require(:post).permit(:short, :long, :link, tag_list:[])

@@ -17,7 +17,6 @@ class Spaces.CommentsController extends Spaces.ViewController
 			url: 'users/allnames'
 			type: 'GET'
 			success: (data) ->
-				console.log data
 				$('#new_comment textarea').textcomplete([ {
 					mentions: data
 					match: /\B@(\w*)$/
@@ -31,7 +30,7 @@ class Spaces.CommentsController extends Spaces.ViewController
 
 				} ], appendTo: 'body').overlay [ {
 				  match: /\B@\w+/g
-				  css: 'background-color': '#d8dfea'
+				  css: {'background-color': '#d8dfea', 'border-radius': '4px'}
 				} ]
 			error: ->
 				console.log "Error getting all names"
