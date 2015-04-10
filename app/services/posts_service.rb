@@ -8,7 +8,7 @@ class PostsService
 	def relevant_posts
 		followed_posts = Post.followed(@user)
 		tagged_posts = Post.tagged(@user)
-		followed_posts + tagged_posts
+		followed_posts | tagged_posts
 	end
 
 	def relevant_posts_decorated
