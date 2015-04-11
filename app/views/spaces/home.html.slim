@@ -3,24 +3,30 @@ coffee:
 	root = exports ? this
 	root.signinCallback = loginController.signedinCallback
 
-// Posts
-.col-md-4.left_panel
-	// Relevant Posts
-	.section_header.skills
-		div relevant to you
-	.left_section.skills
-		.overflow_section.relevant_posts
-			.posts
-				= render @relevant_posts
-	.section_header.all
-		div most recent
-	.left_section.all
-		.overflow_section.all_posts
-			.posts
-				= render @posts
+= render 'layouts/header'
 
-.col-md-8.main_panel
-	= render partial: 'main_panel', locals: { post:@posts.first, full: false }
+// Posts
+.container-fluid.body_table
+	.row
+		.col-md-4.left_panel
+			// Relevant Posts
+			.section_header.skills
+				div relevant to you
+			.left_section.skills
+				.overflow_section.relevant_posts
+					.posts
+						= render @relevant_posts
+			.section_header.all
+				div most recent
+			.left_section.all
+				.overflow_section.all_posts
+					.posts
+						= render @posts
+
+		.col-md-8.main_panel
+			= render partial: 'main_panel', locals: { post:@posts.first, full: false }
+
+= render 'layouts/footer'
 
 coffee:
 	# Create Posts view controller

@@ -31,7 +31,7 @@
 			.modal-header
 				button type="button" class="close" data-dismiss="modal" aria-label="Close"
 					span aria-hidden="true" &times;
-				h4 class="modal-title" id="myModalLabel" = @current_user.full_name
+				h4 class="modal-title" id="myModalLabel" #{ @current_user.full_name }
 			.modal-body
 				img class="profileImage" src=@current_user.image+"?sz=200"
 
