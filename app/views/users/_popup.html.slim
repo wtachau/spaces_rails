@@ -3,8 +3,12 @@
 		span aria-hidden="true" &times;
 	div class="modal-title" 
 		img class='profilepic_small' src="#{user.image}?sz=200"
-		div #{user.full_name}
-		span #{user.tag_list}
+		.name #{user.full_name}
+		.job #{user.job}
+		.user_tags #{user.tag_list}
+		- unless user.bio == ""
+			.bio #{user.bio}
+		
 .modal-body
 	.list-group.popup_posts
 		= render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.posts)
