@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-			params.require(:user).permit(tag_list:[])
+			params.require(:user).permit(:bio, :job, tag_list:[])
 		end
 
 		def params_from_google
