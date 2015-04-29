@@ -11,8 +11,7 @@ ruby:
 						.ticket_name #{post.user.first_name}
 				.col-md-9 class='ticket_description'
 					div.ticket_icon
-						img src=image_path('speechbubble.png')
-						.num_comments #{post.comments.count}
+						.num_comments.badge #{post.comments.count}
 					div.ticket_icon.follow
 						img.follow src=image_path('followcheck.png') class="#{:active if post.follows.exists?(user_id: @current_user)}"
 					.description #{post.short}
