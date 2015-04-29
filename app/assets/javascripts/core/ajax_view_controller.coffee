@@ -8,8 +8,13 @@ class Spaces.AjaxFormController extends Spaces.ViewController
 		@$submitButton = @$form.find 'input[type="submit"]'
 		@$form
 			.on('submit', @disableSubmitButton)
-			.on('ajax:success', @formSucceeded)
 			.on('ajax:error', @enableSubmitButton)
+			.on('ajax:complete', @succeeded)
+
+	succeeded: (e, jqXHR, textStatus) =>
+		@enableSubmitButton() 
+		if @callback 
+ 			@callback jqXHR.responseText
 
 	disableSubmitButton: =>
 		@$submitButton.prop 'disabled', true
@@ -17,7 +22,7 @@ class Spaces.AjaxFormController extends Spaces.ViewController
 	enableSubmitButton: =>
 		@$submitButton.prop 'disabled', false
 
-	formSucceeded: (e, data) =>
+	formSucceeded: (e, data, textStatus, jqXHR) =>
 		@enableSubmitButton() 
 		if @callback 
  			@callback data

@@ -3,16 +3,20 @@
 class Spaces.CommentsController extends Spaces.ViewController
 
 	initialize: ([ @names ]) ->
-		($ 'body').on 'commentAdded', (event, data) => 
+		@$container.on 'commentAdded', (event, data) => 
 			@addCommentToPost data
 		@addTagListener()
+		@addUploadPreview()
 
 	addCommentToPost: (data) =>
 		($ '.previous_comments').append data
 		($ '.comments form textarea').val ""
 		($ '.comments form .textoverlay').html ""
+		($ '#image_preview')[0].style.backgroundImage = null
+		($ '#image_preview').attr 'class', 'original'
 
 	addTagListener: =>
+		# https://github.com/yuku-t/jquery-textcomplete 
 		$.ajax
 			url: 'users/allnames'
 			type: 'GET'
@@ -35,6 +39,14 @@ class Spaces.CommentsController extends Spaces.ViewController
 			error: ->
 				console.log "Error getting all names"
 
+	addUploadPreview: =>
+		($ "form#new_comment input[type='file']").attr "onchange", "readURL(this)"
+		window.readURL = @readURL
 
-
-		
+	readURL: (input) ->
+		if input.files and input.files[0]
+			reader = new FileReader
+			reader.onload = (e) ->
+				($ '#image_preview').attr 'class', ''
+				($ '#image_preview')[0].style.backgroundImage = "url('"+e.target.result+"')"
+			reader.readAsDataURL input.files[0]

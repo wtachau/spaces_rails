@@ -10,6 +10,10 @@ class CommentDecorator < Draper::Decorator
 		(text_with_link.to_str.gsub(r) { |m| m.gsub($1, userID($1)) }).html_safe
 	end
 
+	def image_url
+		h.attachment_url( object, :image, :fill, 300, 300, format: "jpg")
+	end
+
 	private 
 		def userID(tag)
 			user = tag.gsub(/[@"]/,'')

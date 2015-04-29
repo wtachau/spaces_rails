@@ -1,45 +1,49 @@
-div.container
-	div.row
-		div.external_link
+.container
+	.row
+		.external_link
 			- unless full
 				= link_to post
 					img src=image_path('external.png')
-		div.col-md-3
+		.col-md-3
 			.profile_container
 					img class='profilepic_small' src="#{post.user.image}?sz=200"
 					.ticket_name.username_link user_id="#{post.user.id}" #{post.user.decorate.full_name}
-		div.col-md-6
-			div.short #{post.short}
-			div.tags 
+		.col-md-6
+			.short #{post.short}
+			.tags 
 				= post.tag_list_decorated
-			div.link
+			.link
 				a href="#{ post.link }" target="_blank" #{post.link}
-			div.timestamp 
+			.timestamp 
 				- difference = time_ago_in_words post.updated_at
 				| updated #{difference} ago
 				span.follow_text #{ post.descriptive_follow_text }
 
-		div.col-md-3
+		.col-md-3
 			.email_container
 				a href="mailto:#{ post.user.email }"
 					img src=image_path("packet.png")
 					div email me
 			.follow_container class="#{ follow_text post, @current_user }"
 				= render partial: 'follows/icon', locals: { post:post, user:@current_user }
-	div.row
-		div.long #{post.long}
-	div.row
-		div.num_comments
+	.row
+		.long #{post.long}
+	.row
+		.num_comments
 			i #{post.comment_text}
-		div.comments
-			div.previous_comments
-				= render post.comments
+		- @id = random_dom_id
+		.comments id=@id
+			.previous_comments
+				= render CommentDecorator.decorate_collection(post.comments)
 			= render partial: 'comments/form', locals: { post:post }
-
+			
+javascript:
+ 	var ticket_container =  "##{@id}";
 coffee:
 	# Update comments on submit
-	new Spaces.AjaxFormController '.comments', true, (data) ->
-		$('body').trigger 'commentAdded', data
+	new Spaces.AjaxFormController ticket_container, true, (data) ->
+		$(ticket_container).trigger 'commentAdded', data
+	new Spaces.CommentsController ticket_container
 	# Update 'follow' icon after ajax result
 	new Spaces.AjaxLinkController '.follow_container', (data) -> 
 		$('body').trigger 'postFollowed', data
