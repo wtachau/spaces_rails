@@ -40,10 +40,10 @@ class Spaces.CommentsController extends Spaces.ViewController
 				console.log "Error getting all names"
 
 	addUploadPreview: =>
-		($ "form#new_comment input[type='file']").attr "onchange", "readURL(this)"
-		window.readURL = @readURL
+		($ "form#new_comment input[type='file']").change @readURL
 
-	readURL: (input) ->
+	readURL: (event) ->
+		input = event.target
 		if input.files and input.files[0]
 			reader = new FileReader
 			reader.onload = (e) ->
