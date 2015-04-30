@@ -40,9 +40,14 @@ gem 'time_diff', '~> 0.3.0'
 gem 'draper', '~> 1.4.0'
 # for auto linking
 gem 'rails_autolink'
-
 # For autocomplete in tagging people
 gem 'jquery-textcomplete-rails'
+# For uploading files
+gem "mini_magick"
+gem "refile", require: ["refile/rails", "refile/image_processing"]
+gem "aws-sdk", '< 2'
+# To enable file upload in remote form submissions
+gem 'remotipart', '~> 1.2'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

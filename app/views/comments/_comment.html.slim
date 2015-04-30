@@ -1,7 +1,11 @@
 div.comment.form-control
 	div.row
 		div.col-md-2.comment_user_container
-			img src=comment.user.image
+			img.user_image src=comment.user.image
 			div #{comment.user.first_name}
 		div.col-md-10
-			div #{comment.decorate.parsed_text}
+			.comment_text #{comment.parsed_text}
+			- if comment.image
+				.attachment_container
+					a.thumbnail href="#{comment.image_url}" target="_blank"
+						img src="#{comment.image_url}"

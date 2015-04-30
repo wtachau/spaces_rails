@@ -90,18 +90,6 @@
 			margin-bottom: 5px
 		
 		.comments 
-			.textoverlay
-				text-align: left
-				span
-					border-radius: 4px
-			textarea 
-				margin: auto
-				width: 90%
-				border-radius: 9px
-				resize: none
-				border: 1px solid lightgray
-				padding: 15px
-			
 			.comment 
 				width: 90%
 				height: inherit
@@ -113,12 +101,66 @@
 					padding-top: 5px
 					.comment_user_container 
 						text-align: center
-						img
+						.user_image
 							width: 50px
 							border-radius: 25px
-						
-			input[type=submit] 
-				margin-top: 10px
+					.attachment_container
+						float: left
+						max-width: 200px
+						.thumbnail	
+							margin-bottom: 7px
+					.comment_text
+						float: left
+						padding-bottom: 10px
+						width: 100%
+			form		
+				padding-top: 20px
+				margin-top: 20px
+				border-top: 1px solid lightgray
+				.text_area_container
+					width: 90%
+					margin: auto
+					.textoverlay
+						text-align: left
+						span
+							border-radius: 4px
+					.testing
+						width: 86%
+						float: left
+						textarea
+							border-radius: 9px
+							padding: 15px
+					.thumbnail
+						width: 13%
+						float: left
+						position: relative
+						margin: 0px 0px 0px 1%
+						#image_preview
+							width: 100%
+							background-repeat: round
+							background-image: url('/assets/attachment.png')
+							&.original
+								background-size: 50%
+								background-position: 50%
+								background-repeat: no-repeat
+								
+						#image_preview:before
+							content: ""
+							display: block
+							padding-top: 100%
+
+				input[type=submit] 
+					margin-top: 10px
+				input[type=file]
+					position: absolute
+					top: 0
+					right: 0
+					width: 100%
+					min-height: 100%
+					opacity: 0
+					outline: none
+					cursor: pointer
+					display: block
 
 #main_panel_content:hover 
 	background: rgba(255,255,255,1)
