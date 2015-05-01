@@ -8,7 +8,7 @@ coffee:
 // Posts
 .container-fluid.body_table
 	.row
-		.col-md-4.left_panel
+		.left_panel.body_panel
 			// Relevant Posts
 			.section_header.skills
 				div relevant to you
@@ -23,9 +23,15 @@ coffee:
 					.posts
 						= render @posts
 
-		.col-md-8.main_panel
+		.main_panel.body_panel
 			= render partial: 'main_panel', locals: { post:@posts.first, full: false }
 
+		.slideout
+			.slideout_body.offscreen
+				div text here
+			.trigger 
+				span.show_text < show all projects
+				span.hide_text > hide projects
 = render 'layouts/footer'
 
 coffee:
@@ -35,6 +41,7 @@ coffee:
 	new Spaces.UserFormController '#profilePopup'
 	new Spaces.UsernameLinkController 
 	new Spaces.TagController
+	new Spaces.SlideoutController
 
 	# For Google Plus login
 	po = document.createElement 'script'

@@ -1,0 +1,25 @@
+@import application
+
+.slideout
+	.trigger
+		position: absolute
+		right: 0px
+		padding: 10px
+		border-radius: 0px 0px 0px 10px
+		background: black
+		color: white
+		&:hover
+			cursor: pointer
+			text-decoration: underline
+
+.slideout_body
+	@extend .col-md-3
+	&.offscreen	
+		width: 0%
+		padding: 0px
+
+.body_panel, .slideout_body
+	-webkit-transition: width 0.3s ease, margin 0.3s ease
+	-moz-transition: width 0.3s ease, margin 0.3s ease
+	-o-transition: width 0.3s ease, margin 0.3s ease
+	transition: width 0.3s ease, margin 0.3s ease

@@ -1,7 +1,12 @@
+@import application
+
 /* RIGHT SECTION */
-.main_panel 
+.main_panel
+	@extend .col-md-8 
 	background: image-url("background.jpg")
 	height: 100%
+	&.shrunk
+		@extend .col-md-6
 
 .main_panel_fixed_height 
 	height: 100%
