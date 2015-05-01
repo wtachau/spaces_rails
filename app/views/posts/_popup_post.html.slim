@@ -4,8 +4,7 @@ a id=@id class="list-group-item" href='/posts/#{ popup_post.id }/preview' data-r
 		.row
 			.ticket_description
 				.ticket_icon
-					img src=image_path('speechbubble.png')
-					.num_comments #{popup_post.comments.count}
+					.num_comments.badge #{popup_post.comments.count}
 				.ticket_icon.follow
 					// will need to wait for @current_user to be available
 					img.follow src=image_path('followcheck.png') class="active"

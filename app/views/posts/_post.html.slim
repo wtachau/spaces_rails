@@ -6,7 +6,7 @@ ruby:
 		.container-fluid
 			.row
 				.col-md-3
-					.profile_container
+					.profile_container.username_link user_id="#{post.user.id}"
 						img class='profilepic_small' src="#{post.user.image}?sz=100"
 						.ticket_name #{post.user.first_name}
 				.col-md-9 class='ticket_description'

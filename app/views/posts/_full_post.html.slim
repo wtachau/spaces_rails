@@ -5,9 +5,9 @@
 				= link_to post
 					img src=image_path('external.png')
 		.col-md-3
-			.profile_container
+			.profile_container.username_link user_id="#{post.user.id}"
 					img class='profilepic_small' src="#{post.user.image}?sz=200"
-					.ticket_name.username_link user_id="#{post.user.id}" #{post.user.decorate.full_name}
+					.ticket_name #{post.user.decorate.full_name}
 		.col-md-6
 			.short #{post.short}
 			.tags 
