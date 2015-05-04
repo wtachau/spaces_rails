@@ -31,7 +31,7 @@ class Spaces.PostsController extends Spaces.ViewController
 			url: 'posts/edit'
 			type: 'GET'
 			success: (data, textStatus, jqXHR) =>
-				($ '#addPostPopup .post_form').html data
+				($ '#addPopup .post_form').html data
 			error: (jqXHR, textStatus, errorThrown) =>
 				console.log "Error updating form: #{errorThrown}"
 

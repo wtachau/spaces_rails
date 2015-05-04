@@ -1,52 +1,36 @@
 = form_for Post.new, {remote:true}  do |f|
-	.modal-header
-		button type="button" class="close" data-dismiss="modal" aria-label="Close"
-			span aria-hidden="true" &times;
-		h4.modal-title  Add a new Post or Project
-	.modal-body.form-horizontal
 
-		.form-group
-			label.col-md-3 Add a
-			.col-md-9 
-				select.selectpicker.form-control
-					option Post
-					option Project
+	.form-group
+		label.col-md-3  what is it?
+		.col-md-9
+			=f.text_area :short, maxlength: 140, placeholder: "your idea in 140 characters or less" do
+			.counter 0
 
-		.form-group
-			label.col-md-3  what is it?
-			.col-md-9
-				=f.text_area :short, maxlength: 140, placeholder: "your idea in 140 characters or less" do
-				.counter 0
+	// Tagging section. See http://brianreavis.github.io/selectize.js/ 
+	.form-group
+		label.col-md-3 choose several tags
+		.col-md-9
+			div.tag_container
+				= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
 
-		// Tagging section. See http://brianreavis.github.io/selectize.js/ 
-		.form-group
-			label.col-md-3 choose several tags
-			.col-md-9
-				div.tag_container
-					= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
+	.form-group
+		label.col-md-3 add a link
+		.col-md-9
+			=f.text_field :link, placeholder: "a website, invision link, etc."
 
-		.form-group
-			label.col-md-3 add a link
-			.col-md-9
-				=f.text_field :link, placeholder: "a website, invision link, etc."
+	.form-group
+		label.col-md-3 more details:
+		.col-md-9
+			=f.text_area :long, placeholder: "more information"
 
-		.form-group
-			label.col-md-3 more details:
-			.col-md-9
-				=f.text_area :long, placeholder: "more information"
-
-		div class="modal-footer"
-			button type="button" class="btn btn-default" data-dismiss="modal"Close
-			input type="submit" class='btn btn-primary' value="Add"
+	div class="modal-footer"
+		button type="button" class="btn btn-default" data-dismiss="modal"Close
+		input type="submit" class='btn btn-primary' value="Add"
 
 coffee:
 	# "Selectize" the tag input
 	new Spaces.SpacesController '#post_tag_list', true
 
 	# Attach callback to the post form
-	new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
+	new Spaces.AjaxFormController '#addPopup', true, (data) -> 
 		$('body').trigger 'postAdded', data
-
-	
-
-
