@@ -1,0 +1,15 @@
+= form_for Project.new, {remote:true}  do |f|
+
+	div Project!!!
+
+	div class="modal-footer"
+		button type="button" class="btn btn-default" data-dismiss="modal"Close
+		input type="submit" class='btn btn-primary' value="Add"
+
+coffee:
+	# "Selectize" the tag input
+	new Spaces.SpacesController '#post_tag_list', true
+
+	# Attach callback to the post form
+	new Spaces.AjaxFormController '#addPopup', true, (data) -> 
+		$('body').trigger 'postAdded', data
