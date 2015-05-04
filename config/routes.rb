@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :comments
+  resources :projects
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
