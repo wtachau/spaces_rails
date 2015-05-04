@@ -48,6 +48,8 @@ gem "refile", require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 # To enable file upload in remote form submissions
 gem 'remotipart', '~> 1.2'
+# Select for bootstrap
+gem 'bootstrap-select-rails', '~> 1.6.3'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US
