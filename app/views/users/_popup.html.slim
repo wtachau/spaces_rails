@@ -7,9 +7,7 @@
 		.job #{user.job}
 		.email_container 
 			/ todo
-			a href="mailto:#{ user.email }"
-				img src=image_path("packet.png")
-				div email me
+			a href="mailto:#{ user.email }" email me
 		.user_tags #{user.tag_list}
 		- unless user.bio == ""
 			.bio #{user.bio}

@@ -34,6 +34,10 @@ class ProjectsController < ApplicationController
 		render partial: 'following', locals: project_dict_from_params
 	end
 
+	def tagged
+		render partial: "popup", locals: { projects: ProjectDecorator.decorate_collection(Project.has_tag(params[:tag])), tag: params[:tag] }
+	end
+
 	private
 		def project_params
 			params.require(:project).permit(:short, :name, :link, tag_list:[])

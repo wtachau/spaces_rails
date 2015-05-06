@@ -7,10 +7,10 @@ class Spaces.TagController extends Spaces.ViewController
 			showPostPopup encodeURIComponent $(@).html()
 			
 	showPostPopup = (tag_text) =>
-		($ '#postsByTag').modal 'show'
+		($ '#projectsByTag').modal 'show'
 		$.ajax
-			url: "posts/tagged/#{tag_text}"
+			url: "projects/tagged/#{tag_text}"
 			type: 'GET'
 			success: (data) ->
-				($ '#postsByTag .modal-content').html data
+				($ '#projectsByTag .modal-content').html data
 				

@@ -24,10 +24,6 @@ class PostsController < ApplicationController
 		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }
 	end
 
-	def tagged
-		render partial: "popup", locals: { posts: PostDecorator.decorate_collection(Post.has_tag(params[:tag])), tag: params[:tag] }
-	end
-
 	private
 		def post_params
 			params.require(:post).permit(:short, :long, :link, tag_list:[])

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   get 'posts/relevant', to: 'posts#relevant'
   get 'posts/edit', to: 'posts#edit'
-  get 'posts/tagged/:tag', to: 'posts#tagged'
+  
+  get 'projects/tagged/:tag', to: 'projects#tagged'
 
   get 'users/edit', to: 'users#edit'
   get 'users/allnames', to: 'users#allnames'
