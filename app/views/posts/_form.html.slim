@@ -1,22 +1,9 @@
 = form_for Post.new, {remote:true}  do |f|
 
 	.form-group
-		label.col-md-3  what is it?
-		.col-md-9
-			=f.text_area :short, maxlength: 140, placeholder: "your idea in 140 characters or less" do
-			.counter 0
-
-	// Tagging section. See http://brianreavis.github.io/selectize.js/ 
-	.form-group
-		label.col-md-3 choose several tags
-		.col-md-9
-			div.tag_container
-				= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
-
-	.form-group
-		label.col-md-3 add a link
-		.col-md-9
-			=f.text_field :link, placeholder: "a website, invision link, etc."
+		label.col-md-3 about project:
+		.col-md-9 
+			= f.select :project, options_for_select(@current_user.projects.collect{ |project| [project.name, project.id] }), {}, { class: "selectpicker form-control"}
 
 	.form-group
 		label.col-md-3 more details:
@@ -28,9 +15,7 @@
 		input type="submit" class='btn btn-primary' value="Add"
 
 coffee:
-	# "Selectize" the tag input
-	new Spaces.SpacesController '#post_tag_list', true
-
+	$('.selectpicker').selectpicker();
 	# Attach callback to the post form
 	new Spaces.AjaxFormController '#addPopup', true, (data) -> 
 		$('body').trigger 'postAdded', data

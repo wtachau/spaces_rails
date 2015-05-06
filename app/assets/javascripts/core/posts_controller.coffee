@@ -7,6 +7,13 @@ class Spaces.PostsController extends Spaces.ViewController
 			@updateRelevantPosts()
 		($ 'body').on 'postFollowed', (event, data) =>
 			@updateFollowIcons data
+		($ 'body').on 'postAdded', (event, data) =>
+			@postAdded data
+
+	# Update UI and trigger postAdded event
+	postAdded: (data) =>
+		($ '.modal').modal 'hide'
+		($ '.all_posts .posts').prepend data
 
 	updateRelevantPosts: =>
 		$.ajax
@@ -19,7 +26,8 @@ class Spaces.PostsController extends Spaces.ViewController
 
 	# Update the follow UI depending on whether the post was (un)followed
 	updateFollowIcons: (data) =>
-		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
+		follow_icons = ".ticket_box[project="+data['project']+"] img"
+		console.log follow_icons
 		if data['result'] == 'following'
 			($ follow_icons).addClass("active")
 		else 

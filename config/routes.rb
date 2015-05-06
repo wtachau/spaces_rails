@@ -20,14 +20,14 @@ Rails.application.routes.draw do
   get 'users/allnames', to: 'users#allnames'
   get 'users/:id/popup', to: 'users#popup'
 
-  resources :posts do 
+  resources :projects do 
     member do
       post 'follow'
     end
   end
   resources :users
   resources :comments
-  resources :projects
+  resources :posts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

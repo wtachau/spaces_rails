@@ -5,8 +5,10 @@ class Spaces.AddModalController extends Spaces.ViewController
 	initialize: ->
 		@addSelectionListener()
 		# Update post popup 
-		($ 'body').on 'postAdded', () =>
+		($ 'body').on 'postAdded projectAdded', () =>
+			($ '.modal').modal 'hide'
 			@updatePopupForm()
+		@customUIListeners()
 
 	# Show the [updated] selected form
 	updatePopupForm: =>
@@ -16,7 +18,7 @@ class Spaces.AddModalController extends Spaces.ViewController
 		formElement.hide()
 		loadingElement.show()
 		# post or project?
-		popupSelection = (@$container.find '.selectpicker option:selected').val()
+		popupSelection = (@$container.find '.add_picker option:selected').val()
 		$.ajax
 			url: "#{popupSelection}/new"
 			type: 'GET'
@@ -28,5 +30,11 @@ class Spaces.AddModalController extends Spaces.ViewController
 				console.log "Error updating form: #{errorThrown}"
 
 	addSelectionListener: =>
-		(@$container.find 'select.selectpicker').change ()=>
+		(@$container.find 'select.add_picker').change ()=>
 			@updatePopupForm()
+
+	# TODO: this is broken
+	customUIListeners: =>
+		# If the form has a counter, update it
+		($ '#project_short').keyup (e) =>
+			($ '.counter').html ($ @).val().length 

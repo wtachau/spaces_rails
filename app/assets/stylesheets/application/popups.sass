@@ -18,7 +18,12 @@
 	.loading_icon
 		width: 40px
 		margin-top: 10px
-
+	// Override conflicting CSS from dropdown text-complete plugin
+	ul.selectpicker li
+		background-color: inherit
+		padding: inherit
+	button.selectpicker:focus, .dropdown-menu.selectpicker a:focus
+		outline: 0 !important
 
 /* PROFILE MODAL */
 #profilePopup 

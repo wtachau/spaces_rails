@@ -1,5 +1,12 @@
 class PostsController < ApplicationController
   
+	def create
+		puts params.require(:post).permit(:project)[:project]
+		project = Project.find params.require(:post).permit(:project)[:project]
+		@post = project.posts.create post_params
+		render @post.decorate
+	end
+  
 	def new
 		render partial:'form'
 	end
@@ -16,15 +23,6 @@ class PostsController < ApplicationController
 
 	def preview
 		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }
-	end
-
-	def follow 
-		params.permit :id
-		post_id = params[:id]
-		result = FollowService.new(post_id, current_user).follow_clicked
-		num_follows = (Post.find post_id).decorate.descriptive_follow_text
-
-		render json: { result: result, post: post_id, num_follows: num_follows }
 	end
 
 	def tagged

@@ -1,10 +1,14 @@
 class Post < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  acts_as_taggable
+  belongs_to :project, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :follows, dependent: :destroy
 
-  scope :followed, ->(user) { where(id: Follow.where(user_id: user).pluck(:post_id)) }
-  scope :tagged_by_user, ->(user) { tagged_with(user.tag_list, any: true).order('updated_at DESC') }
-  scope :has_tag, ->(tag) { tagged_with([tag], any: true).order('updated_at DESC') }
+  # Posts that belong to projects that are followed by the user
+  scope :followed, -> (user) { 
+  	Post.where(project_id: (Project.where(id: Follow.where(user_id: user).pluck(:project_id))).pluck(:id)) 
+  }
+  # Posts that belong to projects that share tags with the user
+  scope :tagged_by_user, -> (user) { 
+  	where(project_id: (Project.tagged_with(user.tag_list, any: true)).pluck(:id)) 
+  }
+
 end

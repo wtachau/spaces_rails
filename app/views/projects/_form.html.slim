@@ -1,6 +1,27 @@
 = form_for Project.new, {remote:true}  do |f|
+	
+	.form-group
+		label.col-md-3 name:
+		.col-md-9
+			=f.text_field :name, placeholder: "project name"
 
-	div Project!!!
+	.form-group
+		label.col-md-3  what is it?
+		.col-md-9
+			=f.text_area :short, maxlength: 140, placeholder: "your idea in 140 characters or less" do
+			.counter 0
+
+	// Tagging section. See http://brianreavis.github.io/selectize.js/ 
+	.form-group
+		label.col-md-3 choose several tags
+		.col-md-9
+			div.tag_container
+				= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
+
+	.form-group
+		label.col-md-3 add a link
+		.col-md-9
+			=f.text_field :link, placeholder: "a website, invision link, etc."
 
 	div class="modal-footer"
 		button type="button" class="btn btn-default" data-dismiss="modal"Close
@@ -8,8 +29,8 @@
 
 coffee:
 	# "Selectize" the tag input
-	new Spaces.SpacesController '#post_tag_list', true
+	new Spaces.SpacesController '#project_tag_list', true
 
 	# Attach callback to the post form
 	new Spaces.AjaxFormController '#addPopup', true, (data) -> 
-		$('body').trigger 'postAdded', data
+		$('body').trigger 'projectAdded', data

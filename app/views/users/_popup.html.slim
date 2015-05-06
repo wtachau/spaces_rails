@@ -5,10 +5,16 @@
 		img class='profilepic_small' src="#{user.image}?sz=200"
 		.name #{user.full_name}
 		.job #{user.job}
+		.email_container 
+			/ todo
+			a href="mailto:#{ user.email }"
+				img src=image_path("packet.png")
+				div email me
 		.user_tags #{user.tag_list}
 		- unless user.bio == ""
 			.bio #{user.bio}
 		
 .modal-body
 	.list-group.popup_posts
-		= render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.posts)
+		/ todo - show projects
+		/ = render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.projectposts)

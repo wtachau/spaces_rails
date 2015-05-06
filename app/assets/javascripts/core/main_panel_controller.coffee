@@ -11,7 +11,6 @@ class Spaces.MainPanelController extends Spaces.ViewController
 		($ ".follow_container div").html data['result']
 		($ ".follow_text").html data['num_follows']
 
-		follow_icons = ".ticket_box.ticket-#{data['post']} .ticket_icon.follow img"
 		if data['result'] == 'following'
 			$(".follow_container").addClass("following")
 		else 
