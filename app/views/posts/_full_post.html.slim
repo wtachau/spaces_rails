@@ -3,28 +3,8 @@
 			- unless full
 				= link_to post
 					img src=image_path('external.png')
-	.row.project_body
-		.row
-			.col-md-3
-				.profile_container.username_link user_id="#{post.project.user.id}"
-						img class='profilepic_small' src="#{post.project.user.image}?sz=200"
-						.ticket_name #{post.project.user.decorate.full_name}
-			.col-md-6
-				.project_header the project
-				.name #{post.project.name}
-				.short #{post.project.short}
-				.link
-					a href="#{ post.link }" target="_blank" #{post.link}
-			.col-md-3
-				.follow_container class="#{ follow_text post.project, @current_user }"
-					= render partial: 'follows/icon', locals: { project:post.project, user:@current_user }
-		.row.project_footer
-			.col-md-3
-			.col-md-6
-				.tags 
-					= post.tag_list_decorated
-			.col-md-3
-				.project_details_link project details >>
+
+	= render partial: 'projects/header', locals: { project:post.project.decorate, main_display: false }
 	.row
 		.long #{post.long}
 	.row
@@ -43,6 +23,3 @@ coffee:
 	new Spaces.AjaxFormController ticket_container, true, (data) ->
 		$(ticket_container).trigger 'commentAdded', data
 	new Spaces.CommentsController ticket_container
-	# Update 'follow' icon after ajax result
-	new Spaces.AjaxLinkController '.follow_container', (data) -> 
-		$('body').trigger 'postFollowed', data

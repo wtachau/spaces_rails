@@ -4,5 +4,4 @@
 	div class="modal-title" 
 		h4 posts tagged with "#{tag}"
 .modal-body
-	.list-group.popup_posts
-		= render partial: "posts/popup_post", collection: posts, as: :popup_post
+	= render partial: "posts/popup_post", collection: posts, as: :popup_post

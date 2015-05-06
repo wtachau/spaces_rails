@@ -2,21 +2,18 @@ ruby:
 	@ticket_id = "ticket-#{post.id}"
 	@id = random_dom_id
 .ticket_box class=@ticket_id id=@id project=post.project.id
-	a href='/posts/#{ post.id }/preview' data-remote='true'
+	= link_to preview_post_path(post), remote:true
 		.container-fluid
 			.row
 				.col-md-3
-					.profile_container.username_link user_id="#{post.project.user.id}"
-						img class='profilepic_small' src="#{post.project.user.image}?sz=100"
-						.ticket_name #{post.project.user.first_name}
+					= render partial:'users/profile_container', locals: { user:post.project.user}
 				.col-md-9 class='ticket_description'
 					div.ticket_icon
 						.num_comments.badge #{post.comments.count}
 					div.ticket_icon.follow
 						img.follow src=image_path('followcheck.png') class="#{:active if post.project.follows.exists?(user_id: @current_user)}"
 					.description #{post.long}
-					.tags 
-						= post.tag_list_decorated
+					.project_name() [ #{post.project.name} ]
 // CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
 javascript:
   var ticket_container =  "##{@id}";

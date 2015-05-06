@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   get 'posts/relevant', to: 'posts#relevant'
-  get 'posts/:id/preview', to: 'posts#preview'
   get 'posts/edit', to: 'posts#edit'
   get 'posts/tagged/:tag', to: 'posts#tagged'
 
@@ -23,11 +22,19 @@ Rails.application.routes.draw do
   resources :projects do 
     member do
       post 'follow'
+      get 'main_display'
+      get 'description'
+      get 'posts'
+      get 'following'
     end
   end
   resources :users
   resources :comments
-  resources :posts
+  resources :posts do
+    member do
+      get 'preview'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

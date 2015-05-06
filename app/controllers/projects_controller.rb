@@ -18,9 +18,29 @@ class ProjectsController < ApplicationController
 		render json: { result: result, project: project_id, num_follows: num_follows }
 	end
 
+	def main_display
+		render partial:'full_project', locals: project_dict_from_params
+	end
+
+	def description
+		render partial: 'description', locals: project_dict_from_params
+	end
+
+	def posts
+		render partial: 'posts', locals: project_dict_from_params
+	end
+
+	def following
+		render partial: 'following', locals: project_dict_from_params
+	end
+
 	private
 		def project_params
 			params.require(:project).permit(:short, :name, :link, tag_list:[])
+		end
+
+		def project_dict_from_params
+			{ project: (Project.find params[:id]).decorate }
 		end
 
 end
