@@ -1,9 +1,4 @@
 .container
-	.external_link
-			- unless full
-				= link_to post
-					img src=image_path('external.png')
-
 	= render partial: 'projects/header', locals: { project:post.project.decorate, main_display: false }
 	.row
 		.long #{post.long}

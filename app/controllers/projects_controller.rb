@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   
 	def create
 		@project = current_user.projects.create project_params
-		render json: { success: true } #@project.decorate # need decorator
+		render @project.decorate
 	end
 
 	def new

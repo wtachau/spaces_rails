@@ -29,15 +29,18 @@ coffee:
 
 		.slideout
 			.slideout_body.offscreen
-				div text here
+				.projects_preview_header all projects
+				.projects_preview_body
+					= render @projects
 			.trigger 
 				span.show_text < show all projects
-				span.hide_text > hide projects
+				span.hide_text >
 = render 'layouts/footer'
 
 coffee:
-	# Create Posts view controller
+	# Create relevant view controllers
 	new Spaces.PostsController '.left_panel'
+	new Spaces.ProjectsController 'projects_preview_body'
 	new Spaces.MainPanelController '.main_panel'
 	new Spaces.UserFormController '#profilePopup'
 	new Spaces.UsernameLinkController 

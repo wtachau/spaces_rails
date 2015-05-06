@@ -10,13 +10,11 @@ ruby:
 				.col-md-9 class='ticket_description'
 					div.ticket_icon
 						.num_comments.badge #{post.comments.count}
-					div.ticket_icon.follow
-						img.follow src=image_path('followcheck.png') class="#{:active if post.project.follows.exists?(user_id: @current_user)}"
 					.description #{post.long}
 					.project_name() [ #{post.project.name} ]
 // CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
 javascript:
-  var ticket_container =  "##{@id}";
+ 	var ticket_container =  "##{@id}";
 coffee:
 	new Spaces.AjaxLinkController ticket_container, (data) -> 
 		($ '.main_panel_content').html data

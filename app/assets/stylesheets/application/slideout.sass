@@ -1,25 +1,62 @@
 @import application
+@import application/sizes
 
 .slideout
+	height: 100%
 	.trigger
 		position: absolute
 		right: 0px
-		padding: 10px
+		padding: 5px 10px 10px 10px
 		border-radius: 0px 0px 0px 10px
 		background: black
 		color: white
+		height: $panel_height
 		&:hover
 			cursor: pointer
 			text-decoration: underline
 
-.slideout_body
-	@extend .col-md-3
-	&.offscreen	
-		width: 0%
-		padding: 0px
+	.slideout_body
+		@extend .col-md-3
+		padding: 0px !important
+		height: inherit
+		&.offscreen	
+			width: 0%
+			padding: 0px
+			overflow: hidden
+			height: 0px
+
+	.projects_preview_header
+		height: $panel_height
+		background-color: lightpink
+		font-size: 21px
+		font-weight: 300
+		text-align: center
+
+	.projects_preview_body
+		overflow: scroll
+		height: calc(100% - #{$panel_height})
+
+	.project_preview_container
+		border-bottom: 1px solid lightgray
+		padding: 7px
+		a
+			text-decoration: inherit
+			color: inherit
+			
+			img.profilepic_small
+				width: 50px
+				border-radius: 25px
+			.name
+				font-weight: bold
+				font-size: 17px
+				margin-top: 3px
 
 .body_panel, .slideout_body
 	-webkit-transition: width 0.3s ease, margin 0.3s ease
 	-moz-transition: width 0.3s ease, margin 0.3s ease
 	-o-transition: width 0.3s ease, margin 0.3s ease
 	transition: width 0.3s ease, margin 0.3s ease
+
+
+
+

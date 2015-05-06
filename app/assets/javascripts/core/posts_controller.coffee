@@ -26,7 +26,7 @@ class Spaces.PostsController extends Spaces.ViewController
 
 	# Update the follow UI depending on whether the post was (un)followed
 	updateFollowIcons: (data) =>
-		follow_icons = ".ticket_box[project="+data['project']+"] img"
+		follow_icons = ".project_preview_container[project="+data['project']+"] img.follow"
 		if data['result'] == 'following'
 			($ follow_icons).addClass("active")
 		else 

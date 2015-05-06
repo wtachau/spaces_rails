@@ -1,0 +1,18 @@
+- @id = random_dom_id
+.project_preview_container id=@id project=project.id
+	= link_to main_display_project_path(project), remote:true
+		.row
+			.col-md-3
+				img class='profilepic_small' src="#{project.user.image}?sz=100"
+			.col-md-9
+				div.ticket_icon.follow
+					img.follow src=image_path('followcheck.png') class="#{:active if project.follows.exists?(user_id: @current_user)}"
+				.name #{project.name}
+				.short #{project.short}
+
+// CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
+javascript:
+ 	var project_container =  "##{@id}";
+coffee:
+	new Spaces.AjaxLinkController project_container, (data) -> 
+		($ '.main_panel_content').html data

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   
 	def create
-		puts params.require(:post).permit(:project)[:project]
 		project = Project.find params.require(:post).permit(:project)[:project]
 		@post = project.posts.create post_params
 		render @post.decorate

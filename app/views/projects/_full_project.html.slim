@@ -10,7 +10,8 @@
 				| posts
 			button.btn.btn-default = link_to following_project_path, remote:true
 				| following
-		.project_body asdf2
+		.project_body 
+			= render partial: 'description', locals: { project: project }
 
 coffee:
 	new Spaces.AjaxLinkController '.project_body_container', (data) ->
