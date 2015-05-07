@@ -9,9 +9,8 @@ class ProjectsController < ApplicationController
 		render partial:'form'
 	end
 
-	def follow 
-		params.permit :id
-		project_id = params[:id]
+	def follow
+		project_id = params.permit(:id)[:id]
 		result = FollowService.new(project_id, current_user).follow_clicked
 		num_follows = (Project.find project_id).decorate.descriptive_follow_text
 

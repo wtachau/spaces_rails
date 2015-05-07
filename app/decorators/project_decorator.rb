@@ -4,10 +4,9 @@ class ProjectDecorator < Draper::Decorator
 	def descriptive_follow_text
 		if object.follows.count == 0
 			""
-		elsif object.follows.count == 1
-			" | 1 follow"
 		else
-			"  |  #{object.follows.count} follows"
+			count = object.follows.count
+			"  |  #{count} #{pluralize(count, 'follow')}"
 		end
 	end
 
