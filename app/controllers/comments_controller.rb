@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = current_user.comments.create comments_params
+		NotificationMailer.commented_post(@comment).deliver_now
 		render @comment.decorate
 	end
 

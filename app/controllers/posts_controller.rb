@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 	def create
 		project = Project.find params.require(:post).permit(:project)[:project]
 		@post = project.posts.create post_params
+		NotificationMailer.followed_project_post(@post).deliver_now
 		render @post.decorate
 	end
   
