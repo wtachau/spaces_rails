@@ -33,8 +33,7 @@ class Spaces.AddModalController extends Spaces.ViewController
 		(@$container.find 'select.add_picker').change ()=>
 			@updatePopupForm()
 
-	# TODO: this is broken
 	customUIListeners: =>
 		# If the form has a counter, update it
-		($ '#project_short').keyup (e) =>
+		($ document).on 'keyup', '#project_short', (e) ->
 			($ '.counter').html ($ @).val().length 
