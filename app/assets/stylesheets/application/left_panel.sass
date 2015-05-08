@@ -1,3 +1,4 @@
+@import application
 @import application/sizes
 @import application/colors
 
@@ -9,9 +10,11 @@
 		height: 100%
 	
 .left_panel 
-	min-width: 350px
+	@extend .col-md-4
 	padding: 0px !important
 	height: 100%
+	&.shrunk
+		@extend .col-md-3	
 
 .left_section 
 	height: calc(50% - 30px)

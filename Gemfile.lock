@@ -52,6 +52,7 @@ GEM
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap-select-rails (1.6.3)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -230,6 +231,7 @@ DEPENDENCIES
   acts_as_commentable
   aws-sdk (< 2)
   bootstrap-sass (~> 3.3.3)
+  bootstrap-select-rails (~> 1.6.3)
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails

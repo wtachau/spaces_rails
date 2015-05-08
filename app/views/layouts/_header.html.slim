@@ -5,7 +5,7 @@
 	#add_profile.upper_right 
 		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
 	#add_post.upper_right
-		img src=image_path('plus.png') data-toggle="modal" data-target="#addPostPopup"
+		img src=image_path('plus.png') data-toggle="modal" data-target="#addPopup"
 
 // User profile modal
 #userPopup.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
@@ -13,16 +13,16 @@
 		.modal-content
 
 // Posts by tag modal
-#postsByTag.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
+#projectsByTag.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"
 	.modal-dialog
 		.modal-content
 
-// Add Post modal
-#addPostPopup.modal.fade.popup tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+// Add modal
+#addPopup.modal.fade.popup tabindex='-1' role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	.modal-dialog
 		.modal-content
 			.post_form
-				= render partial: 'posts/form'
+				= render partial: 'popups/add'
 
 // Profile modal
 #profilePopup.modal.fade.popup tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"

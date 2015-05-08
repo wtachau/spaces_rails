@@ -2,32 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.ticket_box, .popup_posts
-	.ticket_icon 
-		float: right
-		margin-right: 5px
-		img 
-			height: 27px
-			&.follow
-				display: none
-				&.active
-					display: inline
-		
-		&.follow img
-			height: 20px
+.ticket_box, .popup_posts, .posts_preview
+	a, a:hover 
+		color: inherit
+		text-decoration: inherit		
 
-		.num_comments 
-			top: 0px
-			margin-left: 9px
-
-.popup_posts
+.posts_preview
 	.ticket_icon
 		img	
 			margin-top: 4px
 		&.follow img
 			margin-top: 8px
 		.num_comments
-			margin-top: 22px
+			margin-top: 9px
 	.ticket_description 
 		.description 
 			margin-top: 5px
@@ -42,10 +29,6 @@
 	-webkit-transition: background .25s ease-in-out
 	&:hover 
 		background: #fff
-	
-	a 
-		color: inherit
-		text-decoration: inherit
 	
 	.profilepic_small 
 		height: 60px
@@ -63,6 +46,8 @@
 		padding-right: 5px
 		.description 
 			overflow: hidden
+		.project_name
+			color: grey
 
 	.ticket_icon
 		img	

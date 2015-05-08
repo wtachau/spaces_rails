@@ -1,6 +1,6 @@
 div.comment.form-control
 	div.row
-		div.col-md-2.comment_user_container
+		div.col-md-2.comment_user_container.username_link(user_id="#{comment.user.id}")
 			img.user_image src=comment.user.image
 			div #{comment.user.first_name}
 		div.col-md-10

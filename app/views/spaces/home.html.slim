@@ -8,33 +8,44 @@ coffee:
 // Posts
 .container-fluid.body_table
 	.row
-		.col-md-4.left_panel
+		.left_panel.body_panel
 			// Relevant Posts
 			.section_header.skills
-				div relevant to you
+				div post relevant to you
 			.left_section.skills
 				.overflow_section.relevant_posts
 					.posts
 						= render @relevant_posts
 			.section_header.all
-				div most recent
+				div most recent posts
 			.left_section.all
 				.overflow_section.all_posts
 					.posts
 						= render @posts
 
-		.col-md-8.main_panel
-			= render partial: 'main_panel', locals: { post:@posts.first, full: false }
+		.main_panel.body_panel
+			- unless @posts.empty?
+				= render partial: 'main_panel', locals: { post:@posts.first, full: false }
 
+		.slideout
+			.slideout_body.offscreen
+				.projects_preview_header all projects
+				.projects_preview_body
+					= render @projects
+			.trigger 
+				span.show_text < show all projects
+				span.hide_text >
 = render 'layouts/footer'
 
 coffee:
-	# Create Posts view controller
+	# Create relevant view controllers
 	new Spaces.PostsController '.left_panel'
+	new Spaces.ProjectsController 'projects_preview_body'
 	new Spaces.MainPanelController '.main_panel'
 	new Spaces.UserFormController '#profilePopup'
 	new Spaces.UsernameLinkController 
 	new Spaces.TagController
+	new Spaces.SlideoutController
 
 	# For Google Plus login
 	po = document.createElement 'script'

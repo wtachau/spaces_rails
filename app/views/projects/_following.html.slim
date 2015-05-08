@@ -1,0 +1,4 @@
+- project.follows.each do | follow |
+	.row
+		.col-md-3
+			= render partial:'users/profile_container', locals: { user: follow.user }

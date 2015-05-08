@@ -9,9 +9,6 @@ class Spaces.UserFormController extends Spaces.ViewController
 		# Hide modal and update user form when it is submitted
 		($ 'body').on 'userUpdated', =>
 			@userFormSubmitted()
-		# If the form has a counter, update it
-		($ '#post_short').keyup (e) =>
-			($ '.counter').html ($ @).val().length 
 
 	userFormSubmitted: =>
 		($ '.modal').modal 'hide'

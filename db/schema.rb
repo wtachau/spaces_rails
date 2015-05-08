@@ -11,30 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416182227) do
+ActiveRecord::Schema.define(version: 20150505194347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "text"
     t.integer  "post_id"
     t.integer  "user_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
     t.string   "attachment"
     t.string   "image_id"
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer  "post_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "project_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -44,9 +40,19 @@ ActiveRecord::Schema.define(version: 20150416182227) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "link"
+    t.integer  "project_id"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "short"
+    t.integer  "user_id"
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

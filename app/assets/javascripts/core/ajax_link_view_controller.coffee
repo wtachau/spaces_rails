@@ -10,6 +10,7 @@ class Spaces.AjaxLinkController extends Spaces.ViewController
 			.on('ajax:error', @onFailure)
 
  	onSuccess: (e, data, status, xhr) =>
+ 		($ ".modal").modal "hide"
  		if @callback 
  			@callback data
 

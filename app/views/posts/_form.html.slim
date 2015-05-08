@@ -1,34 +1,21 @@
-= form_for Post.new, {remote:true}  do |f|
+= form_for @new_post, {remote:true}  do |f|
 
-	div class="modal-header"
-		button type="button" class="close" data-dismiss="modal" aria-label="Close" 
-			span aria-hidden="true" &times;
-		h3 class="modal-title" id="myModalLabel" 
-			b Add a Post
-	div class="modal-body" 
-		h4 what is it?
-		=f.text_area :short, maxlength: 140, placeholder: "your idea in 140 characters or less test" do
-		.counter 0
-		// Tagging section. See http://brianreavis.github.io/selectize.js/ 
-		h4 choose several tags
-		div.tag_container
-			= render partial: 'spaces/selectize_form', locals: {f:f, selected_tags: []}
-		h4 add a link
-		=f.text_field :link, placeholder: "a website, invision link, etc."
-		h4 more details:
-		=f.text_area :long, placeholder: "more information"
-		div class="modal-footer"
-			button type="button" class="btn btn-default" data-dismiss="modal"Close
-			input type="submit" class='btn btn-primary' value="Add"
+	.form-group
+		label.col-md-3 about project:
+		.col-md-9 
+			= f.select :project, options_for_select(@current_user.projects.collect{ |project| [project.name, project.id] }), {}, { class: "selectpicker form-control"}
+
+	.form-group
+		label.col-md-3 more details:
+		.col-md-9
+			=f.text_area :long, placeholder: "more information"
+
+	div class="modal-footer"
+		button type="button" class="btn btn-default" data-dismiss="modal"Close
+		input type="submit" class='btn btn-primary' value="Add"
 
 coffee:
-	# "Selectize" the tag input
-	new Spaces.SpacesController '#post_tag_list', true
-
+	$('.selectpicker').selectpicker();
 	# Attach callback to the post form
-	new Spaces.AjaxFormController '#addPostPopup', true, (data) -> 
+	new Spaces.AjaxFormController '#addPopup', true, (data) -> 
 		$('body').trigger 'postAdded', data
-
-	
-
-

@@ -1,0 +1,5 @@
+.link
+	a href="#{ project.link }" target="_blank" #{project.link}
+.timestamp 
+	- difference = time_ago_in_words project.updated_at
+	| updated #{difference} ago

@@ -1,8 +1,0 @@
-.modal-header
-	button type="button" class="close" data-dismiss="modal" aria-label="Close"
-		span aria-hidden="true" &times;
-	div class="modal-title" 
-		h4 posts tagged with "#{tag}"
-.modal-body
-	.list-group.popup_posts
-		= render partial: "posts/popup_post", collection: posts, as: :popup_post

@@ -1,0 +1,22 @@
+.modal-header
+	button type="button" class="close" data-dismiss="modal" aria-label="Close"
+		span aria-hidden="true" &times;
+	h4.modal-title  Add a new Post or Project
+
+.modal-body.form-horizontal
+	.form-group
+		label.col-md-3 Add a
+		.col-md-9 
+			select.selectpicker.form-control.add_picker
+				option(value="posts") Post
+				option(value="projects") Project
+
+	img.loading_icon.hidden(src=image_path("loading.gif"))
+	
+	.form_selection
+		= render partial: 'posts/form'
+
+coffee:
+	# listen for changing to the select element
+	new Spaces.AddModalController "#addPopup"
+
