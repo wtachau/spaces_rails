@@ -11,6 +11,7 @@ class FollowService
 			return 'follow'
 		else 
 			@user.follows.create project_id: @project_id
+			NotificationMailer.followed_project(Project.find_by(id: @project_id), @user).deliver_now
 			return 'following'
 		end
 	end

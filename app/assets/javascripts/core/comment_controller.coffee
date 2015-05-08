@@ -18,7 +18,7 @@ class Spaces.CommentsController extends Spaces.ViewController
 	addTagListener: =>
 		# https://github.com/yuku-t/jquery-textcomplete 
 		$.ajax
-			url: 'users/allnames'
+			url: '/users/allnames'
 			type: 'GET'
 			success: (data) ->
 				$('#new_comment textarea').textcomplete([ {
