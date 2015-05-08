@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  default_host = 'http://originate-spaces.herokuapp.com'
+  Rails.application.routes.default_url_options = { host: default_host }
+  config.action_mailer.default_url_options = { host: default_host }
 end
