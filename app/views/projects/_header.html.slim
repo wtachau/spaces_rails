@@ -9,6 +9,8 @@
 			.name #{project.name}
 			.short #{project.short}
 		.col-md-3
+			= link_to item_view_path("project", project.id)
+				img.link src=image_path('link.png')
 			.follow_container class="#{ follow_text project, @current_user }"
 				= render partial: 'follows/icon', locals: { project:project, user:@current_user }
 	.row.footer_row
