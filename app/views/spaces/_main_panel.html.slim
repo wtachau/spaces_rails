@@ -1,9 +1,11 @@
 div class='main_panel_fixed_height' 
-	- if full
-		div.back_link
-			a href="/" << back to everything
 	div class='main_panel_content'
-		= render partial: 'posts/full_post', locals: { post: post, full: full }
+		- if @selected_project
+			= render partial: 'projects/full_project', locals: { project: @selected_project }
+		- elsif @selected_post
+			= render partial: 'posts/full_post', locals: { post: @selected_post }
+		- else
+			= render partial: 'posts/full_post', locals: { post: @posts.first }
 
 coffee:
 	new Spaces.MainPanelController '.main_panel'

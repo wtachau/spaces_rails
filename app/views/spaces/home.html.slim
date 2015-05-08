@@ -24,8 +24,7 @@ coffee:
 						= render @posts
 
 		.main_panel.body_panel
-			- unless @posts.empty?
-				= render partial: 'main_panel', locals: { post:@posts.first, full: false }
+			= render partial: 'main_panel'
 
 		.slideout
 			.slideout_body.offscreen

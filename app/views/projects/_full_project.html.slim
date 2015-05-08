@@ -1,6 +1,6 @@
 .container
 
-	= render partial: 'header', locals: { project: project, main_display: true }
+	= render partial: 'projects/header', locals: { project: project, main_display: true }
 
 	.project_body_container
 		.btn-group.btn-group-sm.options role="group"
@@ -11,7 +11,7 @@
 			button.btn.btn-default = link_to following_project_path, remote:true
 				| following
 		.project_body 
-			= render partial: 'description', locals: { project: project }
+			= render partial: 'projects/description', locals: { project: project }
 
 coffee:
 	new Spaces.AjaxLinkController '.project_body_container', (data) ->
