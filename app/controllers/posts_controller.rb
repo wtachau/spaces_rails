@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 	end
   
 	def new
+		@new_post = Post.new
 		render partial:'form'
 	end
 

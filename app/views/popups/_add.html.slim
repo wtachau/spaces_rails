@@ -11,7 +11,7 @@
 				option(value="posts") Post
 				option(value="projects") Project
 
-	img.loading_icon(src=image_path("loading.gif") style="display:none;")
+	img.loading_icon.hidden(src=image_path("loading.gif"))
 	
 	.form_selection
 		= render partial: 'posts/form'

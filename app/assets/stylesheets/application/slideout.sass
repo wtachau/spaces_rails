@@ -1,5 +1,6 @@
 @import application
 @import application/sizes
+@import application/mixins
 
 .slideout
 	height: 100%
@@ -37,10 +38,7 @@
 		height: calc(100% - #{$panel_height})
 
 .body_panel, .slideout_body
-	-webkit-transition: width 0.3s ease, margin 0.3s ease
-	-moz-transition: width 0.3s ease, margin 0.3s ease
-	-o-transition: width 0.3s ease, margin 0.3s ease
-	transition: width 0.3s ease, margin 0.3s ease
+	+transition(0.3s)
 
 
 

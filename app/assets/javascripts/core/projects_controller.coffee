@@ -8,6 +8,5 @@ class Spaces.ProjectsController extends Spaces.ViewController
 
 	# Update UI
 	projectAdded: (data) =>
-		console.log data
 		($ '.modal').modal 'hide'
 		($ '.projects_preview_body').prepend data

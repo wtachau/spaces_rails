@@ -16,14 +16,14 @@ class Spaces.AddModalController extends Spaces.ViewController
 		loadingElement = (@$container.find '.loading_icon')
 		# hide form and show gif while waiting for response
 		formElement.hide()
-		loadingElement.show()
+		loadingElement.toggleClass "hidden"
 		# post or project?
 		popupSelection = (@$container.find '.add_picker option:selected').val()
 		$.ajax
 			url: "#{popupSelection}/new"
 			type: 'GET'
 			success: (data, textStatus, jqXHR) =>
-				loadingElement.hide()
+				loadingElement.toggleClass "hidden"
 				formElement.show()
 				formElement.html data
 			error: (jqXHR, textStatus, errorThrown) =>
@@ -33,8 +33,7 @@ class Spaces.AddModalController extends Spaces.ViewController
 		(@$container.find 'select.add_picker').change ()=>
 			@updatePopupForm()
 
-	# TODO: this is broken
 	customUIListeners: =>
 		# If the form has a counter, update it
-		($ '#project_short').keyup (e) =>
+		($ document).on 'keyup', '#project_short', (e) ->
 			($ '.counter').html ($ @).val().length 

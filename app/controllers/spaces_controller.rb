@@ -13,6 +13,8 @@ class SpacesController < ApplicationController
 			end
 		end
 		@projects = Project.all.order('updated_at DESC')
+		@new_project = Project.new
+		@new_post = Post.new
 	end
 
 end

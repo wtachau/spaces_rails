@@ -6,7 +6,6 @@
 		.name #{user.full_name}
 		.job #{user.job}
 		.email_container 
-			/ todo
 			a href="mailto:#{ user.email }" email me
 		.user_tags #{user.tag_list}
 		- unless user.bio == ""
@@ -14,5 +13,3 @@
 		
 .modal-body
 	.list-group.popup_posts
-		/ todo - show projects
-		/ = render partial: "posts/popup_post", collection: PostDecorator.decorate_collection(user.projectposts)
