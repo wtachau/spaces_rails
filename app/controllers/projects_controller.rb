@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
+		@new_project = Project.new
 		render partial:'form'
 	end
 
