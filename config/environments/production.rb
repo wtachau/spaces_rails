@@ -77,6 +77,22 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    from:                 "william.tachau@originate.com",
+    port:                 25,
+    user_name:            ENV['GMAIL_USERNAME'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       "plain",   
+    enable_starttls_auto: true
+  }
+
+
   default_host = 'http://originate-spaces.herokuapp.com'
   Rails.application.routes.default_url_options = { host: default_host }
   config.action_mailer.default_url_options = { host: default_host }
