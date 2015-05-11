@@ -15,6 +15,12 @@ class ProjectsController < ApplicationController
 		result = FollowService.new(project_id, current_user).follow_clicked
 		num_follows = (Project.find project_id).decorate.descriptive_follow_text
 		render json: { result: result, project: project_id, num_follows: num_follows }
+		# Send an email if the project is now being followed
+		if result == 'following'
+			Thread.new do
+				NotificationMailer.followed_project(Project.find_by(id: project_id), current_user).deliver_now
+			end
+		end
 	end
 
 	def main_display
