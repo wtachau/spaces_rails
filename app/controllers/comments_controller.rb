@@ -1,5 +1,3 @@
-require "benchmark"
-
 class CommentsController < ApplicationController
 
 	def create
