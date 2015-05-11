@@ -5,6 +5,7 @@ class Spaces.UsernameLinkController extends Spaces.ViewController
 	initialize: ->
 		($ document).on 'click', '.username_link', ->
 			showUserPopup $(@).attr "user_id"
+			false
 			
 	showUserPopup = (user) =>
 		($ '#userPopup').modal 'show'
