@@ -6,7 +6,7 @@ class ProjectDecorator < Draper::Decorator
 			""
 		else
 			count = object.follows.count
-			"  |  #{count} #{pluralize(count, 'follow')}"
+			"  |  #{count} #{'follow'.pluralize(count)}"
 		end
 	end
 
