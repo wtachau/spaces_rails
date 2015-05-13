@@ -17,4 +17,10 @@ class NotificationMailer < ActionMailer::Base
 		mail to: project.user.email, subject: '[Spaces] One of your projects has a new follower!'
 	end
 
+	def users_tagged(commenter, emails, comment)
+		@comment = comment
+		@commenter = commenter
+		mail to: emails, subject: '[Spaces] You were tagged in a comment!'
+	end	
+
 end
