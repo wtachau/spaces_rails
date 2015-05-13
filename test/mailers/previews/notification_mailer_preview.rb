@@ -11,4 +11,8 @@ class NotificationMailerPreview < ActionMailer::Preview
 	def sample_followed_project
 		NotificationMailer.followed_project(Project.first, User.first)
 	end
+
+	def sample_users_tagged
+		NotificationMailer.users_tagged(User.first, User.all.pluck(:email), Comment.first)
+	end
 end
