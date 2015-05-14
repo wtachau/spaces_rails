@@ -10,7 +10,7 @@ class Spaces.UsernameLinkController extends Spaces.ViewController
 	showUserPopup = (user) =>
 		($ '#userPopup').modal 'show'
 		$.ajax
-			url: "users/#{user}/popup"
+			url: "/users/#{user}/popup"
 			type: 'GET'
 			success: (data) ->
 				($ '#userPopup .modal-content').html data
