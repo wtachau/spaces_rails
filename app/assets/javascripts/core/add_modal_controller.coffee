@@ -20,7 +20,7 @@ class Spaces.AddModalController extends Spaces.ViewController
 		# post or project?
 		popupSelection = (@$container.find '.add_picker option:selected').val()
 		$.ajax
-			url: "#{popupSelection}/new"
+			url: "/#{popupSelection}/new"
 			type: 'GET'
 			success: (data, textStatus, jqXHR) =>
 				loadingElement.toggleClass "hidden"
