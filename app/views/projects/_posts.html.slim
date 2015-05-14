@@ -1,1 +1,2 @@
-= render partial: "posts/preview", collection: project.posts, as: :post
+.project_body_section.project_posts class=( (defined? hidden) ? "hidden" : "")
+	= render partial: "posts/preview", collection: project.posts, as: :post

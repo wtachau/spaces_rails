@@ -4,15 +4,16 @@
 
 	.project_body_container
 		.btn-group.btn-group-sm.options role="group"
-			button.btn.btn-default = link_to description_project_path, remote:true
+			button.btn.btn-default section-target="project_description"
 				| description
-			button.btn.btn-default = link_to posts_project_path, remote:true
+			button.btn.btn-default section-target="project_posts"
 				| posts
-			button.btn.btn-default = link_to following_project_path, remote:true
+			button.btn.btn-default section-target="project_follows"
 				| following
 		.project_body 
 			= render partial: 'projects/description', locals: { project: project }
+			= render partial: 'projects/posts', locals: { project: project, hidden: true }
+			= render partial: 'projects/following', locals: { project: project, hidden: true }
 
 coffee:
-	new Spaces.AjaxLinkController '.project_body_container', (data) ->
-		($ '.project_body').html data
+	new Spaces.ProjectButtonController '.project_body_container'

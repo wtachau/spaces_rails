@@ -1,4 +1,5 @@
-- project.follows.each do | follow |
+.project_body_section.project_follows class=( (defined? hidden) ? "hidden" : "")
 	.row
-		.col-md-3
-			= render partial:'users/profile_container', locals: { user: follow.user }
+		- project.follows.each do | follow |
+			.col-md-3
+				= render partial:'users/profile_container', locals: { user: follow.user }
