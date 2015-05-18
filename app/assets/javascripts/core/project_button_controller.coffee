@@ -2,9 +2,9 @@
 
 class Spaces.ProjectButtonController extends Spaces.ViewController
 
-	initialize: ->
+	initialize: ( [toggleSections] ) ->
 		(@$container.find 'button').on 'click', (event) =>
 			# Hide all sections
-			($ '.project_body_section').addClass "hidden"
+			($ toggleSections).addClass "hidden"
 			# Then show selected one
-			($ '.project_body_section.' + (($ event.target).attr "section-target")).toggleClass "hidden"
+			($ toggleSections + "." + (($ event.target).attr "section-target")).toggleClass "hidden"
