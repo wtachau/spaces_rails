@@ -3,7 +3,7 @@
 		span class="logo_1" Originate
 		span class="logo_2" Spaces
 	#add_profile.upper_right 
-		img src=image_path('profile.png') data-toggle="modal" data-target="#profilePopup"
+		img.profile src=@current_user.image data-toggle="modal" data-target="#profilePopup"
 	#add_post.upper_right
 		img src=image_path('plus.png') data-toggle="modal" data-target="#addPopup"
 
