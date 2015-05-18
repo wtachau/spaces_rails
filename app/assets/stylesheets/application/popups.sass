@@ -25,6 +25,24 @@
 	button.selectpicker:focus, .dropdown-menu.selectpicker a:focus
 		outline: 0 !important
 
+/* Items toggle */
+.items_body_container
+	.options
+		margin-top: 20px
+		.btn
+			&:focus
+				outline: none
+			a
+				text-decoration: none
+				color: inherit
+
+	.items_body
+		border: 1px solid lightgray
+		border-radius: 15px
+		width: 90%
+		margin: -15px auto 0 auto
+		padding: 20px 0px 20px 0px
+
 /* PROFILE MODAL */
 #profilePopup 
 	text-align: center
@@ -70,7 +88,7 @@
 #userPopup
 	.modal-title
 		text-align: center
-		img 
+		img.profilepic
 			width: 100px
 			border-radius: 50px
 		.name

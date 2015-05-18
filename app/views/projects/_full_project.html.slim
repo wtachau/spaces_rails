@@ -2,7 +2,7 @@
 
 	= render partial: 'projects/header', locals: { project: project, main_display: true }
 
-	.project_body_container
+	.items_body_container
 		.btn-group.btn-group-sm.options role="group"
 			button.btn.btn-default section-target="project_description"
 				| description
@@ -10,10 +10,10 @@
 				| posts
 			button.btn.btn-default section-target="project_follows"
 				| following
-		.project_body 
+		.items_body 
 			= render partial: 'projects/description', locals: { project: project }
 			= render partial: 'projects/posts', locals: { project: project, hidden: true }
 			= render partial: 'projects/following', locals: { project: project, hidden: true }
 
 coffee:
-	new Spaces.ProjectButtonController '.project_body_container'
+	new Spaces.ProjectButtonController '.items_body_container', '.project_body_section'
