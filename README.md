@@ -18,10 +18,10 @@ and
 bundle install
 ```
 
-Now we need to create an appropriate user in the Postgres database. Try running ``` rake s``` to see why.  To do this, open up Postgres in terminal using ```psql``` or the GUI. Then remove any possible user ```bash root``` with the command ```DROP USER root```.  Then re-add the user root with appropriate permissions using the command 
+Now we need to create an appropriate user in the Postgres database. Try running ``` rake s``` to see why.  To do this, open up Postgres in terminal using ```psql``` or the GUI. Then remove any possible user ```root``` with the command ```DROP USER root```.  Then re-add the user root with appropriate permissions using the command 
 ```createuser 'root' PASSWORD '123456' CREATEDB SUPERUSER```
 
-Type \du to ensure that there exists a user 'root' with permissions 'Superuser', and 'CreateDB'.
+Type ```\du``` to ensure that there exists a user ```root``` with permissions ```Superuser```, and ```CreateDB```.
 
 Then we need to create the database, so we input the following commands (into terminal)
 
@@ -30,7 +30,7 @@ rake db:create
 ```
 followed by 
 ```
-shell rake db:migrate
+rake db:migrate
 ```
 
 You should now be ready to develop!
