@@ -34,3 +34,7 @@ rake db:migrate
 ```
 
 You should now be ready to develop!
+
+## Known Errors
+
+* On occasion, postgres will give an ```ActiveRecord::NoDatabaseError```.  To fix this in development, simply remove (or comment-out) the user and password conditions in the ```database.yml``` file. *Note, do not commit this change*, as it may cause other issues.  This is simply used to adjust your local environment.
