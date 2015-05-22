@@ -7,7 +7,10 @@ A 20% time discovery tool. More to come soon.
 The installation process is a little bit involved, so here is a handy guide to get you started.
 
 Clone the repo using ``` git clone```.
-Navigate to the repo and install RVM and PostgreSQL.  
+Navigate to the repo and install RVM and PostgreSQL.  Sometimes  Postgres.app runs into trouble. You may have better luck installing with
+```
+brew install postgres
+```
 Then, using terminal install Ruby using RVM.  You'll need Ruby version 2.2.0, so you''ll install that version using the command ```rvm install ruby-2.2.0```
 Then you need to run a series of commands to prep the repo for Rails, use 
 ```
