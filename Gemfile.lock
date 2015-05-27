@@ -161,6 +161,8 @@ GEM
       sinatra (~> 1.4.5)
     remotipart (1.2.1)
     request_store (1.1.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -247,6 +249,7 @@ DEPENDENCIES
   rails_autolink
   refile
   remotipart (~> 1.2)
+  responders (~> 2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selectize-rails (~> 0.11.2)
