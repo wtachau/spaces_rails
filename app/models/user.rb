@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
 	def tagName
 		"#{first_name}#{last_name}"
 	end
+	def firstName
+		first_name
+	end
+	def lastName
+		last_name
+	end
 end
