@@ -21,6 +21,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 # use responders to respond using JSON
 gem 'responders', '~> 2.0'
+#include React.js to make frontend faster
+gem 'react-rails', '~> 1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
