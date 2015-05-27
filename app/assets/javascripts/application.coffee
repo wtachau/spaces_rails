@@ -24,6 +24,9 @@
 #= require_self
 #= require_tree ./
 #= require_tree ./core/
+#= require react
+#= require react_ujs
+#= require components
 
 
 
