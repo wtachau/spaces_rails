@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
-  
+    respond_to :json, :html
+    
 	def create
 		project = Project.find params.require(:post).permit(:project)[:project]
 		@post = project.posts.create post_params
-		render @post.decorate
+		respond_with @post
 		Thread.new do
 			NotificationMailer.followed_project_post(@post).deliver_now
 		end
