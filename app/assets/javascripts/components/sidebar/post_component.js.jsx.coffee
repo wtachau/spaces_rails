@@ -30,9 +30,9 @@ PostComponent = React.createClass
 			</div>
 			`
 		)
-		
+
 	componentDidMount: ->
-		bindAjaxController
+		@bindAjaxController
 
 	bindAjaxController: ->
 		ticket_container = '#' + this.state.random_id
