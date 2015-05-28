@@ -8,7 +8,7 @@ PostsMainComponent = React.createClass
 						<div className="posts">
 							{for (post in this.state.posts){
 								(function() {
-									return (<Post setState={post}/>)
+									return (<PostComponent setState={post}/>)
 								})();
 							}
 							}
