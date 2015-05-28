@@ -1,3 +1,4 @@
+# @state.posts is an array of json objects describing posts
 PostsMainComponent = React.createClass
 	render: ->
 		class_name = if @props.postsAreRelevant then "relevant_posts" else "all_posts"

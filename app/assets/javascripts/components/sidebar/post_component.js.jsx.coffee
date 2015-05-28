@@ -1,4 +1,4 @@
-# expecting state fields ticket_id, random_id, num_comments, project_name 
+# expecting state fields ticket_id, random_id, num_comments, project_name, user
 PostComponent = React.createClass
 	render: ->
 		return (
