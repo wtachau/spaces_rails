@@ -1,17 +1,22 @@
-ruby:	
+ruby:
+	#move to JSON/backend
 	@ticket_id = "ticket-#{post.id}"
 	@id = random_dom_id
+
+// move to REACT component
 .ticket_box class=@ticket_id id=@id project=post.project.id
+	// will be part of react component.... callback maybe?
 	= link_to preview_post_path(post), remote:true
 		.container-fluid
 			.row
 				.col-md-3
-					= render partial:'users/profile_container', locals: { user:post.project.user}
+					= render partial:'users/profile_container', locals: { user:post.project.user}*
 				.col-md-9 class='ticket_description'
 					div.ticket_icon
 						.num_comments.badge #{post.comments.count}
 					.description #{post.long}
 					.project_name() [ #{post.project.name} ]
+
 // CoffeeScript doesn't handle string interpolation well, so we create variables in native javascript here
 javascript:
  	var ticket_container =  "##{@id}";

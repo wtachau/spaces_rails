@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'responders', '~> 2.0'
 #include React.js to make frontend faster
 gem 'react-rails', github: 'reactjs/react-rails'
+# include CJSX compiler
+gem 'sprockets-coffee-react'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
