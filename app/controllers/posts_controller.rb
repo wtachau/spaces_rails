@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = (Post.find params.permit(:id)[:id]).decorate
-		render 'full_page'
+		render partial: "posts/post.json.jbuilder", formats: :json, locals: { post: @posts, current_user: @current_user}
 	end
 
 	def preview
