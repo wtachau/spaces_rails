@@ -30,3 +30,11 @@ PostComponent = React.createClass
 			</div>
 			`
 		)
+		
+	componentDidMount: ->
+		bindAjaxController
+
+	bindAjaxController: ->
+		ticket_container = '#' + this.state.random_id
+		new Spaces.AjaxLinkController ticket_container, (data) ->
+			($ '.main_panel_content').html data
