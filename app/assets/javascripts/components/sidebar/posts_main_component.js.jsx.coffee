@@ -1,17 +1,18 @@
 PostsMainComponent = React.createClass
 	render: ->
-		class = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
+		class_name = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
 		return(
 			`
 				<div>
-					<div className={"overflow_section "+class}>
+					<div className={"overflow_section "+class_name}>
 						<div className="posts">
-							{for (post in this.state.posts){
-								(function() {
-									return (<PostComponent setState={post}/>)
-								})();
-							}
-							}
+							{(function(){
+								for (post in this.state.posts){
+									(function() {
+										return (<PostComponent setState={post}/>)
+									})();
+								}
+							})()}
 						</div>
 					</div>
 				</div>
