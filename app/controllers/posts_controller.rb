@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    respond_to :json, :html
+    respond_to :json, only: [:show, :relevant, :index, :create]
     
 	def create
 		project = Project.find params.require(:post).permit(:project)[:project]
@@ -17,16 +17,22 @@ class PostsController < ApplicationController
 
 	def relevant
 		@current_user = current_user
-		render PostsService.new(current_user).relevant_posts_decorated
+		@relevant_posts = PostsService.new(current_user).relevant_posts_decorated
+		respond_with @relevant_posts
 	end
 
 	def show
 		@post = (Post.find params.permit(:id)[:id]).decorate
-		render partial: "posts/post.json.jbuilder", formats: :json, locals: { post: @posts, current_user: @current_user}
+		respond_with @post
 	end
 
 	def preview
 		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }
+	end
+
+	def index
+		@all_posts = Post.order('updated_at DESC').all.decorate
+		respond_with @all_posts
 	end
 
 	private
