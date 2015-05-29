@@ -1,5 +1,5 @@
 window.PostsHeaderComponent = React.createClass
 	render: ->
 		return (
-			 <div> <div> { this.props.text } </div> </div> 
+			 <div className={"section_header " + @props.suppClass }  > <div> { @props.text } </div> </div> 
 		)
