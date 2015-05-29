@@ -26,9 +26,10 @@ window.PostsMainComponent = React.createClass
 	render: ->
 		class_name = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
 		@loadPostsFromServer()
-		postNodes = @state.posts_json.map (post)->
+		postNodes = @state.posts_json.map (data)->
+			# see app/views/posts/_post.json.jbuilder for structure of data
 			return(
-				<PostComponent post={ post } key={post.post_id} />
+				<PostComponent post={ data.post } user={ data.user } project={ data.project } key={ data.post.id } />
 			)
 		return(
 				<div>
