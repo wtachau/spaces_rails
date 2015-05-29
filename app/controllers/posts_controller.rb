@@ -17,13 +17,12 @@ class PostsController < ApplicationController
 
 	def relevant
 		@current_user = current_user
-		@relevant_posts = PostsService.new(current_user).relevant_posts_decorated
-		respond_with @relevant_posts
+		@posts = PostsService.new(current_user).relevant_posts_decorated
+		respond_with @posts, template: "posts/index"
 	end
 
 	def show
-		@post = (Post.find params.permit(:id)[:id]).decorate
-		respond_with @post
+		@post = (Post.find params.permit(:id, :format)[:id]).decorate
 	end
 
 	def preview
@@ -31,13 +30,13 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@all_posts = Post.order('updated_at DESC').all.decorate
-		respond_with @all_posts
+		@posts = Post.order('updated_at DESC').all.decorate
+		respond_with @posts
 	end
 
 	private
 		def post_params
-			params.require(:post).permit(:short, :long, :link, tag_list:[])
+			params.require(:post).permit(:short, :long, :format, :link, tag_list:[])
 		end
 
 end
