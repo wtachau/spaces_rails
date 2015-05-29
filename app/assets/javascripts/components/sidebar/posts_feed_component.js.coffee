@@ -2,23 +2,10 @@
 window.PostsFeedComponent = React.createClass
 	render: ->
 		return( 
+			header_text = if @props.postsAreRelevant then "posts relevant to you" else "most recent posts"
 			<div>
-				<PostsHeaderComponent text={'posts relevant to you'} relevantHeader={ this.props.postsAreRelevant } className={ "section_header skills" } />
-				<PostsMainComponent className={"left_section skills"} setState={ this.state['data'] } postsAreRelevant={ this.props.postsAreRelevant } />
+				<PostsHeaderComponent text={ header_text } className={ "section_header skills" } />
+				<PostsMainComponent className={ "left_section skills" } postsAreRelevant={ this.props.postsAreRelevant } />
 			</div>
 		)
-			
 	
-	getInitialState: ->
-		{data: []}
-
-	componentDidMount: ->
-		@loadPostsFromServer
-		@pollServer
-
-	loadPostsFromServer: ->
-		$.ajax
-
-
-	pollServer: ->
-		setInterval @loadPostsFromServer, @props.pollInterval
