@@ -8,7 +8,9 @@ coffee:
 // Posts
 .container-fluid.body_table
 	.row 
-		= react_component 'SidebarComponent' 
+		// want to give this an initial state somehow
+		= react_component 'SidebarComponent', {} , class: "left_panel body_panel"
+		// = react_component ('SidebarComponent', {}, {class: "row"})
 		//.left_panel.body_panel
 			// Relevant Posts
 		//	.section_header.skills

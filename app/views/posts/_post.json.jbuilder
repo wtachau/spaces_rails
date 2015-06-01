@@ -1,7 +1,6 @@
 json.post do
 	json.text        	post.long
 	json.random_id		"47"
-	json.ticket_id		"99"
 	json.num_comments 	post.comments.count
 	json.id     		post.id
 end

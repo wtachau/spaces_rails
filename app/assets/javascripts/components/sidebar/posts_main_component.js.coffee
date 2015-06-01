@@ -24,7 +24,7 @@ window.PostsMainComponent = React.createClass
 		setInterval @loadPostsFromServer, @props.pollInterval
 
 	render: ->
-		class_name = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
+		postClass = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
 		@loadPostsFromServer()
 		postNodes = @state.posts_json.map (data)->
 			# see app/views/posts/_post.json.jbuilder for structure of data
@@ -32,9 +32,11 @@ window.PostsMainComponent = React.createClass
 				<PostComponent post={ data.post } user={ data.user } project={ data.project } key={ data.post.id } />
 			)
 		return(
-				<div>
-					<div className={"overflow_section "+class_name}>
-						{postNodes}
+				<div className = {@props.className}>
+					<div className={ "overflow_section " + postClass } >
+						<div className={ "posts" }>
+							{postNodes}
+						</div>
 					</div>
 				</div>
 		)
