@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 	end
 
 	def preview
-		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }
+		render partial:'full_post', locals:{ post: (Post.find params[:id]).decorate, full: false }, layout: false
 	end
 
 	def index

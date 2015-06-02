@@ -1,5 +1,5 @@
 div class='main_panel_fixed_height' 
-	div class='main_panel_content'
+	div class='main_panel_content' id='panel_content'
 		- if @selected_project
 			= render partial: 'projects/full_project', locals: { project: @selected_project }
 		- elsif @selected_post
