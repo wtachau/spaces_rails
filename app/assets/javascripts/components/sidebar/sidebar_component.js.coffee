@@ -11,11 +11,3 @@ window.SidebarComponent = React.createClass
 				<PostsMainComponent className={ "left_section all"} postsAreRelevant={ false } pollInterval={ pollInterval }/>
 			</div>
 		)
-
-
-		#return(
-		#	<div className="left_panel body_panel">
-		#		<PostsFeedComponent postsAreRelevant={true} pollInterval={ relevantFactor * pollInterval } />
-		#		<PostsFeedComponent postsAreRelevant={false} pollInterval={ (1 / relevantFactor) * pollInterval } />
-		#	</div>
-		#)

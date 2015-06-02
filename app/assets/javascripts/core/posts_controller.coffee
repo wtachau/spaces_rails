@@ -3,12 +3,8 @@
 class Spaces.PostsController extends Spaces.ViewController
 
 	initialize: ->
-		#($ 'body').on 'updatePosts', =>
-			#@updateRelevantPosts()
 		($ 'body').on 'postFollowed', (event, data) =>
 			@updateFollowIcons data
-		#($ 'body').on 'postAdded', (event, data) =>
-			#@postAdded data
 
 	# Update UI and trigger postAdded event
 	postAdded: (data) =>
@@ -32,5 +28,3 @@ class Spaces.PostsController extends Spaces.ViewController
 		else 
 			$(".follow_container").removeClass("following")
 			($ follow_icons).removeClass("active")
-
-		##$('body').trigger('updatePosts');

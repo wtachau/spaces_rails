@@ -1,4 +1,3 @@
-# relies on state with fields user_id, user_img, first_name
 window.ProfileSnippetComponent = React.createClass
 	render: ->
 		<div className="profile_container username_link" user_id={this.props.user.id}>

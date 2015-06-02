@@ -1,8 +1,6 @@
 window.PostComponent = React.createClass
 	render: ->
-		##// will be part of react component.... callback maybe? = link_to preview_post_path(post), remote:true
 		return (
-			#<div className={"ticket_box "+this.props.post.ticket_id} id={this.state.random_id} project={this.state.project_id}>
 			<div className={ "ticket_box ticket-" + this.props.post.id } id={ @id } project={ this.props.project.id }>
 				<a onClick={@postClicked}>
 					<div className="container-fluid">
