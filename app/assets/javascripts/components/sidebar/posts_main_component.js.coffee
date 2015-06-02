@@ -3,11 +3,14 @@ window.PostsMainComponent = React.createClass
 	getInitialState: ->
 		{posts_json: []}
 
-	componentDidMount: ->
+	componentWillMount: ->
 		@loadPostsFromServer()
-		
+	
+	componentDidMount:->
+		@pollServer()	
 
 	loadPostsFromServer: ->
+		console.log "loading posts from server"
 		url = 'posts' + (if @props.postsAreRelevant then '/relevant' else '')
 		return $.ajax
 			url: url+ '.json'
@@ -21,11 +24,10 @@ window.PostsMainComponent = React.createClass
 
 
 	pollServer: ->
-		setInterval @loadPostsFromServer, @props.pollInterval
+		setInterval(@loadPostsFromServer, @props.pollInterval)
 
 	render: ->
 		postClass = if @props.postsAreRelevant then "relevant_posts" else "all_posts"
-		@loadPostsFromServer()
 		postNodes = @state.posts_json.map (data)->
 			# see app/views/posts/_post.json.jbuilder for structure of data
 			return(

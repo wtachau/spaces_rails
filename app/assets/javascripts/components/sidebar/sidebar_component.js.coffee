@@ -1,14 +1,14 @@
 window.SidebarComponent = React.createClass
 	render: ->
-		pollInterval = 2000
-		relevantFactor = .75		
+		pollInterval = 5000
+		relevantFactor = 2
 		return( 
 			<div className="sidebar_wrapper">
 				<PostsHeaderComponent text={ "posts relevant to you" } className={ "section_header skills"} />
-				<PostsMainComponent className={ "left_section skills" } postsAreRelevant={ true } />
+				<PostsMainComponent className={ "left_section skills" } postsAreRelevant={ true } pollInterval={ relevantFactor * pollInterval }/>
 
 				<PostsHeaderComponent text={ "most recent posts" } className={ "section_header all"} />
-				<PostsMainComponent className={ "left_section all"} postsAreRelevant={ false } />
+				<PostsMainComponent className={ "left_section all"} postsAreRelevant={ false } pollInterval={ pollInterval }/>
 			</div>
 		)
 
