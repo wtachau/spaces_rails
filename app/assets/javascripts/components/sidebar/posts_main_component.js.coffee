@@ -10,7 +10,6 @@ window.PostsMainComponent = React.createClass
 		@pollServer()	
 
 	loadPostsFromServer: ->
-		console.log "loading posts from server"
 		url = 'posts' + (if @props.postsAreRelevant then '/relevant' else '')
 		return $.ajax
 			url: url+ '.json'

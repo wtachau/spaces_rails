@@ -45,5 +45,4 @@ window.PostComponent = React.createClass
 		Math.floor ( Math.random() * 100000 )
 
 	postClicked: ->
-		console.log "Post Clicked"
 		($ 'body').trigger 'postClicked', @props.post.id
