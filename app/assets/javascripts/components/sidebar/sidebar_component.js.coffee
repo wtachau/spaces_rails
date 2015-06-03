@@ -5,9 +5,9 @@ window.SidebarComponent = React.createClass
 		return( 
 			<div className="sidebar_wrapper">
 				<PostsHeaderComponent text={ "posts relevant to you" } className={ "section_header skills"} />
-				<PostsMainComponent className={ "left_section skills" } url={ "posts/relevant" } pollInterval={ relevantFactor * pollInterval }/>
+				<PostsMainComponent className={ "left_section skills" } url={ "posts/relevant" } pollInterval={ relevantFactor * pollInterval } initialPosts={ @props.initialRelevantPosts }/>
 
 				<PostsHeaderComponent text={ "most recent posts" } className={ "section_header all"} />
-				<PostsMainComponent className={ "left_section all"} url={ "posts" } pollInterval={ pollInterval }/>
+				<PostsMainComponent className={ "left_section all"} url={ "posts" } pollInterval={ pollInterval } initialPosts={ @props.initialRecentPosts }/>
 			</div>
 		)

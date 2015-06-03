@@ -3,9 +3,13 @@ window.PostsMainComponent = React.createClass
 		className: 	  React.PropTypes.string.isRequired
 		url: 		  React.PropTypes.string.isRequired
 		pollInterval: React.PropTypes.number.isRequired
-	}
+		initialPosts: React.PropTypes.array
+	},
+	getDefaultProps: ->
+		return {initialPosts: []}
+
 	getInitialState: ->
-		{posts: []}
+		{posts: @props.initialPosts}
 
 	componentWillMount: ->
 		@loadPostsFromServer()

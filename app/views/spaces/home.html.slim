@@ -8,7 +8,11 @@ coffee:
 // Posts
 .container-fluid.body_table
 	.row 
-		= react_component 'SidebarComponent', {} , class: "left_panel body_panel"
+		= react_component 'SidebarComponent' \
+		  	, render(template: "posts/initial_posts.json.jbuilder" \
+		  		, locals: { relevant_posts: @relevant_posts, recent_posts: @posts}) \
+		  	, class: "left_panel body_panel"
+		
 		.main_panel.body_panel
 			= render partial: 'main_panel'
 
