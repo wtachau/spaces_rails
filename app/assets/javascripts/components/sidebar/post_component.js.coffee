@@ -8,7 +8,7 @@ window.PostComponent = React.createClass
 
 		post: 	 React.PropTypes.shape
 					id: 			React.PropTypes.number.isRequired
-					num_comments: 	React.PropTypes.number.isRequired
+					numComments: 	React.PropTypes.number.isRequired
 					text: 			React.PropTypes.string.isRequired
 
 	componentWillMount: ->
@@ -42,7 +42,7 @@ window.PostComponent = React.createClass
 							<div className="col-md-9 ticket_description">
 								<div className="ticket_icon">
 									<div className="num_comments badge"> 
-										{ @props.post.num_comments }
+										{ @props.post.numComments }
 									</div>
 								</div>
 								<div className="description">

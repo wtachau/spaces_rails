@@ -1,3 +1,4 @@
+json.key_format! camelize: :lower
 json.post do
 	json.text        	post.long
 	json.num_comments 	post.comments.count
@@ -5,8 +6,8 @@ json.post do
 end
 
 json.user do
-	json.firstName 	post.project.user.firstName
-	json.lastName  	post.project.user.lastName
+	json.first_name	post.project.user.firstName
+	json.last_name 	post.project.user.lastName
 	json.id 	   	post.project.user.id
 	json.img   		post.project.user.image
 end
