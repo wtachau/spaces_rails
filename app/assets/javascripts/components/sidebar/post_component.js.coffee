@@ -1,15 +1,15 @@
 window.PostComponent = React.createClass
 	propTypes:
 		project: React.PropTypes.shape
-					id: React.PropTypes.number.isRequired
-					name: React.PropTypes.string.isRequired
+					id: 	React.PropTypes.number.isRequired
+					name: 	React.PropTypes.string.isRequired
 
 		user: 	 React.PropTypes.object.isRequired
 
 		post: 	 React.PropTypes.shape
-					id: 			React.PropTypes.number.isRequired
+					id:				React.PropTypes.number.isRequired
 					numComments: 	React.PropTypes.number.isRequired
-					text: 			React.PropTypes.string.isRequired
+					text:			React.PropTypes.string.isRequired
 
 	componentWillMount: ->
 		@id = @getNewID()
