@@ -1,3 +1,0 @@
-== README
-
-A 20% time discovery tool. More to come soon.
