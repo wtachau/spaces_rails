@@ -1,11 +1,10 @@
-.container-fluid.header
-	#logo_full
-		span class="logo_1" Originate
-		span class="logo_2" Spaces
-	#add_profile.upper_right 
-		img.profile src=@current_user.image data-toggle="modal" data-target="#profilePopup"
-	#add_post.upper_right
-		img src=image_path('plus.png') data-toggle="modal" data-target="#addPopup"
+nav.navbar.navbar-fixed-top
+	.container-fluid.header
+		.logo Spaces
+		#add_profile.upper_right 
+			img.profile src=@current_user.image data-toggle="modal" data-target="#profilePopup"
+		#add_post.upper_right
+			img src=image_path('plus.png') data-toggle="modal" data-target="#addPopup"
 
 // User profile modal
 #userPopup.modal.fade.popup tabindex='-1' role='dialog' aria-labelledby="myModalLabel" aria-hidden="true"

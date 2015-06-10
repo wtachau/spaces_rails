@@ -3,28 +3,8 @@ coffee:
 	root = exports ? this
 	root.signinCallback = loginController.signedinCallback
 
-= render 'layouts/header'
-
-// Posts
-.container-fluid.body_table
-	.row 
-		= react_component 'SidebarComponent' \
-		  	, render(template: "posts/initial_posts.json.jbuilder" \
-		  		, locals: { relevant_posts: @relevant_posts, recent_posts: @posts}) \
-		  	, class: "left_panel body_panel"
-		
-		.main_panel.body_panel
-			= render partial: 'main_panel'
-
-		.slideout
-			.slideout_body.offscreen
-				.projects_preview_header all projects
-				.projects_preview_body
-					= render @projects
-			.trigger 
-				span.show_text < show all projects
-				span.hide_text >
-= render 'layouts/footer'
+// The main application component
+= react_component 'ApplicationComponent', user: @current_user
 
 coffee:
 	# Create relevant view controllers
