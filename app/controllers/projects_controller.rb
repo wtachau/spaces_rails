@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
 
 	private
 		def project_params
-			params.permit(:info, :name, :link, :problem, :solution)
+			params.permit(:info, :name, :link, :problem, :solution, :github, :dropbox)
 		end
 
 		def project_dict_from_params

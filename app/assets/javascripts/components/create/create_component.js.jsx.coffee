@@ -1,7 +1,7 @@
-@MainCreateComponent = React.createClass
+@CreateComponent = React.createClass
 
 	getInitialState: ->
-		{ name: "", problem: "", solution: "", info: "", inProgress: false }
+		{ name: "", problem: "", solution: "", info: "", github: "", dropbox: "", link: "", inProgress: false }
 	
 	handleChange: (e) ->
 		switch e.target.name
@@ -9,6 +9,9 @@
 			when "problem" then @setState({problem: e.target.value})
 			when "solution" then @setState({solution: e.target.value})
 			when "info" then @setState({info: e.target.value})
+			when "github" then @setState({github: e.target.value})
+			when "dropbox" then @setState({dropbox: e.target.value})
+			when "link" then @setState({link: e.target.value})
 
 	publish: (e) ->
 		e.preventDefault()
@@ -27,17 +30,50 @@
 					console.log "Error updating posts: "+errorThrown
 
 	render: ->
-		publishDisplay = if @state.inProgress then <img className="loading"></img> else "Publish"
+		sidebarInputs = [{name: "github", stateValue: @state.github},
+						 {name: "dropbox", stateValue: @state.dropbox},
+						 {name: "link", stateValue: @state.link}]
+		mainInputs = [{name: "problem", title: "Problem", placeholder: "Tell us what problem you are solving", stateValue: @state.problem},
+					  {name: "solution", title: "Solution", placeholder: "How are you going to solve the problem?", stateValue: @state.solution},
+					  {name: "info", title: "More Info", placeholder: "More information...", stateValue: @state.info}]
 
-		<div className="main-panel main-panel-create">
-			<form>
-				<input name="name" type="text" value={@state.name} onChange={@handleChange} placeholder="Name your project or idea"/>
-				<div className="create-header">Problem:</div>
-				<textarea name="problem" value={@state.problem} onChange={@handleChange} placeholder="Tell us what problem you are exploring..."/>
-				<div className="create-header">Solution:</div>
-				<textarea name="solution" value={@state.solution} onChange={@handleChange} placeholder="How are you going to solve this problem?"/>
-				<div className="create-header">More info:</div>
-				<textarea name="info" value={@state.info} onChange={@handleChange} placeholder="More information..."/>
-				<div className="submit-holder" onClick={@publish}>{ publishDisplay }</div>
-			</form>
+		publishDisplay = if @state.inProgress then <img className="loading"></img> else "Publish"
+		<div className="body_area">
+			<div className="main-panel main-panel-create">
+				<form>
+					<input name="name" type="text" value={@state.name} onChange={@handleChange} placeholder="Name your project or idea"/>
+					{ mainInputs.map ({name, title, placeholder, stateValue, handleChange}) =>
+						<CreateFormComponent name={name}, title={title}, inputValue={stateValue}, placeholder={placeholder}, handleChange={@handleChange}/>
+					}
+					<div className="submit-holder" onClick={@publish}>{ publishDisplay }</div>
+				</form>
+			</div>
+			<div className="sidebar">
+				<div className="sidebar-header">Attachments and Links</div>
+				{ sidebarInputs.map ({name, stateValue}) =>
+					<CreateSidebarFormComponent name={name} inputValue={stateValue} handleChange={@handleChange} placeholder={name} key={name}/>
+				}
+			</div>
 		</div>
+
+@CreateFormComponent = React.createClass
+	render: ->
+		<div>
+			<div className="create-header">{@props.title}</div>
+			<textarea name={@props.name} value={@props.inputValue} onChange={@props.handleChange} placeholder={@props.placeholder}/> 
+		</div>
+
+
+@CreateSidebarFormComponent = React.createClass
+	render: ->
+		<div className="sidebar-input-wrapper">
+			<div className="icon-wrapper"><i className={"fa fa-"+@props.name}></i></div>
+			<input name={ @props.name } 
+					type="text" 
+					onChange={@props.handleChange}  
+					value={@props.inputValue}
+					placeholder={@props.placeholder} />
+		</div>
+		
+
+

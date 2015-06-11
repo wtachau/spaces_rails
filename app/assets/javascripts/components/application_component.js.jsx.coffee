@@ -29,10 +29,3 @@
 			<MainFeedComponent/>
 			<MainSidebarComponent/>
 		</div>
-
-@CreateComponent = React.createClass
-	render: ->
-		<div className="body_area">
-			<MainCreateComponent/>
-			<MainSidebarComponent/>
-		</div>
