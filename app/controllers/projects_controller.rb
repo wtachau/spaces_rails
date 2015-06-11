@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
+	respond_to :json, only: [:index]
   
 	def create
+		puts project_params
 		@project = current_user.projects.create project_params
-		render @project.decorate
+		render json: { result: "success" }
 	end
 
 	def new
@@ -23,20 +25,9 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def main_display
-		render partial:'full_project', locals: project_dict_from_params
-	end
-
-	def description
-		render partial: 'description', locals: project_dict_from_params
-	end
-
-	def posts
-		render partial: 'posts', locals: project_dict_from_params
-	end
-
-	def following
-		render partial: 'following', locals: project_dict_from_params
+	def index
+		@projects = Project.order('updated_at DESC').all.decorate
+		respond_with @projects
 	end
 
 	def tagged
@@ -45,7 +36,7 @@ class ProjectsController < ApplicationController
 
 	private
 		def project_params
-			params.require(:project).permit(:short, :name, :link, tag_list:[])
+			params.permit(:info, :name, :link, :problem, :solution)
 		end
 
 		def project_dict_from_params

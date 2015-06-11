@@ -6,22 +6,22 @@
 			first_name: React.PropTypes.string.isRequired
 
 	render: ->
-		`<div>
+		<div>
 			<nav className="navbar navbar-fixed-top">
 				<div className="container-fluid header">
 					<div className="logo"> Spaces </div>
 					<div id="add_profile" className="upper_right">
 						<img className="profile" src={this.props.user.image+"?sz=100"} data-toggle="modal" data-target="#profilePopup"></img>
 					</div>
+					<div onClick={@props.createClicked} className="create-button">Create</div>
 					<div className="header-links">
-						<span className="active">home</span>
+						<span onClick={@props.homeClicked} className="active">home</span>
 						<span>projects</span>
 						<span>questions</span>
 					</div>
 				</div>
 			</nav>
 
-			{/* Profile modal */}
 			<div id="profilePopup" className="modal fade popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
@@ -32,13 +32,13 @@
 							<h4 className="modal-title" id="myModalLabel"> name here</h4>
 						</div>
 						<div className="modal-body">
-							<img className="profileImage" src={this.props.user.image+"?sz=100"}></img>
+							<img className="profileImage" src={@props.user.image+"?sz=100"}></img>
 							<div className="post_form">
-								{/* = render partial: 'users/form' */}
+								
 							</div>
 						</div>
 						<div className="modal-footer">
-							{/* Cruft for Google Plus logout */}
+							
 							<span id="signinButton" className="hidden">
 								<span className="g-signin"
 									data-callback="signinCallback"
@@ -52,5 +52,5 @@
 					</div>
 				</div>
 			</div>
-		</div>`
+		</div>
 						

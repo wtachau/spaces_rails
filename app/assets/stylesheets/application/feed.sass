@@ -2,12 +2,9 @@
 @import application/fonts
 @import application/colors
 
-.main-panel
-	@extend .col-md-9
-	height: 100%
-	overflow: scroll
+.main-panel-feed
 
-	.posts
+	.feed-posts
 		float: right
 
 		.feed-post
@@ -57,7 +54,10 @@
 				text-decoration: none
 				color: black
 
-			.feedback, .tags
+			.tags
+				@extend .col-md-6
+
+			.feedback
 				@extend .col-md-4
 				float: left
 			.feedback-number, .tags-text

@@ -1,3 +1,4 @@
+@import application
 @import application/sizes
 
 html, body
@@ -18,8 +19,14 @@ a
 	i.fa
 		color: black
 
-textarea
+textarea, input
 	resize: none
+	&:focus
+		outline: none
 
 .username_link
 	cursor: pointer
+
+
+.main-panel
+	@extend .col-md-9

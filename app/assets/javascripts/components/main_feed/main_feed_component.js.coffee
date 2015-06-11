@@ -1,36 +1,37 @@
 window.MainFeedComponent = React.createClass
 
 	getInitialState: ->
-		{posts: []}
+		{projects: []}
 
 	componentWillMount: ->
-		@loadPostsFromServer()
+		@loadProjectsFromServer()
 	
 	componentDidMount:->
 		@pollServer()	
 
-	loadPostsFromServer: ->
+	loadProjectsFromServer: ->
 		return $.ajax
-			url: "posts"
+			url: "projects"
 			dataType: 'json'
 			cache: false
-			success: (posts) =>
-				@setState {posts: posts}
+			success: (projects) =>
+				if @isMounted()
+					@setState {projects: projects}
 
 			error: (jqXHR, textStatus, errorThrown) ->
-				console.log "Error updating posts: "+errorThrown
+				console.log "Error updating projects: "+errorThrown
 
 	pollServer: ->
-		setInterval @loadPostsFromServer, 5000
+		setInterval @loadProjectsFromServer, 5000
 
 	render: ->
-		postNodes = @state.posts.map (data)->
+		projectNodes = @state.projects.map (data)->
 			# see app/views/posts/_post.json.jbuilder for structure of data
 			return(
-				<PostComponent post={ data.post } user={ data.user } project={ data.project } key={ data.post.id } />
+				<ProjectComponent user={ data.user } project={ data.project } key={ data.project.id }/>
 			)
 		<div className="main-panel main-panel-feed">
-			<div className="posts">
-				{ postNodes }
+			<div className="feed-posts">
+				{ projectNodes }
 			</div>
 		</div>

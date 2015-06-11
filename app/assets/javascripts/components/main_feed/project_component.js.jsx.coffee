@@ -1,15 +1,10 @@
-window.PostComponent = React.createClass
+window.ProjectComponent = React.createClass
 	propTypes:
 		project: React.PropTypes.shape
-					id: 	React.PropTypes.number.isRequired
-					name: 	React.PropTypes.string.isRequired
+			id: 	React.PropTypes.number.isRequired
+			name: 	React.PropTypes.string.isRequired
 
 		user: 	 React.PropTypes.object.isRequired
-
-		post: 	 React.PropTypes.shape
-					id:				React.PropTypes.number.isRequired
-					numComments: 	React.PropTypes.number.isRequired
-					text:			React.PropTypes.string.isRequired
 
 	componentWillMount: ->
 		@id = @getNewID()
@@ -32,7 +27,9 @@ window.PostComponent = React.createClass
 	# 	($ 'body').trigger 'postClicked', @props.post.id
 
 	render: ->
-		github = if @props.project.github then <div>asdf</div> else null
+
+		tagList = @props.project.tagList.map (tag) ->
+			<span>{tag}, </span> 
 
 		<div className="feed-post">
 			<div className="row">
@@ -66,12 +63,13 @@ window.PostComponent = React.createClass
 
 				<div className="project-footer">
 					<div className="feedback">
-						Feedback: <a href="/comments"><span className="feedback-number">({ @props.post.numComments })</span></a>
+						Feedback: <a href="/comments"><span className="feedback-number">({ @props.project.numComments })</span></a>
 					</div>
 					<div className="tags">
-						Tags: <span className="tags-text">One, Two, Three</span>
+						Tags: <span className="tags-text">{ tagList }</span>
 					</div>
 				</div>
 			</div>
 			<div className="feed-separator"></div>
+			
 		</div>
