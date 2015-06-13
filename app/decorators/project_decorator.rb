@@ -1,8 +1,9 @@
+include ActionView::Helpers::DateHelper
 class ProjectDecorator < Draper::Decorator
 	delegate_all
 
-	def tag_list_decorated
-		object.tag_list.map{ |tag| "<span class='tag_link'>#{tag}</span>" }.join(", ").html_safe
+	def time_ago
+		time_ago_in_words object.updated_at
 	end
 
 end

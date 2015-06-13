@@ -6,37 +6,22 @@ window.ProjectComponent = React.createClass
 
 		user: 	 React.PropTypes.object.isRequired
 
-	componentWillMount: ->
-		@id = @getNewID()
-
-	componentDidMount: ->
-		@bindAjaxController
-
-	bindAjaxController: ->
-		ticket_container = '#' + @id
-		new Spaces.AjaxLinkController ticket_container, (data) ->
-			($ '.main_panel_content').html data
-
-	# create a random id for each post component between 0 and 99999
-	# as Math.random is lower-bound inclusive, upper-bound exclusive
-	getNewID: ->
-		Math.floor ( Math.random() * 100000 )
-
-	# use with <a onClick={ @postClicked }>
-	# postClicked: ->
-	# 	($ 'body').trigger 'postClicked', @props.post.id
-
 	render: ->
 
-		tagList = @props.project.tagList.map (tag) ->
-			<span>{tag}, </span> 
+		tag_list = @props.project.tag_list.map (tag) ->
+			<span key={tag}>{tag}, </span> 
 
 		<div className="feed-post">
 			<div className="row">
 				<div className="profile-container username-link" user-id={@props.user.id}>
-					<img className="profilepic-small" src={@props.user.img+"?sz=100"}></img>
-					<div className="username"> 
-						{ @props.user.firstName } { @props.user.lastName }
+					<img className="profilepic-small" src={@props.user.image+"?sz=100"}></img>
+					<div className="profile-text-wrapper">
+						<div className="username"> 
+							{ @props.user.first_name } { @props.user.last_name }
+						</div>
+						<div className="timestamp">
+							{ @props.project.time_ago } ago
+						</div>
 					</div>
 				</div>
 				<div className="feed-links">
@@ -59,14 +44,14 @@ window.ProjectComponent = React.createClass
 					<div className="project-desc"> { @props.project.solution } </div>
 				</div>
 
-				<a href="/details"><div className="project-details-link">Details></div></a>
+				<div onClick={ @props.projectClicked } data-project-id={@props.project.id} className="project-details-link">Details></div>
 
 				<div className="project-footer">
 					<div className="feedback">
 						Feedback: <a href="/comments"><span className="feedback-number">({ @props.project.numComments })</span></a>
 					</div>
 					<div className="tags">
-						Tags: <span className="tags-text">{ tagList }</span>
+						Tags: <span className="tags-text">{ tag_list }</span>
 					</div>
 				</div>
 			</div>

@@ -14,9 +14,9 @@ window.MainFeedComponent = React.createClass
 			url: "projects"
 			dataType: 'json'
 			cache: false
-			success: (projects) =>
+			success: (data) =>
 				if @isMounted()
-					@setState {projects: projects}
+					@setState {projects: data.projects}
 
 			error: (jqXHR, textStatus, errorThrown) ->
 				console.log "Error updating projects: "+errorThrown
@@ -25,13 +25,16 @@ window.MainFeedComponent = React.createClass
 		setInterval @loadProjectsFromServer, 5000
 
 	render: ->
-		projectNodes = @state.projects.map (data)->
+		projectNodes = @state.projects.map (data) =>
 			# see app/views/posts/_post.json.jbuilder for structure of data
 			return(
-				<ProjectComponent user={ data.user } project={ data.project } key={ data.project.id }/>
+				<ProjectComponent user={ data.user } project={ data } projectClicked={@props.projectClicked} key={ data.id }/>
 			)
-		<div className="main-panel main-panel-feed">
-			<div className="feed-posts">
-				{ projectNodes }
+		<div className="body_area">
+			<div className="main-panel main-panel-feed">
+				<div className="feed-posts">
+					{ projectNodes }
+				</div>
 			</div>
+			<MainSidebarComponent/>
 		</div>

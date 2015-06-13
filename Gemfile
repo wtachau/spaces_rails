@@ -43,7 +43,7 @@ gem 'acts_as_commentable'
 # time_diff for time differences
 gem 'time_diff', '~> 0.3.0'
 # use draper for view decorators
-gem 'draper', '~> 1.4.0'
+gem 'draper', '~> 2.0.0'
 # for auto linking
 gem 'rails_autolink'
 # For autocomplete in tagging people
@@ -56,6 +56,8 @@ gem "aws-sdk", '< 2'
 gem 'remotipart', '~> 1.2'
 # Select for bootstrap
 gem 'bootstrap-select-rails', '~> 1.6.3'
+# active model serialization for json creation
+gem 'active_model_serializers'
 
 # There is an awesome Chrome extension for rails which gives you an extra tab on your dev tools
 # https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg?hl=en-US

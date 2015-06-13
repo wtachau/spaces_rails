@@ -1,4 +1,4 @@
-@CreateComponent = React.createClass
+@ProjectCreateComponent = React.createClass
 
 	getInitialState: ->
 		{ name: "", problem: "", solution: "", info: "", github: "", dropbox: "", link: "", inProgress: false }
@@ -17,14 +17,15 @@
 		e.preventDefault()
 		unless @state.inProgress
 			@setState { inProgress:true }
-			$.ajax
+			$.ajax 
 				url: "/projects"
 				dataType: 'json'
 				method: 'POST'
 				cache: false
 				data: @state
-				success: () =>
-					@setState { inProgress:false }
+				success: (data) =>
+					@props.onCreate data.project.id
+
 				error: (jqXHR, textStatus, errorThrown) ->
 					@setState { inProgress:false }
 					console.log "Error updating posts: "+errorThrown
@@ -43,16 +44,14 @@
 				<form>
 					<input name="name" type="text" value={@state.name} onChange={@handleChange} placeholder="Name your project or idea"/>
 					{ mainInputs.map ({name, title, placeholder, stateValue, handleChange}) =>
-						<CreateFormComponent name={name}, title={title}, inputValue={stateValue}, placeholder={placeholder}, handleChange={@handleChange}/>
-					}
+						<CreateFormComponent name={name} title={title} inputValue={stateValue} placeholder={placeholder} handleChange={@handleChange} key={name}/> }
 					<div className="submit-holder" onClick={@publish}>{ publishDisplay }</div>
 				</form>
 			</div>
 			<div className="sidebar">
 				<div className="sidebar-header">Attachments and Links</div>
 				{ sidebarInputs.map ({name, stateValue}) =>
-					<CreateSidebarFormComponent name={name} inputValue={stateValue} handleChange={@handleChange} placeholder={name} key={name}/>
-				}
+					<CreateSidebarFormComponent name={name} inputValue={stateValue} handleChange={@handleChange} placeholder={name} key={name}/> }
 			</div>
 		</div>
 
@@ -66,7 +65,7 @@
 
 @CreateSidebarFormComponent = React.createClass
 	render: ->
-		<div className="sidebar-input-wrapper">
+		<div className="sidebar-link-wrapper">
 			<div className="icon-wrapper"><i className={"fa fa-"+@props.name}></i></div>
 			<input name={ @props.name } 
 					type="text" 
