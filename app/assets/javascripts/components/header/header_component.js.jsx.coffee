@@ -1,3 +1,5 @@
+Link = ReactRouter.Link
+
 @HeaderComponent = React.createClass
 	propTypes: 
 		user: React.PropTypes.shape
@@ -15,9 +17,7 @@
 					</div>
 					<div onClick={@props.createClicked} className="create-button">Create</div>
 					<div className="header-links">
-						<span onClick={@props.homeClicked} className="active">home</span>
-						<span>projects</span>
-						<span>questions</span>
+					
 					</div>
 				</div>
 			</nav>
@@ -52,5 +52,4 @@
 					</div>
 				</div>
 			</div>
-		</div>
-						
+		</div>					

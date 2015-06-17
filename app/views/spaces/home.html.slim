@@ -3,18 +3,11 @@ coffee:
 	root = exports ? this
 	root.signinCallback = loginController.signedinCallback
 
-// The main application component
-= react_component 'ApplicationComponent', user: @current_user
+#react-body
+
+script src=asset_path("routing.js") type="text/jsx"
 
 coffee:
-	# Create relevant view controllers
-	new Spaces.ProjectsController 'projects_preview_body'
-	new Spaces.MainPanelController '.main_panel'
-	new Spaces.UserFormController '#profilePopup'
-	new Spaces.UsernameLinkController 
-	new Spaces.TagController
-	new Spaces.SlideoutController
-
 	# For Google Plus login
 	po = document.createElement 'script'
 	po.type = 'text/javascript'

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/reactjs/react-rails.git
-  revision: 1e5d99a65bc00bd29c92f559830e98bb529925cf
+  revision: 6019be97899c74ba351d7cf69877060c52e501d9
   specs:
     react-rails (1.0.0)
       coffee-script-source (~> 1.8)
@@ -171,6 +171,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    react-router-rails (0.11.6.1)
+      railties (>= 3.1)
     refile (0.5.4)
       mime-types
       rest-client (~> 1.7.2)
@@ -270,6 +272,7 @@ DEPENDENCIES
   rails_12factor (= 0.0.2)
   rails_autolink
   react-rails!
+  react-router-rails
   refile
   remotipart (~> 1.2)
   responders (~> 2.0)

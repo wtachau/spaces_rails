@@ -1,10 +1,18 @@
+
 @ApplicationComponent = React.createClass
 
-	propTypes:
-		user: 	 React.PropTypes.object.isRequired
-
 	getInitialState: ->
-		{ page: 'feed', selectedProject: null }
+		{ user: null, page: 'feed', selectedProject: null }
+
+	componentWillMount: ->
+		$.ajax
+			url: "/user"
+			dataType: 'json'
+			cache: false
+			success: (data) =>
+				@setState(user: data)
+			error: (jqXHR, textStatus, errorThrown) ->
+				console.log "Error getting user: "+errorThrown
 
 	createClicked: () ->
 		@setState { page: 'project', selectedProject: null }
@@ -24,7 +32,9 @@
 			when 'project' then (if @state.selectedProject then <ProjectViewComponent project={@state.selectedProject} /> else <ProjectCreateComponent onCreate={@goToProject}/>)
 
 	render: ->
-		<div>
-			<HeaderComponent createClicked={@createClicked} homeClicked={@homeClicked} user={ this.props.user }/>
-			{ @pageComponent() }
-		</div>
+		if @state.user then (
+			<div>
+				<HeaderComponent homeClicked={@homeClicked} createClicked={@createClicked} user={ @state.user }/>
+				{ @pageComponent() }
+			</div>
+		) else <div className="loading">loading</div>

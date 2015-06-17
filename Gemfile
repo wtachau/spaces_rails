@@ -25,6 +25,8 @@ gem 'responders', '~> 2.0'
 gem 'react-rails', github: 'reactjs/react-rails'
 # include CJSX compiler
 gem 'sprockets-coffee-react'
+# include require.js
+gem 'react-router-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

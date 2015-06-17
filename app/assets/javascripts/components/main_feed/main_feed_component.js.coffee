@@ -1,4 +1,4 @@
-window.MainFeedComponent = React.createClass
+@MainFeedComponent = React.createClass
 
 	getInitialState: ->
 		{projects: []}

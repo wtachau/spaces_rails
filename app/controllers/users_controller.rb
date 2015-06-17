@@ -11,22 +11,8 @@ class UsersController < ApplicationController
 		render text: "success"
 	end
 
-	def update
-		current_user.update_attributes user_params
-		render json: current_user
-	end
-
-	def edit
-		@current_user = current_user
-		render partial:'form'
-	end
-
-	def allnames
-		render json: User.all.map {|model| model.tagName }
-	end
-
-	def popup
-		render partial:'popup', locals:{ user: (User.find params[:id]).decorate }
+	def user
+		render json: @current_user
 	end
 
 	private
