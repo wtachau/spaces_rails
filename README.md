@@ -2,7 +2,7 @@
 
 A 20% time discovery tool. More to come soon.
 
-## Installation
+## Installation of the Rails backend
 
 The installation process is a little bit involved, so here is a handy guide to get you started.
 
@@ -32,6 +32,15 @@ followed by
 ```
 rake db:migrate
 ```
+
+## Installation of the React frontend
+
+In a separate terminal window, but in the same directory, type ```npm install```
+
+If you don't have Node installed, go get it [here](https://nodejs.org/)
+
+Then, to start the development environment, run ```npm run devserve``
+
 
 You should now be ready to develop!
 
