@@ -1,0 +1,41 @@
+@import "sizes";
+@import "fonts";
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	font-family: $spaces_main_font;
+	padding-top: $header_height;
+}
+
+/* GENERAL FORMATTING */
+.body_area {
+	position: absolute;
+	width: 100%;
+	height: calc(100% - #{$header_height});
+}
+
+a {
+	i.fa {
+		color: black;
+	}
+}
+
+textarea, input {
+	resize: none;
+	&:focus {
+		outline: none;
+	}
+}
+
+.username_link {
+	cursor: pointer;
+}
+
+.main-panel {
+	float: left;
+	width: 75%;
+}

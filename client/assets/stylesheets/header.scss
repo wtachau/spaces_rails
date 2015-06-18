@@ -1,0 +1,52 @@
+@import "colors";
+@import "sizes";
+
+/* HEADER */
+.header  {
+  height: $header_height;
+  background: $spaces_dark_grey;
+  font-family: "Gotham-Book";
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+.header-links {
+  margin: 25px 20% 0px 0px;
+  float: right;
+  a {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+} 
+.logo {
+  padding-top: 3px;
+  position: relative;
+  float: left;
+  font-size: 43px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.create-button {
+  cursor: pointer;
+  float: right;
+  margin: 18px 10px 0px 0px;
+  padding: 5px 25px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.upper_right  {
+  float: right;
+  padding: 5px;
+  cursor: pointer;
+  height: inherit;
+  img {
+    height: 85%;
+    margin-top: 5px;
+    &.profile {
+      border-radius: 50%;
+    }
+  }
+}

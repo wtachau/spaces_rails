@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Gotham-Book';
+	src: url('../fonts/gotham-book.ttf') format('truetype');
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'Gotham-Light';
+	src: url('../fonts/gotham-light.ttf') format('truetype');
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'Gotham-Medium';
+	src: url('../fonts/gotham-medium.ttf') format('truetype');
+	font-weight: normal;
+}
+$spaces_bold_font : "Gotham-Medium";
+$spaces_title_font : "Gotham-Book";
+$spaces_main_font : "Gotham-Light";
