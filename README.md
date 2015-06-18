@@ -8,7 +8,7 @@ The installation process is a little bit involved, so here is a handy guide to g
 
 Clone the repo using ``` git clone```.
 Navigate to the repo and install RVM and PostgreSQL.  
-Then, using terminal install Ruby using RVM.  You'll need Ruby version 2.2.0, so you''ll install that version using the command ```rvm install ruby-2.2.0```
+Then, using terminal install Ruby using RVM.  (If you don't have `rvm`, type ```\curl -sSL https://get.rvm.io | bash```. You'll need Ruby version 2.2.0, so you'll install that version using the command ```rvm install ruby-2.2.0```
 Then you need to run a series of commands to prep the repo for Rails, use 
 ```
 gem install bundle
