@@ -2,6 +2,11 @@ React = require "react"
 
 { div } = React.DOM
 
+MainSidebarComponent = React.createClass
+  render: ->
+    div className:"sidebar sidebar-main",
+      div className:"sidebar-header", "most recent activity"
+
 MainFeedComponent = React.createClass
 
   getInitialState: ->
@@ -31,7 +36,6 @@ MainFeedComponent = React.createClass
       div {className:"main-panel main-panel-feed"},
         div {className:"feed-posts"},
           projectNodes
-      div {}, "sidebar"
-      # React.createElement MainSidebarComponent
+      React.createElement MainSidebarComponent
 
 module.exports = MainFeedComponent

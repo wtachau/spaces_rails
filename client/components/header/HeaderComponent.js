@@ -17,20 +17,20 @@ HeaderComponent = React.createClass({
       "className": "container-fluid header"
     }, div({
       "className": "logo"
-    }, "Spaces"), React.createElement(Link, {
-      to: "create"
-    }, "create"), div({
-      "id": "add_profile",
+    }, "Spaces"), div({
       "className": "upper_right"
     }, this.props.user ? img({
       "className": "profile",
       "src": this.props.user.image + "?sz=100"
     }) : void 0), div({
-      "onClick": this.props.createClicked,
       "className": "create-button"
-    }, "Create"), div({
+    }, React.createElement(Link, {
+      to: "create"
+    }, "create")), div({
       "className": "header-links"
-    })));
+    }, React.createElement(Link, {
+      to: "/"
+    }, "Home"))));
   }
 });
 

@@ -18,8 +18,8 @@ AppComponent = React.createClass
     { user: null, page: 'feed', selectedProject: null }
 
   componentWillMount: ->
-    @props.readFromAPI @props.origin + '/user', (data) =>
-    @setState(user: data)
+    @readFromAPI @props.origin + '/user', (data) =>
+      @setState(user: data)
   
   getDefaultProps: ->
     { origin: if process.env.NODE_ENV == 'development' then 'http://localhost:3000' else '' }
@@ -42,11 +42,11 @@ AppComponent = React.createClass
 DefaultRoute = Router.DefaultRoute
 Route = Router.Route
 
-HomeComponent = require './components/HomeComponent'
+MainFeedComponent = require './components/feed/MainFeedComponent'
 ProjectCreateComponent = require './components/project/ProjectCreateComponent'
 
 routes = React.createElement Route, {name:"App", path:"/", handler:AppComponent},
-          (React.createElement Route, {name:"home", path:"/", handler:HomeComponent}),
+          (React.createElement Route, {name:"home", path:"/", handler:MainFeedComponent}),
           (React.createElement Route, {name:"create", path: "create", handler:ProjectCreateComponent})
         
 # Get the route handler based on HistoryLocation, and execute callback
