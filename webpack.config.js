@@ -2,7 +2,8 @@ module.exports = {
   cache: true,
   entry: "./client/index",
   output: {
-    filename: "public/bundle.js"
+    path: './public',
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ["", ".jsx", ".cjsx", ".coffee", ".js"],

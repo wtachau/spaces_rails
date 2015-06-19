@@ -1,8 +1,20 @@
 {
   "name": "spaces",
+  "version": "0.0.1",
+  "description": "an app for blabbing",
+  "main": "client/index",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "devserve": "webpack-dev-server -d --config webpack.dev.config.js --content-base public/ --progress --colors",
     "devbuild": "webpack -d --config webpack.dev.config.js --profile --progress --colors"
+  },
+  "author": "Will Tachau",
+  "license": "",
+  "engines": {
+    "node": "0.10.x"
   },
   "devDependencies": {
     "bootstrap-sass": "~3.3.1",

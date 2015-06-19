@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
         
-  before_action :allow_cross_origin_requests, if: proc { Rails.env.development? }
+  before_action :allow_cross_origin_requests , if: proc { Rails.env.development? }
   before_action :check_login_status
 
   def check_login_status

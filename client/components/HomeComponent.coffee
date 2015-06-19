@@ -1,6 +1,7 @@
 React = require "react"
 HeaderComponent = require("./header/HeaderComponent")
 MainFeedComponent = require("./feed/MainFeedComponent")
+ProjectCreateComponent = require("./project/ProjectCreateComponent")
 
 { div, h1, p, a} = React.DOM
 
@@ -10,8 +11,8 @@ HomeComponent = React.createClass
     { user: null, page: 'feed', selectedProject: null }
 
   componentWillMount: ->
-    @props.readFromAPI @props.origin + '/user', (data) =>
-      @setState(user: data)
+    # @props.readFromAPI @props.origin + '/user', (data) =>
+    #   @setState(user: data)
 
   createClicked: () ->
     @setState { page: 'project', selectedProject: null }

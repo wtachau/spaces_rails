@@ -18,7 +18,6 @@ MainFeedComponent = React.createClass({
     return this.pollServer();
   },
   loadProjectsFromServer: function() {
-    console.log(this.props);
     return this.props.readFromAPI(this.props.origin + '/projects', (function(_this) {
       return function(data) {
         return _this.setState({

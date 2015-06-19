@@ -14,7 +14,6 @@ MainFeedComponent = React.createClass
     @pollServer() 
 
   loadProjectsFromServer: ->
-    console.log @props
     @props.readFromAPI @props.origin + '/projects', (data) =>
       @setState(projects: data.projects)
 
