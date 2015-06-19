@@ -1,6 +1,8 @@
 # require 'bootstrap-sass-loader'
 require './assets/stylesheets/main.scss'
 require './assets/stylesheets/header.scss'
+require './assets/stylesheets/create.scss'
+require './assets/stylesheets/sidebar.scss'
 
 React = require("react")
 Reqwest = require("reqwest")

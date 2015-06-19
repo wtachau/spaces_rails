@@ -1,5 +1,5 @@
 React = require 'react'
-{ div, img, form, input } = React.DOM
+{ div, img, form, input, textarea, i } = React.DOM
 
 ProjectCreateComponent = React.createClass 
 
@@ -44,8 +44,20 @@ ProjectCreateComponent = React.createClass
 			div {className: "main-panel main-panel-create"}, 
 				form {},
 					input {name:"name", type:"text", value:@state.name, onChange:@handleChange, placeholder:"Name your project or idea"},
-					div {className:"submit-holder", onClick:@publish, publishDisplay}, "Test"
-			div {className: "sidebar"}, "test"
+					# TODO mainInputs and CreateFormComponent
+					mainInputs.map ({name, title, placeholder, stateValue, handleChange}) =>
+						div {}, 
+							div {className: "create-header"}, title,
+							textarea  {name: name, value: stateValue, onChange: @handleChange, placeholder: placeholder}
+					div {className:"submit-holder", onClick:@publish, publishDisplay}, publishDisplay
+			div {className: "sidebar"}, 
+				div {className: "sidebar-header"}, "Attachments and Links" 
+					sidebarInputs.map ({name, stateValue}) =>
+						div {className: "sidebar-link-wrapper"},
+							div {className: "icon-wrapper"},
+								i {className:"fa fa-"+name},
+								input {name: name, type: "text", onChange:@handleChange, value: stateValue, placeholder: name, key: name}
+			
 		
 
 

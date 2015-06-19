@@ -1,13 +1,14 @@
 React = require "react"
 HeaderComponent = require("./header/HeaderComponent")
 MainFeedComponent = require("./feed/MainFeedComponent")
+ProjectCreateComponent = require("./project/ProjectCreateComponent")
 
 { div, h1, p, a} = React.DOM
 
 HomeComponent = React.createClass
 
   getInitialState: ->
-    { user: null, page: 'feed', selectedProject: null }
+    { user: null, page: 'project', selectedProject: null }
 
   componentWillMount: ->
     @props.readFromAPI @props.origin + '/user', (data) =>
@@ -33,7 +34,7 @@ HomeComponent = React.createClass
           else 
             React.createElement ProjectCreateComponent, { onCreate:@goToProject } )
 
-    div {},
+    div {id:"foo", className:"bar"},
       ( React.createElement HeaderComponent,
         {@homeClicked, @createClicked, user: @state.user} ),
       pageComponent
