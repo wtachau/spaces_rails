@@ -45,7 +45,7 @@
 					<input name="name" type="text" value={@state.name} onChange={@handleChange} placeholder="Name your project or idea"/>
 					{ mainInputs.map ({name, title, placeholder, stateValue, handleChange}) =>
 						<CreateFormComponent name={name} title={title} inputValue={stateValue} placeholder={placeholder} handleChange={@handleChange} key={name}/> }
-					<div className="submit-holder" onClick={@publish}>{ publishDisplay }</div>
+					<div className="submit-holder" onClick={@publish} > { publishDisplay }</div>
 				</form>
 			</div>
 			<div className="sidebar">

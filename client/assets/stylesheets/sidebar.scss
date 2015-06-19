@@ -1,0 +1,19 @@
+@import "colors";
+@import "sizes";
+
+.sidebar {
+	float:right;
+	width:25%;
+	background-color: $spaces_light_grey;
+	height: 100%;
+	position: fixed;
+	right: 0px;
+
+	.sidebar-header {
+		text-align: center;
+		text-transform: uppercase;
+		margin: 15px 0 ;
+		border-bottom: 1px solid lightgrey;
+		padding-bottom: 5px;
+	}
+}

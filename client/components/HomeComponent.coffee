@@ -34,7 +34,7 @@ HomeComponent = React.createClass
           else 
             React.createElement ProjectCreateComponent, { onCreate:@goToProject } )
 
-    div {},
+    div {id:"foo", className:"bar"},
       ( React.createElement HeaderComponent,
         {@homeClicked, @createClicked, user: @state.user} ),
       pageComponent

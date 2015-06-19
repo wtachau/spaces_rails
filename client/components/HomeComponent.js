@@ -62,7 +62,10 @@ HomeComponent = React.createClass({
           }
       }
     }).call(this);
-    return div({}, React.createElement(HeaderComponent, {
+    return div({
+      id: "foo",
+      className: "bar"
+    }, React.createElement(HeaderComponent, {
       homeClicked: this.homeClicked,
       createClicked: this.createClicked,
       user: this.state.user
