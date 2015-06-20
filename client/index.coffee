@@ -3,6 +3,9 @@ require './assets/stylesheets/main.scss'
 require './assets/stylesheets/header.scss'
 require './assets/stylesheets/create.scss'
 require './assets/stylesheets/sidebar.scss'
+require './assets/stylesheets/feed.scss'
+require './assets/stylesheets/users.scss'
+require './assets/stylesheets/project.scss'
 
 React = require "react"
 Reqwest = require "reqwest"
@@ -44,11 +47,18 @@ Route = Router.Route
 
 MainFeedComponent = require './components/feed/MainFeedComponent'
 ProjectCreateComponent = require './components/project/ProjectCreateComponent'
+ProjectViewComponent = require './components/project/ProjectViewComponent'
+
+test = React.createElement ProjectViewComponent
+
+console.log test
 
 routes = React.createElement Route, {name:"App", path:"/", handler:AppComponent},
           (React.createElement Route, {name:"home", path:"/", handler:MainFeedComponent}),
-          (React.createElement Route, {name:"create", path: "create", handler:ProjectCreateComponent})
+          (React.createElement Route, {name:"create", path: "/create", handler:ProjectCreateComponent}),
+          (React.createElement Route, {name:"projectview", path: "project/:id", handler:ProjectViewComponent})
         
 # Get the route handler based on HistoryLocation, and execute callback
 Router.run routes, Router.HistoryLocation, (Handler) ->
+  console.log Handler
   React.render (React.createElement Handler), document.body

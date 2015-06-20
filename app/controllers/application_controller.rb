@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     render nothing: true
   end
 
+  def index
+    render file: 'public/index.html'
+  end
+
 protected
   def current_user
     User.find_by(id: session[:user_id])

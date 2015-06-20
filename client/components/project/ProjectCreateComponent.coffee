@@ -44,7 +44,6 @@ ProjectCreateComponent = React.createClass
 			div {className: "main-panel main-panel-create"}, 
 				form {},
 					input {name:"name", type:"text", value:@state.name, onChange:@handleChange, placeholder:"Name your project or idea"},
-					# TODO mainInputs and CreateFormComponent
 					mainInputs.map ({name, title, placeholder, stateValue, handleChange}) =>
 						div {}, 
 							div {className: "create-header"}, title,
@@ -57,8 +56,5 @@ ProjectCreateComponent = React.createClass
 							div {className: "icon-wrapper"},
 								i {className:"fa fa-"+name},
 								input {name: name, type: "text", onChange:@handleChange, value: stateValue, placeholder: name, key: name}
-			
-		
-
 
 module.exports = ProjectCreateComponent

@@ -18,34 +18,9 @@
 #= require bootstrap-select
 #= require turbolinks
 #= require selectize
-#= require react
-#= require react_ujs
-#= require react_router
-#= require react_router_ujs
-#= require components
+
 #= require_self
 #= require_tree ./
 #= require_tree ./core/
 
 @Spaces = {}
-
-# Route = ReactRouter.Route
-# RouteHandler = ReactRouter.RouteHandler
-
-# App = React.createClass
-# 	render: ->
-# 		`<div>
-# 			<ApplicationComponent/>
-# 			<RouteHandler/>
-# 		</div>`
-
-# @routes = (
-#     `<Route handler={ApplicationComponent}>
-# 		<Route name='create' handler={ProjectCreateComponent} path='create' />
-# 		<Route name='feed' handler={MainFeedComponent} path='/' />
-#     </Route>`
-#   )
-
-# ReactRouter.run(routes, (Handler) ->
-#   React.render <Handler/>, document.body
-# )

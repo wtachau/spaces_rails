@@ -11,9 +11,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass-loader'] },
       { test: /\.coffee$/, loader: "coffee-loader"},
-      { test: /\.cjsx$/, loaders: ["coffee", "cjsx"]},
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   },

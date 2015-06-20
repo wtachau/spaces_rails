@@ -1,5 +1,7 @@
 React = require "react"
 
+ProjectComponent = require "../project/ProjectComponent"
+
 { div } = React.DOM
 
 MainSidebarComponent = React.createClass
@@ -29,8 +31,7 @@ MainFeedComponent = React.createClass
     projectNodes = @state.projects.map (data) =>
       # see app/views/posts/_post.json.jbuilder for structure of data
       return(
-        div {}, "hello"
-        # <ProjectComponent user={ data.user } project={ data } projectClicked={@props.projectClicked} key={ data.id }/>
+        React.createElement ProjectComponent, user:data.user, project:data, key:data.id
       )
     div {className:"body_area"},
       div {className:"main-panel main-panel-feed"},
