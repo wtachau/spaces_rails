@@ -18,3 +18,9 @@
 
 # Ignore the environment variabels
 .env
+
+# ignore generated bundle files
+*/bundle.js*
+
+# npm files
+npm-debug.log
