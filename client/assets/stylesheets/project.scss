@@ -1,0 +1,48 @@
+@import "fonts";
+
+.main-panel-project {
+
+  .project-history {
+
+    .project-snapshot {
+      margin-top: 60px;
+      font-family: $spaces_bold_font;
+      font-size: 14px;
+    }
+
+    .snapshot-icon {
+      width: 30px;
+      height: 30px;
+      background-color: black;
+      border-radius: 15px;
+      float: left;
+      margin: -5px 10px 0px 0px;
+    }
+  }
+
+  .project-panel {
+    padding-top: 20px;
+
+    .profile-container {
+      float: right;
+      .timestamp {
+        text-align: right;
+      }
+    }
+
+    .project-title {
+      margin-top: 20px;
+      font-family: $spaces_bold_font;
+      font-size: 20px;
+      padding: 40px 0px;
+    }
+
+    .project-section-title {
+      font-family: $spaces_bold_font;
+    }
+
+    .project-section-text {
+      padding: 10px 10px 25px 10px;
+    }
+  }
+}

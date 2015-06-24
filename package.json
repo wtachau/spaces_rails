@@ -8,8 +8,8 @@
     "url": ""
   },
   "scripts": {
-    "devserve": "webpack-dev-server -d --config webpack.dev.config.js --content-base public/ --progress --colors",
-    "devbuild": "webpack -d --config webpack.dev.config.js --profile --progress --colors"
+    "devserve": "env UV_THREADPOOL_SIZE=100 webpack-dev-server -d --config webpack.dev.config.js --content-base public/ --progress --colors",
+    "devbuild": "env UV_THREADPOOL_SIZE=100 webpack -d --config webpack.dev.config.js --profile --progress --colors"
   },
   "author": "Will Tachau",
   "license": "",

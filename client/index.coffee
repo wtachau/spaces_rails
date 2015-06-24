@@ -1,4 +1,4 @@
-# require 'bootstrap-sass-loader'
+require "./assets/vendor/bootstrap/stylesheets/_bootstrap.scss"
 require './assets/stylesheets/main.scss'
 require './assets/stylesheets/header.scss'
 require './assets/stylesheets/create.scss'

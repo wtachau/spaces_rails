@@ -1,0 +1,79 @@
+@import "fonts";
+@import "colors";
+
+.main-panel-feed {
+
+  .feed-posts {
+    margin: auto;
+    width: 35%;
+
+    .feed-post{
+      width: 600px;
+      padding-top: 20px;
+
+      .feed-links{
+        float: right;
+        padding-right: 10%;
+        a {
+          padding: 5px;
+        }
+      }
+
+      .project-title{
+        text-align: center;
+        font-family: $spaces_title_font;
+        font-size: 24px;
+        padding-bottom: 5px;
+      }
+
+    
+      .project-desc-label{
+        float: left;
+        width: 16.6%;
+        font-family: $spaces_bold_font;
+        text-align: right;
+      }
+
+    
+      .project-desc{
+        float:left;
+        width: 66%;
+      }
+
+      .project-details-link{
+        cursor: pointer;
+        border: 2px solid black;
+        width: 80px;
+        padding: 10px;
+        border-radius: 20px;
+        margin: 12px auto;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+      }
+
+    
+      .tags{
+        float: left;
+        width: 50%;
+      }
+
+    
+      .feedback{
+        float:left;
+        width:33.3%;
+      }
+  
+        
+      .feedback-number, .tags-text{
+        color: $spaces_blue;
+      }
+
+      .feed-separator{
+        border: 1px solid lightgrey;
+        width: 70%;
+        margin: 10px 0px 25px 10%;
+      }
+    }
+  }
+}
